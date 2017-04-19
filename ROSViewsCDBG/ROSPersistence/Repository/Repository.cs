@@ -15,9 +15,9 @@ namespace ROSPersistence.Repository
         private DbSet<TEntity> _dbSet;
 
 
-        public Repository()
+        public Repository(DbContext context)
         {
-            _context = new ROSDB.ROSDB();
+            _context = context;
             _context.Configuration.LazyLoadingEnabled = false;
 
             _dbSet = _context.Set<TEntity>();
