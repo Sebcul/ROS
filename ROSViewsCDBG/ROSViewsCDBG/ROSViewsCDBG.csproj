@@ -75,6 +75,9 @@
     <Compile Include="Views\UserControls\DistanceMeasuredRaceEventInfoView.xaml.cs">
       <DependentUpon>DistanceMeasuredRaceEventInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\EntryInfoView.xaml.cs">
+      <DependentUpon>EntryInfoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\ListUsersClubsView.xaml.cs">
       <DependentUpon>ListUsersClubsView.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,12 @@
     </Compile>
     <Compile Include="Views\UserControls\ListUsersTeamsView.xaml.cs">
       <DependentUpon>ListUsersTeamsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\RegattaAdminView.xaml.cs">
+      <DependentUpon>RegattaAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\RegattaInfoView.xaml.cs">
+      <DependentUpon>RegattaInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\RegisterToRaceEventView.xaml.cs">
       <DependentUpon>RegisterToRaceEventView.xaml</DependentUpon>
