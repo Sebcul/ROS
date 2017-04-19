@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ROSPersistence.Repository
 {
@@ -15,9 +13,9 @@ namespace ROSPersistence.Repository
         private DbSet<TEntity> _dbSet;
 
 
-        public Repository()
+        public Repository(DbContext context)
         {
-            _context = new ROSDB.ROSDB();
+            _context = context;
             _context.Configuration.LazyLoadingEnabled = false;
 
             _dbSet = _context.Set<TEntity>();
@@ -26,15 +24,13 @@ namespace ROSPersistence.Repository
 
         public IList<TEntity> GetAllWhereEntitiesMatchPredicate(Expression<Func<TEntity, bool>> predicate)
         {
-            var queryableEntities = _dbSet.AsNoTracking();
-            return queryableEntities.Where(predicate).ToList();
+            return _dbSet.Where(predicate).ToList();
         }
 
 
         public void UpdateEntity(TEntity entity)
         {
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity);
             _context.SaveChanges();
         }
 
