@@ -2,7 +2,7 @@ using System.Data.Entity;
 
 namespace ROSPersistence.Repository
 {
-    public class RepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
         public static readonly RepositoryFactory Instance = new RepositoryFactory();
 
@@ -14,7 +14,7 @@ namespace ROSPersistence.Repository
             _context = new ROSDB.ROSDB();
         }
 
-        public Repository<TEntity> CreateRepository<TEntity>() where TEntity : class
+        public IRepository<TEntity> CreateRepository<TEntity>() where TEntity : class
         {
             return new Repository<TEntity>(_context);
         }
