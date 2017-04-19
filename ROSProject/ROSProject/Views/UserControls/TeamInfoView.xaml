@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Projektet.TeamInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projektet"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid Background="AliceBlue">
+        <!--TODO: Remove background color-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Lagnummer" Margin="5"/>
+        <TextBlock Text="Lagnamn" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Skipper" Grid.Row="2" Margin="5"/>
+        <TextBlock Text="Båtnamn" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Deltagare" Grid.Row="4" Margin="5"/>
+        <TextBlock Text="Anmälningar" Grid.Row="5" Margin="5"/>
+        <TextBlock Text="Beskrivning" Grid.Row="6" Margin="5"/>
+
+        <TextBlock Grid.Column="1" Width="250" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" Width="250" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="3" Width="250" Margin="5"></TextBlock>
+        <ListBox Grid.Column="1" Grid.Row="4" Width="250" Margin="5"/>
+        <ListBox Grid.Column="1" Grid.Row="5" Width="250" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Width="250" Height="150" Margin="5"></TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center">
+            <Button Content="Tillbaka" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

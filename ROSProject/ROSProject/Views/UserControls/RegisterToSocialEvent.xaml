@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ROSViewsCDBG.Views.UserControls.RegisterToSocialEvent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid Background="AliceBlue" VerticalAlignment="Top" Height="422">
+        <!--TODO: Remove background color-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="80"/>
+
+            <RowDefinition Height="*" MaxHeight="100"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="10">
+            <TextBlock Text="Regatta:" />
+            <TextBlock Text="...namn..." />
+        </StackPanel>
+        <TextBlock Text="[Eventnamn]" Grid.Column="1" Margin="10" FontSize="15" VerticalAlignment="Center" />
+        <TextBlock Text="Socialevent:" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Startdatum:" Grid.Row="2" Margin="5"/>
+        <TextBlock Text="Slutdatum:" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Plats:" Grid.Row="4" Margin="5"/>
+        <TextBlock Text="Vänner" Grid.Row="5" Margin="5"/>
+        <TextBlock Text="Beskrivning:" Grid.Row="6" Margin="5"/>
+        <ListBox Grid.Column="1" Grid.Row="1" Width="250" Margin="5" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Width="250" Margin="5" Text="Datum / Tid" />
+        <TextBlock Grid.Column="1" Grid.Row="3" Width="250" Margin="5" Text="Datum / Tid" />
+
+        <TextBlock Grid.Column="1" Grid.Row="4" Width="250" Margin="5" />
+        <TextBox Grid.Column="1" Grid.Row="5" Width="250" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Width="250" Margin="5" />
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center">
+            <Button Content="Registrera" MinWidth="20" Margin="1,10,20,70" />
+            <Button Content="Avbryt" MinWidth="20" Margin="1,10,20,70" />
+        </StackPanel>
+    </Grid>
+</UserControl>

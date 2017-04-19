@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ROSViewsCDBG.Views.UserControls.RegisterToRaceEventView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+
+    <Grid Background="AliceBlue">
+        <!--TODO: Remove background color-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Eventnamn" Grid.Row="0" Margin="5"/>
+        <TextBlock Text="Typ av race" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Starttid" Grid.Row="2" Margin="5"/>
+        <TextBlock Text="Sluttid" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Startplats" Grid.Row="4" Margin="5"/>
+        <TextBlock Text="Målplats" Grid.Row="5" Margin="5"/>
+        <TextBlock Text="Lagnamn" Grid.Row="6" Margin="5"/>
+        <TextBlock Text="Beskrivning" Grid.Row="7" Margin="5"/>
+
+
+        <ListBox Grid.Column="1" Grid.Row="0" Width="250" Margin="5"></ListBox>
+        <ComboBox x:Name="RaceTypeComboBox" Text="Välj typ här"  Grid.Column="1" Grid.Row="1" Width="250" Margin="5">
+            <TextBlock Text="24-timmars"></TextBlock>
+            <TextBlock Text="48-timmars"></TextBlock>
+            <TextBlock Text="Race"></TextBlock>
+        </ComboBox>
+
+        <TextBlock Grid.Column="1" Grid.Row="4" Width="250" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="5" Width="250" Margin="5"></TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="6" Width="250" Margin="5"></TextBox>
+        <TextBlock Grid.Column="1" Grid.Row="7" Width="250" Height="150" Margin="5"></TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center">
+            <Button Content="Registrera" Margin="1,10,15,0"/>
+            <Button Content="Avbryt" Margin="1,10,15,0"/>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

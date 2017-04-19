@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ROSViewsCDBG.RegattaInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ROSViewsCDBG"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" Width="651.064">
+    <Grid Background="AliceBlue" Panel.ZIndex="10">
+        <!--TODO: Remove background color-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Regattanummer" Margin="5"/>
+        <TextBlock Text="Namn" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Starttid" Grid.Row="2" Margin="5"/>
+        <TextBlock Text="Sluttid" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Plats" Grid.Row="4" Margin="5"/>
+        <TextBlock Text="Beskrivning" Grid.Row="5" Margin="5"/>
+        <TextBlock Text="Registreringar" Grid.Row="6" Margin="5"/>
+        <TextBlock Text="Event" Grid.Row="7" Margin="5"/>
+
+        <TextBlock Grid.Column="1" Width="150" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="150" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" Width="150" Margin="5" Text="Datum / Tid"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="3" Width="150" Margin="5" Text="Datum / Tid"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Width="150" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="5" Width="150" Height="150" Margin="5"></TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="5">
+            <ListBox Width="150"/>
+            <Button Content="+" Width="20" Height="20"/>
+            <Button Content="-" Width="20" Height="20"/>
+        </StackPanel>
+        <ListBox Grid.Column="1" Grid.Row="7" Width="190" Margin="5"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center">
+            <Button Content="Registrera dig" Margin="1,10,70,0" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

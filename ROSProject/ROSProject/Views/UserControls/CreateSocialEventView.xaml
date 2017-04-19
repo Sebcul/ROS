@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="ROSViewsCDBG.Views.UserControls.CreateSocialEventView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ROSViewsCDBG"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="350">
+    <Grid Background="AliceBlue"> <!--TODO: Remove background color-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Titel" Grid.Row="0" Margin="5"/>
+        <TextBlock Text="Starttid" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Sluttid" Grid.Row="2" Margin="5"/>
+        <TextBlock Text="Plats" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Beskrivning" Grid.Row="4" Margin="5"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Width="250" Margin="5"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="5">
+            <DatePicker Width="150"></DatePicker>
+            <TextBox Text="00:00" Width="45" Height="20" Margin="10,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="5">
+            <DatePicker Width="150"></DatePicker>
+            <TextBox Text="00:00" Width="45" Height="20" Margin="10,0,0,0" />
+        </StackPanel>
+        <TextBox Grid.Column="1" Grid.Row="3" Width="250" Margin="5"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="4" Width="250" Height="150" Margin="5"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">
+            <Button Content="Skapa" Margin="1,10,175,0"/>
+            <Button Content="Avbryt" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

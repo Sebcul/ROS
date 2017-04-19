@@ -1,0 +1,48 @@
+﻿<Window x:Class="ROSViewsCDBG.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ROSViewsCDBG"
+        xmlns:userControls="clr-namespace:ROSViewsCDBG.Views.UserControls"
+        xmlns:projektet="clr-namespace:Projektet"
+
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <!--<projektet:TeamInfoView x:Key="TeamInfoView"/>-->
+        <userControls:ListUsersTeamsView x:Key="ListUsersTeamsView"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="../../Resources/sxk_logo2.jpg" Margin="10"/>
+        <TextBlock Text="RACE ORGANIZATION SYSTEM" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50"/>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Inloggad som [namn]" HorizontalAlignment="Center" FontStyle="Italic" Margin="10"/>
+            <TextBox Margin="10">
+                <TextBox.Text>Sök...</TextBox.Text>
+            </TextBox>
+            <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="UserProfileButton_Click"/>
+            <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="TeamsButton_Click"/>
+            <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="ResultsButton_Click"/>
+            <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="RegattasButton_Click"/>
+            <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="EventsButton_Click"/>
+            <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="ClubsButton_Click"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <ContentControl x:Name="UcContentControl" Margin="60,0,0,0">
+                
+            </ContentControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
+
+
+
