@@ -38,7 +38,6 @@
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ContentControl x:Name="UcContentControl" Margin="60,0,0,0">
-                <ListBox x:Name="lista"></ListBox>
             </ContentControl>
         </ScrollViewer>
     </Grid>

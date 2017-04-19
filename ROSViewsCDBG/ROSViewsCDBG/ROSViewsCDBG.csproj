@@ -302,9 +302,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
       <Project>{46061c95-a183-4cea-aca4-2b37fe413402}</Project>
