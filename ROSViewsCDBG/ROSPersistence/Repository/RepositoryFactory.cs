@@ -1,8 +1,6 @@
 using System.Data.Entity;
-using ROSPersistence.Repository;
-using ROSPersistence.ROSDB;
 
-namespace ROSPersistenceUnitTests
+namespace ROSPersistence.Repository
 {
     public class RepositoryFactory
     {
@@ -13,7 +11,7 @@ namespace ROSPersistenceUnitTests
 
         private RepositoryFactory()
         {
-            _context = new ROSDB();
+            _context = new ROSDB.ROSDB();
         }
 
         public Repository<TEntity> CreateRepository<TEntity>() where TEntity : class
