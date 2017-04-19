@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Windows;
 using Projektet;
+using ROSPersistence.Repository;
+using ROSPersistence.ROSDB;
 using ROSViewsCDBG.UserControls;
 using ROSViewsCDBG.Views.UserControls;
 
@@ -22,6 +27,13 @@ namespace ROSViewsCDBG
             ListUsersClubsView.OpenCreateClubView += CreateClub;
             ClubInfoView.OpenCreateClubView += CreateClub;
             RegattaInfoView.OpenCreateEntryView += CreateEntry;
+            var repo = new Repository<Boat>();
+            var boat = repo.GetAllWhereEntitiesMatchPredicate(w => w.Name.Equals("Bolle")).First();
+            boat.Name = "Olle";
+            repo.UpdateEntity(boat);
+            var båtar = repo.GetAllWhereEntitiesMatchPredicate(b => b.Active);
+            var cp = båtar.Select(b => b.Name);
+            lista.ItemsSource = cp;
         }
 
         private void CreateEntry(object sender, EventArgs e)
