@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FE6ACEE4-3670-4678-B934-80B99C29B606}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>ROS.Services</RootNamespace>
     <AssemblyName>ROS.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
@@ -43,6 +46,12 @@
     <Compile Include="Services\Interfaces\ITeamService.cs" />
     <Compile Include="Services\ResultService.cs" />
     <Compile Include="Services\TeamService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
+      <Project>{46061C95-A183-4CEA-ACA4-2B37FE413402}</Project>
+      <Name>ROSPersistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
