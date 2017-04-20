@@ -19,7 +19,7 @@ namespace ROSViewsCDBG.ViewModels
             get { return new ClubInfoViewModel(); }
         }
 
-        public static ClubMemberViewModel ClubMemberView
+        public static ClubMemberViewModel ClubMemberViewModel
         {
             get { return new ClubMemberViewModel(); }
         }
