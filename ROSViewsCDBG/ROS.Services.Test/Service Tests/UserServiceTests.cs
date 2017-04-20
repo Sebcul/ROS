@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Moq;
+using ROS.Services.Test.Test_Utilities;
 using ROSPersistence.Repository;
 using ROSPersistence.ROSDB;
 using Xunit;
@@ -57,66 +55,4 @@ namespace ROS.Services.Test.Service_Tests
         }
     }
 
-
-    public class RepositoryFake<TEntity> : IRepository<TEntity>
-        where TEntity : class
-    {
-
-        private IQueryable<TEntity> _testData;
-
-
-        public RepositoryFake(List<TEntity> testData)
-        {
-            _testData = testData.AsQueryable();
-        }
-
-
-        public IList<TEntity> GetAllWhereEntitiesMatchPredicate(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _testData.AsQueryable().Where(predicate).ToList();
-        }
-
-
-        public void UpdateEntity(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void InsertEntity(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-
-
-
-    public class A
-    {
-        public static RepositoryFactoryBuilder RepositoryFactory()
-        {
-            return new RepositoryFactoryBuilder();
-        }
-    }
-
-    public class RepositoryFactoryBuilder
-    {
-        private IRepositoryFactory _repositoryFactory;
-
-
-        public IRepositoryFactory Build() => _repositoryFactory;
-
-
-        public RepositoryFactoryBuilder ThatReturnsAFakeRepositoryWithTestUsers<TEntity>(List<TEntity> testData) where TEntity : class
-        {
-            var stubFactory = new Mock<IRepositoryFactory>();
-            stubFactory.Setup(factory => factory.CreateRepository<TEntity>()).Returns(new RepositoryFake<TEntity>(testData));
-
-            _repositoryFactory = stubFactory.Object;
-
-            return this;
-        }
-
-    }
 }

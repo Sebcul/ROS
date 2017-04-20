@@ -22,7 +22,7 @@ namespace ROSPersistence.Repository
         }
 
 
-        public virtual IList<TEntity> GetAllWhereEntitiesMatchPredicate(Expression<Func<TEntity, bool>> predicate)
+        public IList<TEntity> GetAllWhereEntitiesMatchPredicate(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.Where(predicate).ToList();
         }
