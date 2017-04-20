@@ -32,7 +32,7 @@
             </TextBox>
             <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding EditUserInfoCommand}"/>
             <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding MyTeamsCommand}"/>
-            <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserResultsCommand}"/>
             <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
