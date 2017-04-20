@@ -19,29 +19,29 @@ namespace Ros.Services.Services
             this.repository = repository;
         }
 
-        public void DeleteEntity(Boat Boat)
+        public void DeleteEntity(Boat boat)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Boat> GetAllBoatsThatMatchPredicate(Expression<Func<Boat, bool>> predicate)
+        public void UpdateEntity(Boat boat)
+        {
+            repository.UpdateEntity(boat);
+        }
+
+        public void AddEntity(Boat boat)
+        {
+            repository.InsertEntity(boat);
+        }
+
+        public Boat GetBoat(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateEntity(Boat Boat)
+        public List<Boat> GetAllBoats()
         {
-            throw new NotImplementedException();
-        }
-
-        public void InsertEntity(Boat Boat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddEntity(Boat Boat)
-        {
-            throw new NotImplementedException();
+            return repository.GetAllWhereEntitiesMatchPredicate((x => x.Active)).ToList();
         }
     }
 }

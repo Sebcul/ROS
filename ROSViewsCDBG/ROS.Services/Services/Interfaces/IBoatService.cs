@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using ROSPersistence.ROSDB;
 
 namespace Ros.Services.Services.Interfaces
 {
     public interface IBoatService
     {
-        //void AddEntity(DomainBoat domainBoat);
+        void AddEntity(Boat boat);
 
-        //void DeleteEntity(DomainBoat domainBoat);
+        void DeleteEntity(Boat boat);
 
-        //IList<IDomainBoat> GetAllBoatsThatMatchPredicate(Expression<Func<IDomainBoat, bool>> predicate);
+        void UpdateEntity(Boat boat);
 
-        //void UpdateEntity(DomainBoat domainBoat);
-
-        //void InsertEntity(DomainBoat domainBoat);
+        List<Boat> GetAllBoats();
+            
+        Boat GetBoat(int id);
     }
 }
