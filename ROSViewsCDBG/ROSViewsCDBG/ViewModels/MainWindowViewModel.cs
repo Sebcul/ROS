@@ -15,6 +15,8 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _userTeamsCommand;
         private ICommand _userResultsCommand;
         private ICommand _userRegattasCommand;
+        private ICommand _userSocialEventsCommand;
+        private ICommand _userClubsCommand;
         private object _selectedUserControl;
         private string _email;
 
@@ -41,6 +43,16 @@ namespace ROSViewsCDBG.ViewModels
         public ICommand UserRegattasCommand
         {
             get { return _userRegattasCommand ?? (_userRegattasCommand = new RelayCommand(OpenUserRegattas)); }
+        }
+
+        public ICommand UserSocialEventsCommand
+        {
+            get { return _userSocialEventsCommand ?? (_userSocialEventsCommand = new RelayCommand(OpenUserEvents)); }
+        }
+
+        public ICommand UserClubsCommand
+        {
+            get { return _userClubsCommand ?? (_userClubsCommand = new RelayCommand(OpenUserClubs)); }
         }
 
         public object SelectedUserControl
@@ -81,6 +93,16 @@ namespace ROSViewsCDBG.ViewModels
         private void OpenUserRegattas(object obj)
         {
             SelectedUserControl = new ListUsersRegattasView();
+        }
+
+        private void OpenUserEvents(object obj)
+        {
+            SelectedUserControl = new SocialEventInfoView();
+        }
+
+        private void OpenUserClubs(object obj)
+        {
+            SelectedUserControl = new ListUsersClubsView();
         }
 
         private void RegisterMessages()
