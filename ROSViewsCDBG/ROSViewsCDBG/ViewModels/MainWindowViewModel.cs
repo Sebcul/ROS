@@ -9,13 +9,24 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string _email;
+
 
         public MainWindowViewModel()
         {
             RegisterMessages();
         }
 
+        private string _email;
+
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void RegisterMessages()
         {
@@ -24,7 +35,7 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OnEmailReceived(string email)
         {
-            _email = email;
+            Email = email;
         }
     }
 }

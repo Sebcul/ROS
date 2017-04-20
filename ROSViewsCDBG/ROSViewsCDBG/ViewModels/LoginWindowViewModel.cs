@@ -49,8 +49,9 @@ namespace ROSViewsCDBG.ViewModels
 
             if (checkLogin)
             {
+                var mainWindow = new MainWindow();
                 Messenger.Default.Send(Email);
-                new MainWindow().Show();
+                mainWindow.Show();
                 CloseWindow();
             }
         }

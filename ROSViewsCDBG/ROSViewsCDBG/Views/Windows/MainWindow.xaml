@@ -26,16 +26,17 @@
         <Image Source="../../Resources/sxk_logo2.jpg" Margin="10"/>
         <TextBlock Text="RACE ORGANIZATION SYSTEM" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50"/>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="{Binding LoggedInAs}" HorizontalAlignment="Center" FontStyle="Italic" Margin="10"/>
+            <TextBlock Text="Inloggad som" HorizontalAlignment="Center" FontStyle="Italic" Margin="0,10,0,0"/>
+            <TextBlock Text="{Binding Email}" HorizontalAlignment="Center" FontStyle="Italic" Margin="10,5,10,10"/>
             <TextBox Margin="10">
                 <TextBox.Text>Sök...</TextBox.Text>
             </TextBox>
-            <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="UserProfileButton_Click"/>
-            <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="TeamsButton_Click"/>
-            <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="ResultsButton_Click"/>
-            <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="RegattasButton_Click"/>
-            <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="EventsButton_Click"/>
-            <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Click="ClubsButton_Click"/>
+            <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ContentControl x:Name="UcContentControl" Margin="60,0,0,0">

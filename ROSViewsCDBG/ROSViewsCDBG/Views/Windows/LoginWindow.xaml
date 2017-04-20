@@ -7,7 +7,9 @@
         xmlns:local="clr-namespace:ROSViewsCDBG"
         xmlns:userControls="clr-namespace:ROSViewsCDBG.Views.UserControls"
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="525"
+        Title="Login"
+        MinWidth="525" MinHeight="350"
+        MaxWidth="525" MaxHeight="350"
         Name="LoginWindowView"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginWindowViewModel}">
     <Grid>
