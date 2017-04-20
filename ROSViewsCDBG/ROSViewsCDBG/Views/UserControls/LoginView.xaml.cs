@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using ROS.Services.Services;
 using ROSViewsCDBG.UserControls;
 
 namespace ROSViewsCDBG.Views.UserControls
@@ -16,7 +17,8 @@ namespace ROSViewsCDBG.Views.UserControls
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            var service = new LoginService();
+            service.ConfirmUserCredentials("bajs", "bajs");
             MainWindow main = new MainWindow();
             App.Current.MainWindow = main;
             Window parentWindow = Window.GetWindow(this);

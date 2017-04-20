@@ -4,43 +4,42 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Ros.Domain.Aggregate_Roots.Boat;
-using Ros.Domain.Aggregate_Roots.Interfaces;
-using Ros.Persistence.Repositories;
 using Ros.Services.Services.Interfaces;
+using ROSPersistence.Repository;
+using ROSPersistence.ROSDB;
 
 namespace Ros.Services.Services
 {
     public class BoatService : IBoatService
     {
-        private Repository<DomainBoat> repository;
+        private Repository<Boat> repository;
 
-        public BoatService(Repository<DomainBoat> repository)
+        public BoatService(Repository<Boat> repository)
         {
             this.repository = repository;
         }
 
-        public void DeleteEntity(DomainBoat domainBoat)
+        public void DeleteEntity(Boat Boat)
         {
             throw new NotImplementedException();
         }
 
-        public IList<IDomainBoat> GetAllBoatsThatMatchPredicate(Expression<Func<IDomainBoat, bool>> predicate)
+        public IList<Boat> GetAllBoatsThatMatchPredicate(Expression<Func<Boat, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateEntity(DomainBoat domainBoat)
+        public void UpdateEntity(Boat Boat)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertEntity(DomainBoat domainBoat)
+        public void InsertEntity(Boat Boat)
         {
             throw new NotImplementedException();
         }
 
-        public void AddEntity(DomainBoat domainBoat)
+        public void AddEntity(Boat Boat)
         {
             throw new NotImplementedException();
         }

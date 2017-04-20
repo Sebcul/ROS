@@ -314,6 +314,9 @@ namespace ROSPersistence.ROSDB
                 .HasMany(e => e.UserContactInformations)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
+
+            
+            
         }
     }
 }
