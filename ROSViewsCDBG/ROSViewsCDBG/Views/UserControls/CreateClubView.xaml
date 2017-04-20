@@ -30,7 +30,7 @@
         <TextBlock Text="Klubbinfo" Grid.Column="1" Margin="10" FontSize="15" VerticalAlignment="Center" />
         <TextBlock Text="Klubbnamn:" Grid.Row="1" Margin="5"/>
         <TextBlock Text="Telefonnummer:" Grid.Row="2" Margin="5"/>
-        <TextBlock Text="Email:" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Password:" Grid.Row="3" Margin="5"/>
         <TextBlock Text="Adress:" Grid.Row="4" Margin="5"/>
         <TextBlock Text="LoggoURL:" Grid.Row="5" Margin="5"/>
         <TextBlock Text="WebbsidoURL:" Grid.Row="6" Margin="5"/>

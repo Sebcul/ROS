@@ -31,7 +31,7 @@
         <TextBlock Text="Ändra uppgifter" Grid.Column="1" Margin="10" FontSize="15" />
         <TextBlock Text="Namn:" Grid.Row="1" Margin="5"/>
         <TextBlock Text="Efternamn:" Grid.Row="2" Margin="5"/>
-        <TextBlock Text="Email:" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Password:" Grid.Row="3" Margin="5"/>
         <TextBlock Text="Nytt lösenord:" Grid.Row="4" Margin="5"/>
         <TextBlock Text="Upprepa nytt lösenord:" Grid.Row="5" Margin="5"/>
         <TextBlock Text="Telefonnummer:" Grid.Row="6" Margin="5"/>

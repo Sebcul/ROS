@@ -89,11 +89,6 @@ namespace ROSViewsCDBG.ViewModels
             get { return new ListUsersTeamsViewModel(); }
         }
 
-        public static LoginViewModel LoginViewModel
-        {
-            get { return new LoginViewModel(); }
-        }
-
         public static RegattaAdminViewModel RegattaAdminViewModel
         {
             get { return new RegattaAdminViewModel(); }

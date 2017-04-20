@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="ViewModels\ClubAdminViewModel.cs" />
     <Compile Include="ViewModels\ClubInfoViewModel.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="ViewModels\ListUsersRegattasViewModel.cs" />
     <Compile Include="ViewModels\ListUsersResultsViewModel.cs" />
     <Compile Include="ViewModels\ListUsersTeamsViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\LoginWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RegattaAdminViewModel.cs" />
@@ -212,10 +212,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\UserControls\RegattaAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -265,9 +261,6 @@
     </Compile>
     <Compile Include="Views\UserControls\CreateSocialEventView.xaml.cs">
       <DependentUpon>CreateSocialEventView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserControls\LoginView.xaml.cs">
-      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\EditUserInfoView.xaml.cs">
       <DependentUpon>EditUserInfoView.xaml</DependentUpon>
@@ -335,7 +328,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
     <ProjectReference Include="..\ROS.Services\ROS.Services.csproj">
       <Project>{FE6ACEE4-3670-4678-B934-80B99C29B606}</Project>
       <Name>ROS.Services</Name>

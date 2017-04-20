@@ -71,8 +71,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center">
-            <Button Content="Registrera" MinWidth="50" Margin="1,10,50,1.2" Click="Button_Click_1"/>
-            <Button Content="Avbryt" MinWidth="50" Margin="0,10,0,-0.4" Height="20" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button Content="Registrera" MinWidth="50" Margin="1,10,50,1.2" />
+            <Button Content="Avbryt" MinWidth="50" Margin="0,10,0,-0.4" Height="20" VerticalAlignment="Top" />
         </StackPanel>
     </Grid>
 </UserControl>
