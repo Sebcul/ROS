@@ -1,6 +1,6 @@
 ﻿using ROSPersistence.ROSDB;
 
-namespace ROS.Services.Services
+namespace ROS.Services.Services.Interfaces
 {
     public interface IAddUserService
     {

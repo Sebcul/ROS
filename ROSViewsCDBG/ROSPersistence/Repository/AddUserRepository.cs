@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ROSPersistence.Repository
 {
-    class AddUserRepository : IAddUserRepository
+    public class AddUserRepository : IAddUserRepository
     {
         private readonly DbContext _context;
 
