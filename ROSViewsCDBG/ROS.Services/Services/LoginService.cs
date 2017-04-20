@@ -1,10 +1,6 @@
-﻿using System;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
-using System.Linq;
+﻿using System.Data.SqlClient;
 using ROS.Services.Services.Interfaces;
 using ROSPersistence.Repository;
-using ROSPersistence.ROSDB;
 
 namespace ROS.Services.Services
 {
