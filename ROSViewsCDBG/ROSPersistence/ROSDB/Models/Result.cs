@@ -6,7 +6,7 @@ namespace ROSPersistence.ROSDB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Result
+    public partial class Result : IResult
     {
         public int Id { get; set; }
 

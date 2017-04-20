@@ -69,6 +69,16 @@
     <Compile Include="ROSDB\Models\Event.cs" />
     <Compile Include="ROSDB\Models\EventsFee.cs" />
     <Compile Include="ROSDB\Models\Fee.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IBoat.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IEntry.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IEvent.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IClub.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IRaceEvent.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IResult.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IRole.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\ITeam.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IUser.cs" />
+    <Compile Include="ROSDB\Aggregate Root Interfaces\IRegatta.cs" />
     <Compile Include="ROSDB\Models\Member.cs" />
     <Compile Include="ROSDB\Models\NextOfKin.cs" />
     <Compile Include="ROSDB\Models\NextOfKinPhoneNumber.cs" />
