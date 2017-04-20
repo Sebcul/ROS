@@ -18,5 +18,10 @@ namespace ROSPersistence.Repository
         {
             return new Repository<TEntity>(_context);
         }
+
+        public ILoginRepository CreateLoginRepository()
+        {
+            return new LoginRepository(_context);
+        }
     }
 }

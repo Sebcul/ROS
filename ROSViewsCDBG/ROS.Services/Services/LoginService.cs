@@ -9,23 +9,18 @@ namespace ROS.Services.Services
 {
     public class LoginService
     {
-        private IRepository<User> repo;
+        private readonly ILoginRepository _repository;
 
         public LoginService()
         {
-            repo = RepositoryFactory.Instance.CreateRepository<User>();
+            _repository = RepositoryFactory.Instance.CreateLoginRepository();
         }
 
         public bool ConfirmUserCredentials(string email, string password)
         {
-            SqlParameter param1 = new SqlParameter("@Email", email);
-            SqlParameter param2 = new SqlParameter("@Password", password);
-            int result = 0;
-            SqlParameter param3 = new SqlParameter("@responseMessage", result);
-            var context = new ROSDB();
-            int x = context.Database.SqlQuery<int>("EXEC sp_ApplicationUserLogin @Email, @Password, @responseMessage", param1, param2, param3).First();
-            return Convert.ToBoolean(x);
-            
+            SqlParameter emailParam = new SqlParameter("@Email", email);
+            SqlParameter passwordParam = new SqlParameter("@Password", password);
+            return _repository.ConfirmUserCredentials(emailParam, passwordParam);
         }
     }
 }
