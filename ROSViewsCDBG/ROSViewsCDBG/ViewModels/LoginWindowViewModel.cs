@@ -1,4 +1,7 @@
-﻿using System.Security;
+﻿using System;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,9 +17,13 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _loginCommand;
         private ICommand _registerCommand;
         private string _email;
+        private readonly LoginService _loginService;
 
         public LoginWindowViewModel()
         {
+            _loginService = new LoginService();
+
+            Email = "";
         }
 
         public string Email
@@ -41,10 +48,18 @@ namespace ROSViewsCDBG.ViewModels
 
         private void Login(object obj)
         {
-            var loginService = new LoginService();
             var passwordBox = (PasswordBox)obj;
+            bool checkLogin = _loginService.ConfirmUserCredentials(Email, passwordBox.Password);
 
-            var checkLogin = loginService.ConfirmUserCredentials(Email, passwordBox.Password);
+            if (checkLogin)
+            {
+                Window window = Application.Current.Windows.OfType<Window>()
+                    .Where(w => w.Name == "LoginWindowView").FirstOrDefault();
+                if (window != null)
+                {
+                    window.Close();
+                }
+            }
         }
 
         private void Register(object obj)
