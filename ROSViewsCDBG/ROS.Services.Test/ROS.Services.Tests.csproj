@@ -90,10 +90,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ROSPersistenceUnitTests\ROSPersistenceUnitTests.csproj">
+      <Project>{3afb4fac-28b9-473a-9382-80e835f56994}</Project>
+      <Name>ROSPersistenceUnitTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
       <Project>{46061c95-a183-4cea-aca4-2b37fe413402}</Project>
       <Name>ROSPersistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestBuilders\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
