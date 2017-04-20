@@ -8,7 +8,8 @@
         xmlns:projektet="clr-namespace:Projektet"
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainWindowViewModel}">
     <Window.Resources>
         <!--<projektet:TeamInfoView x:Key="TeamInfoView"/>-->
         <userControls:ListUsersTeamsView x:Key="ListUsersTeamsView"/>

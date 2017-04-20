@@ -78,6 +78,81 @@ namespace ROSViewsCDBG.ViewModels
         {
             get { return new ListUsersRegattasViewModel(); }
         }
+
+        public static ListUsersResultsViewModel ListUsersResultsViewModel
+        {
+            get { return new ListUsersResultsViewModel(); }
+        }
+
+        public static ListUsersTeamsViewModel ListUsersTeamsViewModel
+        {
+            get { return new ListUsersTeamsViewModel(); }
+        }
+
+        public static LoginViewModel LoginViewModel
+        {
+            get { return new LoginViewModel(); }
+        }
+
+        public static RegattaAdminViewModel RegattaAdminViewModel
+        {
+            get { return new RegattaAdminViewModel(); }
+        }
+
+        public static RegattaInfoViewModel RegattaInfoViewModel
+        {
+            get { return new RegattaInfoViewModel(); }
+        }
+
+        public static RegisterToRaceEventViewModel RegisterToRaceEventViewModel
+        {
+            get { return new RegisterToRaceEventViewModel(); }
+        }
+
+        public static RegisterToSocialEventViewModel RegisterToSocialEventViewModel
+        {
+            get { return new RegisterToSocialEventViewModel(); }
+        }
+
+        public static RegisterToTeamViewModel RegisterToTeamViewModel
+        {
+            get { return new RegisterToTeamViewModel(); }
+        }
+
+        public static RegisterUserViewModel RegisterUserViewModel
+        {
+            get { return new RegisterUserViewModel(); }
+        }
+
+        public static SocialEventInfoViewModel SocialEventInfoViewModel
+        {
+            get { return new SocialEventInfoViewModel(); }
+        }
+
+        public static TeamInfoViewModel TeamInfoViewModel
+        {
+            get { return new TeamInfoViewModel(); }
+        }
+
+        public static TimeMeasuredRaceEventInfoViewModel TimeMeasuredRaceEventInfoViewModel
+        {
+            get { return new TimeMeasuredRaceEventInfoViewModel(); }
+        }
+
+        public static UserInfoViewModel UserInfoViewModel
+        {
+            get { return new UserInfoViewModel(); }
+        }
+
+        public static LoginWindowViewModel LoginWindowViewModel
+        {
+            get { return new LoginWindowViewModel(); }
+        }
+
+        public static MainWindowViewModel MainWindowViewModel
+        {
+            get { return new MainWindowViewModel(); }
+        }
         
     }
 }

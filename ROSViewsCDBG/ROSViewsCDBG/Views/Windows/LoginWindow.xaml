@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ROSViewsCDBG"
         xmlns:userControls="clr-namespace:ROSViewsCDBG.Views.UserControls"
-
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginWindowViewModel}">
     <Window.Resources>
         <userControls:LoginView x:Key="LoginView"/>
     </Window.Resources>

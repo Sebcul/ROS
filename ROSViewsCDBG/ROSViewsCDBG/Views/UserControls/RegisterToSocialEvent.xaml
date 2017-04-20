@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
-    <Grid Background="AliceBlue" VerticalAlignment="Top" Height="422">
+    <Grid Background="AliceBlue" VerticalAlignment="Top" Height="422"
+          DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=RegisterToSocialEventViewModel}">
         <!--TODO: Remove background color-->
 
         <Grid.RowDefinitions>
