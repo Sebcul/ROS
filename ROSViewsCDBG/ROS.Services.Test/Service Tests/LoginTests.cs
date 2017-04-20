@@ -1,10 +1,7 @@
-﻿using System;
+﻿using ROS.Services.Services;
 using Xunit;
-using Moq;
-using ROS.Services.Services;
-using ROSPersistence.ROSDB;
 
-namespace ROS.Services.Test
+namespace ROS.Services.Test.Service_Tests
 {
     
     public class LoginUnitTests
