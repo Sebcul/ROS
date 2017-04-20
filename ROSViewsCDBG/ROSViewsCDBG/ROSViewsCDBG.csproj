@@ -61,7 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Helper classes\Messenger.cs" />
+    <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="ViewModels\ClubAdminViewModel.cs" />
     <Compile Include="ViewModels\ClubInfoViewModel.cs" />

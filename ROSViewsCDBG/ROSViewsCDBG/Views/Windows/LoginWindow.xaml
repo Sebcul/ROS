@@ -22,7 +22,11 @@
             <Image x:Name="image" Source="../../Resources/sxk_logo2.jpg"  Height="100"/>
             <TextBlock Text="Logga in" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="20"/>
             <TextBox Height="23" TextWrapping="Wrap" HorizontalAlignment="Center" Width="200" Margin="0,30,0,0" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <PasswordBox Height="24" HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" Name="PasswordBox"/>
+            <PasswordBox Height="24" HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" Name="PasswordBox" >
+                <PasswordBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+                </PasswordBox.InputBindings>
+            </PasswordBox>
 
         </StackPanel>
         

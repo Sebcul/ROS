@@ -26,7 +26,7 @@
         <Image Source="../../Resources/sxk_logo2.jpg" Margin="10"/>
         <TextBlock Text="RACE ORGANIZATION SYSTEM" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50"/>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Inloggad som [namn]" HorizontalAlignment="Center" FontStyle="Italic" Margin="10"/>
+            <TextBlock Text="{Binding LoggedInAs}" HorizontalAlignment="Center" FontStyle="Italic" Margin="10"/>
             <TextBox Margin="10">
                 <TextBox.Text>Sök...</TextBox.Text>
             </TextBox>

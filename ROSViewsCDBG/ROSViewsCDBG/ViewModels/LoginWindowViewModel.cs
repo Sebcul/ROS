@@ -1,14 +1,10 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Security;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ROS.Services.Services;
-using ROSViewsCDBG.Commands;
+using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.UserControls;
-using ROSViewsCDBG.Views.UserControls;
 
 namespace ROSViewsCDBG.ViewModels
 {
@@ -53,13 +49,17 @@ namespace ROSViewsCDBG.ViewModels
 
             if (checkLogin)
             {
-                Window window = Application.Current.Windows.OfType<Window>()
-                    .Where(w => w.Name == "LoginWindowView").FirstOrDefault();
-                if (window != null)
-                {
-                    window.Close();
-                }
+                Messenger.Default.Send(Email);
+                new MainWindow().Show();
+                CloseWindow();
             }
+        }
+
+        private static void CloseWindow()
+        {
+            Window window = Application.Current.Windows
+                .OfType<Window>().FirstOrDefault(w => w.Name == "LoginWindowView");
+            window?.Close();
         }
 
         private void Register(object obj)
@@ -73,7 +73,6 @@ namespace ROSViewsCDBG.ViewModels
                 MinWidth = 370,
                 MinHeight = 600
             };
-            
             registerUserWindow.ShowDialog();
         }
     }

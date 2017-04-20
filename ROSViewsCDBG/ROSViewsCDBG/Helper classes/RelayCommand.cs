@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ROSViewsCDBG.Commands
+namespace ROSViewsCDBG.Helper_classes
 {
     public class RelayCommand : ICommand
     {
