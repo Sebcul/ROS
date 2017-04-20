@@ -305,11 +305,17 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
+    <ProjectReference Include="..\ROS.Services\ROS.Services.csproj">
+      <Project>{FE6ACEE4-3670-4678-B934-80B99C29B606}</Project>
+      <Name>ROS.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
       <Project>{46061c95-a183-4cea-aca4-2b37fe413402}</Project>
       <Name>ROSPersistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
