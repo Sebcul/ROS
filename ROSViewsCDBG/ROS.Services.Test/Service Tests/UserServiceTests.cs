@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ROS.Services.Services;
 using ROS.Services.Test.Test_Utilities;
-using ROSPersistence.Repository;
 using ROSPersistence.ROSDB;
 using Xunit;
 
@@ -55,30 +55,6 @@ namespace ROS.Services.Test.Service_Tests
 
             //Assert
             Assert.Equal(expectedEmail, resultUser.Email);
-        }
-    }
-
-
-    public class UserService
-    {
-        private IRepository<User> _repository;
-
-
-        public UserService(IRepositoryFactory repositoryFactory)
-        {
-            _repository = repositoryFactory.CreateRepository<User>();
-        }
-
-
-        public IEnumerable<User> GetAllUsers()
-        {
-            return _repository.GetAllWhereEntitiesMatchPredicate(user => user.Active);
-        }
-
-
-        public User FindUserByEmail(string email)
-        {
-            return _repository.GetAllWhereEntitiesMatchPredicate(user => user.Email == email && user.Active).First();
         }
     }
 
