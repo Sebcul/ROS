@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />
+    <Compile Include="Services\Interfaces\ILoginService.cs" />
     <Compile Include="Services\Interfaces\IBoatService.cs" />
     <Compile Include="Services\Interfaces\IEntryService.cs" />
     <Compile Include="Services\Interfaces\IResultService.cs" />
