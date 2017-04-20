@@ -11,7 +11,6 @@
         Title="MainWindow" Height="600" Width="1000"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainWindowViewModel}">
     <Window.Resources>
-        <!--<projektet:TeamInfoView x:Key="TeamInfoView"/>-->
         <userControls:ListUsersTeamsView x:Key="ListUsersTeamsView"/>
     </Window.Resources>
     <Grid>
@@ -31,7 +30,7 @@
             <TextBox Margin="10">
                 <TextBox.Text>Sök...</TextBox.Text>
             </TextBox>
-            <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding EditUserInfoCommand}"/>
             <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
@@ -39,8 +38,9 @@
             <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <ContentControl x:Name="UcContentControl" Margin="60,0,0,0">
-            </ContentControl>
+            <!--<ContentControl x:Name="UcContentControl" Margin="60,0,0,0">
+            </ContentControl>-->
+            <UserControl Content="{Binding SelectedUserControl}"/>
         </ScrollViewer>
     </Grid>
 </Window>
