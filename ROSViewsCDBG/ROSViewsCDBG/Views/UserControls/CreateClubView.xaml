@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
-             mc:Ignorable="d" Height="700" Width="438.345">
+             mc:Ignorable="d" Height="700" Width="438.345"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CreateClubViewModel}">
+    
     <Grid Background="AliceBlue" VerticalAlignment="Top" Height="690">
         <!--TODO: Remove background color-->
 

@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
-             mc:Ignorable="d" Width="355.463" Height="584.034">
+             mc:Ignorable="d" Width="355.463" Height="584.034"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ClubRegistrationViewModel}">
+    
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
