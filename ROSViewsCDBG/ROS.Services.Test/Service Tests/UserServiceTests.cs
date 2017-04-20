@@ -28,17 +28,37 @@ namespace ROS.Services.Test.Service_Tests
             var repositoryFactoryStub = A.RepositoryFactory()
                 .ThatReturnsARepositoryWithTestUsers(x => x.Active, data).Build();
 
-            //Act
-            var entitiesResult =
-                repositoryFactoryStub.CreateRepository<User>().GetAllWhereEntitiesMatchPredicate(x => x.Active);
+            var userServiceSut = new UserService(repositoryFactoryStub);
 
-            var containsAllActiveEntities = entitiesResult.All(user => data.Contains(user));
+            //Act
+            var resultUsers = userServiceSut.GetAllUsers();
+
+            var containsAllActiveEntities = resultUsers.All(user => data.Contains(user));
 
             //Assert
             Assert.Equal(true, containsAllActiveEntities);
 
         }
     }
+
+
+    public class UserService
+    {
+        private IRepository<User> _repository;
+
+
+        public UserService(IRepositoryFactory repositoryFactory)
+        {
+            _repository = repositoryFactory.CreateRepository<User>();
+        }
+
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(user => user.Active);
+        }
+    }
+
 
     public class A
     {
@@ -61,7 +81,7 @@ namespace ROS.Services.Test.Service_Tests
         {
        
             var stubSet = new Mock<DbSet<TEntity>>().SetupData(testData);
-            stubSet.Setup(set => set).Returns(stubSet.Object);
+            
 
             var stubContext = new Mock<DbContext>();
             stubContext.Setup(ctx => ctx.Set<TEntity>()).Returns(stubSet.Object);
