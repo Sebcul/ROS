@@ -28,7 +28,7 @@ namespace ROSViewsCDBG.ViewModels
 
         public ICommand MyTeamsCommand
         {
-            get { return _editUserInfoCommand ?? (_editUserInfoCommand = new RelayCommand(OpenMyTeams)); }
+            get { return _myTeamsCommand ?? (_myTeamsCommand = new RelayCommand(OpenMyTeams)); }
         }
 
         public object SelectedUserControl
@@ -59,8 +59,8 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenMyTeams(object obj)
         {
-            var editUserInfoWindow = new EditUserInfoView();
-            SelectedUserControl = editUserInfoWindow;
+            var teamsForUser = new ListUsersTeamsView();
+            SelectedUserControl = teamsForUser;
         }
 
         private void RegisterMessages()
