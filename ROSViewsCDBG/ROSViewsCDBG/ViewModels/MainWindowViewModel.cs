@@ -12,8 +12,9 @@ namespace ROSViewsCDBG.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private ICommand _editUserInfoCommand;
-        private ICommand _myTeamsCommand;
+        private ICommand _userTeamsCommand;
         private ICommand _userResultsCommand;
+        private ICommand _userRegattasCommand;
         private object _selectedUserControl;
         private string _email;
 
@@ -27,14 +28,19 @@ namespace ROSViewsCDBG.ViewModels
             get { return _editUserInfoCommand ?? (_editUserInfoCommand = new RelayCommand(OpenEditUserInfo)); }
         }
 
-        public ICommand MyTeamsCommand
+        public ICommand UserTeamsCommand
         {
-            get { return _myTeamsCommand ?? (_myTeamsCommand = new RelayCommand(OpenMyTeams)); }
+            get { return _userTeamsCommand ?? (_userTeamsCommand = new RelayCommand(OpenUserTeams)); }
         }
 
         public ICommand UserResultsCommand
         {
             get { return _userResultsCommand ?? (_userResultsCommand = new RelayCommand(OpenUserResults)); }
+        }
+
+        public ICommand UserRegattasCommand
+        {
+            get { return _userRegattasCommand ?? (_userRegattasCommand = new RelayCommand(OpenUserRegattas)); }
         }
 
         public object SelectedUserControl
@@ -59,20 +65,22 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenEditUserInfo(object obj)
         {
-            var editUserInfoWindow = new EditUserInfoView();
-            SelectedUserControl = editUserInfoWindow;
+            SelectedUserControl = new EditUserInfoView();
         }
 
-        private void OpenMyTeams(object obj)
+        private void OpenUserTeams(object obj)
         {
-            var teamsForUserWindow = new ListUsersTeamsView();
-            SelectedUserControl = teamsForUserWindow;
+            SelectedUserControl = new ListUsersTeamsView();
         }
 
         private void OpenUserResults(object obj)
         {
-            var resultsForUserWindow = new ListUsersResultsView();
-            SelectedUserControl = resultsForUserWindow;
+            SelectedUserControl = new ListUsersResultsView();
+        }
+
+        private void OpenUserRegattas(object obj)
+        {
+            SelectedUserControl = new ListUsersRegattasView();
         }
 
         private void RegisterMessages()
