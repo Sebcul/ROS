@@ -31,16 +31,15 @@
                 <TextBox.Text>Sök...</TextBox.Text>
             </TextBox>
             <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding EditUserInfoCommand}"/>
-            <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
+            <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding MyTeamsCommand}"/>
             <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
             <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" />
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <!--<ContentControl x:Name="UcContentControl" Margin="60,0,0,0">
-            </ContentControl>-->
-            <UserControl Content="{Binding SelectedUserControl}"/>
+            <ContentControl Content="{Binding SelectedUserControl}" Margin="60,0,0,0">
+            </ContentControl>
         </ScrollViewer>
     </Grid>
 </Window>

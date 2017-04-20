@@ -12,6 +12,7 @@ namespace ROSViewsCDBG.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private ICommand _editUserInfoCommand;
+        private ICommand _myTeamsCommand;
         private object _selectedUserControl;
         private string _email;
 
@@ -23,6 +24,11 @@ namespace ROSViewsCDBG.ViewModels
         public ICommand EditUserInfoCommand
         {
             get { return _editUserInfoCommand ?? (_editUserInfoCommand = new RelayCommand(OpenEditUserInfo)); }
+        }
+
+        public ICommand MyTeamsCommand
+        {
+            get { return _editUserInfoCommand ?? (_editUserInfoCommand = new RelayCommand(OpenMyTeams)); }
         }
 
         public object SelectedUserControl
@@ -47,9 +53,14 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenEditUserInfo(object obj)
         {
-            var editUserInfoWindow = new UserInfoView();
+            var editUserInfoWindow = new EditUserInfoView();
             SelectedUserControl = editUserInfoWindow;
+        }
 
+        private void OpenMyTeams(object obj)
+        {
+            var editUserInfoWindow = new EditUserInfoView();
+            SelectedUserControl = editUserInfoWindow;
         }
 
         private void RegisterMessages()
