@@ -21,33 +21,41 @@ namespace ROSViewsCDBG.ViewModels
 
         private ObservableCollection<IRegattaUserRecord> _regattaUserRecords;
 
-        private int _id;
+        private int _userId;
 
 
         public ListUsersRegattasViewModel()
         {
-            Initialize();
+            Messenger.Default.Register<int>(this, OnUserIdRecieved);
+
+            _regattaService = ServiceLocator.Instance.RegattaService;
+
         }
 
 
         public ObservableCollection<IRegattaUserRecord> RegattaUserRecords { get { return _regattaUserRecords; } }
 
 
-        private void Initialize()
+
+        private void OnUserIdRecieved(int id)
         {
-            Messenger.Default.Register<string>(this, OnUserObjectRecieved);
+            _userId = id;
+            _regattaUserRecords = new List<IRegattaUserRecord>().ToObservableCollection();
+            _regattaUserRecords.Add(new Record());
+            _regattaUserRecords.Add(new Record());
+            _regattaUserRecords.Add(new Record());
+            _regattaUserRecords.Add(new Record());
 
-            _regattaService = ServiceLocator.Instance.RegattaService;
-
-            var regattas = _regattaService.FindRegattasParticipatedInByUserId(_id);
-
-            _regattaUserRecords = regattas.ToObservableCollection();
+            //_regattaUserRecords = _regattaService.FindRegattasParticipatedInByUserId(_userId).ToObservableCollection();
         }
 
 
-        private void OnUserObjectRecieved(string s)
-        {
-            //_id = id;
-        }
+    }
+
+    public class Record : IRegattaUserRecord
+    {
+        public string Name { get; } = "Regatta 1";
+        public string EndDate { get; } = "24/7 2016";
+        public string StartDate { get; } = "24/7 2016";
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ROS.Services;
+using ROS.Services.Helpers;
 using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.Views.UserControls;
@@ -23,6 +24,7 @@ namespace ROSViewsCDBG.ViewModels
         private string _userFullName;
         private object _selectedUserControl;
         private string _email;
+        private int _userId;
 
         public MainWindowViewModel()
         {
@@ -108,8 +110,10 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenUserRegattas(object obj)
         {
+ 
             SelectedUserControl = new ListUsersRegattasView();
-            Messenger.Default.Send(_email);
+            Messenger.Default.Send<int>(_userId);
+
         }
 
         private void OpenUserEvents(object obj)
@@ -132,6 +136,7 @@ namespace ROSViewsCDBG.ViewModels
             Email = email;
             var user =_serviceLocator.FindUserByEmail(Email);
             UserFullName = user.FirstName + " " + user.LastName;
+            _userId = user.Id;
         }
     }
 }

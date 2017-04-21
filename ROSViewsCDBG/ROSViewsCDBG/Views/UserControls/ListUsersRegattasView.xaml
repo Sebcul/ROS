@@ -16,11 +16,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        <DataGrid Margin="10, 10, 10, 10" ItemsSource="{Binding RegattaUserRecords}">
-            
-        </DataGrid>
-        <DataGrid/>
+
+        <DataGrid Margin="10, 10, 10, 10" ItemsSource="{Binding RegattaUserRecords }"/>
 
     </Grid>
 </UserControl>
