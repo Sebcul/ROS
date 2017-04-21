@@ -64,6 +64,7 @@
     <Compile Include="Helper classes\Messenger.cs" />
     <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ClubAdminViewModel.cs" />
     <Compile Include="ViewModels\ClubInfoViewModel.cs" />
     <Compile Include="ViewModels\ClubMemberViewModel.cs" />
@@ -154,6 +155,9 @@
     <Compile Include="Views\UserControls\RegisterToTeamView.xaml.cs">
       <DependentUpon>RegisterToTeamView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Windows\AddPhoneNumberWindow.xaml.cs">
+      <DependentUpon>AddPhoneNumberWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\RegisterUserWindow.xaml.cs">
       <DependentUpon>RegisterUserWindow.xaml</DependentUpon>
     </Compile>
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\UserInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\AddPhoneNumberWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

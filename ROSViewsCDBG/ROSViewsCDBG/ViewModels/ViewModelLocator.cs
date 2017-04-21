@@ -148,6 +148,10 @@ namespace ROSViewsCDBG.ViewModels
         {
             get { return new MainWindowViewModel(); }
         }
-        
+
+        public static AddPhoneNumberViewModel AddPhoneNumberViewModel
+        {
+            get { return new AddPhoneNumberViewModel(); }
+        }
     }
 }
