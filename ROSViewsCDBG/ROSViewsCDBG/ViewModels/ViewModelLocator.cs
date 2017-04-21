@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ROSViewsCDBG.Views.UserControls;
+using ROSViewsCDBG.Views.Windows;
 
 namespace ROSViewsCDBG.ViewModels
 {
@@ -153,5 +154,11 @@ namespace ROSViewsCDBG.ViewModels
         {
             get { return new AddPhoneNumberViewModel(); }
         }
+
+        public static AddUserAddressWindow AddUserAddressWindow
+        {
+            get { return new AddUserAddressWindow(); }
+        }
+        
     }
 }

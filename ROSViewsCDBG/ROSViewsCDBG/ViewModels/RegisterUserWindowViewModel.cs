@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ROSViewsCDBG.Helper_classes;
+using ROSViewsCDBG.Models;
 using ROSViewsCDBG.Views.Windows;
 
 namespace ROSViewsCDBG.ViewModels
@@ -14,6 +14,7 @@ namespace ROSViewsCDBG.ViewModels
     {
         private ICommand _addPhoneNumberCommand;
         private ICommand _removePhoneNumberCommand;
+        private ICommand _registerUserCommand;
         private string _firstName;
         private string _lastName;
         private string _email;
@@ -22,6 +23,7 @@ namespace ROSViewsCDBG.ViewModels
         private ObservableCollection<string> _phoneNumbers;
         private string _selectedPhoneNumber;
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
+        private UserAddress _address;
 
         public RegisterUserWindowViewModel()
         {
@@ -40,6 +42,11 @@ namespace ROSViewsCDBG.ViewModels
             get { return _removePhoneNumberCommand ?? (_removePhoneNumberCommand = new RelayCommand(RemovePhoneNumber)); }
         }
 
+        public ICommand RegisterUserCommand
+        {
+            get { return _registerUserCommand ?? (_registerUserCommand = new RelayCommand(RegisterUser)); }
+        }
+        
         public string FirstName
         {
             get { return _firstName; }
@@ -110,6 +117,12 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
+        public UserAddress Address
+        {
+            get { return _address; }
+            set { _address = value; }
+        }
+
 
         private void AddPhoneNumber(object obj)
         {
@@ -118,10 +131,38 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RemovePhoneNumber(object obj)
         {
-            PhoneNumbers.Remove(SelectedPhoneNumber);
+            var numberToRemove = _phoneNumbersTypeAndPhoneNumber.FirstOrDefault(x => x.Value == SelectedPhoneNumber).Key;
+            if (!String.IsNullOrEmpty(numberToRemove))
+            {
+                _phoneNumbersTypeAndPhoneNumber.Remove(numberToRemove);
+                PhoneNumbers.Remove(SelectedPhoneNumber);
+            }
+            
+        }
+
+        private void RegisterUser(object obj)
+        {
+            
         }
 
         private void OnPhoneNumberAndTypeReceived(Dictionary<string, string> phoneNumberAndType)
+        {
+            if (phoneNumberAndType.Any(keyValuePairReceivedDictionary =>
+                _phoneNumbersTypeAndPhoneNumber.ContainsValue(keyValuePairReceivedDictionary.Value)))
+            {
+                MessageBox.Show("The number is already added.");
+                return;
+            }
+
+            ConvertReceivedDictionaryToLocalDictionary(phoneNumberAndType);
+
+            foreach (var phoneNumber in phoneNumberAndType)
+            {
+                PhoneNumbers.Add(phoneNumber.Value);
+            }
+        }
+
+        private void ConvertReceivedDictionaryToLocalDictionary(Dictionary<string, string> phoneNumberAndType)
         {
             if (_phoneNumbersTypeAndPhoneNumber.Count == 0)
             {
@@ -136,18 +177,13 @@ namespace ROSViewsCDBG.ViewModels
                 {
                     if (_phoneNumbersTypeAndPhoneNumber.ContainsKey(phoneNumberAndType.Keys.ElementAt(i)))
                     {
-                        _phoneNumbersTypeAndPhoneNumber.Add(phoneNumberAndType.ElementAt(i).Key + (PhoneNumbers.Count+1), phoneNumberAndType.ElementAt(i).Value);
+                        _phoneNumbersTypeAndPhoneNumber.Add(phoneNumberAndType.ElementAt(i).Key + (PhoneNumbers.Count + 1), phoneNumberAndType.ElementAt(i).Value);
                     }
                     else
                     {
                         _phoneNumbersTypeAndPhoneNumber.Add(phoneNumberAndType.ElementAt(i).Key, phoneNumberAndType.ElementAt(i).Value);
                     }
                 }
-            }
-
-            foreach (var phoneNumber in phoneNumberAndType)
-            {
-                PhoneNumbers.Add(phoneNumber.Value);
             }
         }
 
