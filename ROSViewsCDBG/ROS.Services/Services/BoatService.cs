@@ -39,9 +39,19 @@ namespace Ros.Services.Services
             throw new NotImplementedException();
         }
 
-        public List<Boat> GetAllBoats()
+        IEnumerable<Boat> IBoatService.GetAllBoats()
         {
-            return _repository.GetAllWhereEntitiesMatchPredicate((x => x.Active)).ToList();
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Active);
+        }
+
+        public IEnumerable<Boat> GetAllBoatsWithHandicap(int handicap)
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Handicap == handicap);
+        }
+
+        public IBoat GetBoatByName(string name)
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Name == name).FirstOrDefault();
         }
     }
 }

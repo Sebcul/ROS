@@ -91,9 +91,19 @@ namespace ROS.Services.Test.ServiceTests
                 return fakeRepository.Get(id);
             }
 
-            public List<Boat> GetAllBoats()
+            public IEnumerable<Boat> GetAllBoats()
             {
-                return fakeRepository.GetAllWhereEntitiesMatchPredicate(x => x.Active).ToList();
+                return fakeRepository.GetAllWhereEntitiesMatchPredicate(x => x.Active);
+            }
+
+            public IEnumerable<Boat> GetAllBoatsWithHandicap(float handicap)
+            {
+                throw new NotImplementedException();
+            }
+
+            public IBoat GetBoatByName(string name)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -194,7 +204,7 @@ namespace ROS.Services.Test.ServiceTests
                 Handicap = 2.5,
                 Id = 2,
                 Model = null,
-                Name = "SomeBoat",
+                Name = "SomeBoat2",
                 SailNo = 122
             };
             fakeRepository = new FakeRepository<Boat>();
@@ -204,7 +214,8 @@ namespace ROS.Services.Test.ServiceTests
             boatService.AddBoat(boat2);
             boatService.DeleteBoat(boat1);
             // Assert
-            Assert.Throws<Exception>(() => boatService.GetBoat(1));
+            boatService.GetBoatByName("SomeBoat");
+            Assert.Equal(null, boatService.GetBoatByName("SomeBoat"));
         }
 
         //    [Fact]

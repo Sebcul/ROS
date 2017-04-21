@@ -13,8 +13,10 @@ namespace Ros.Services.Services.Interfaces
 
         void UpdateBoat(Boat boat);
 
-        List<Boat> GetAllBoats();
-            
-        Boat GetBoat(int id);
+        IEnumerable<Boat> GetAllBoats();
+
+        IEnumerable<Boat> GetAllBoatsWithHandicap(int handicap);
+        
+        IBoat GetBoatByName(string name);
     }
 }

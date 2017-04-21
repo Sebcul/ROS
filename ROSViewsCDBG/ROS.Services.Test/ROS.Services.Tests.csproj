@@ -97,6 +97,7 @@
     <Compile Include="ServiceTests\BoatServiceTests.cs" />
     <Compile Include="Service Tests\RegattaServiceTests.cs" />
     <Compile Include="Service Tests\TestDataFactory.cs" />
+    <Compile Include="ServiceTests\TeamServiceTests.cs" />
     <Compile Include="Test Utilities\RepositoryFactoryBuilder.cs" />
     <Compile Include="Test Utilities\RepositoryFake.cs" />
     <Compile Include="Service Tests\UserServiceTests.cs" />
