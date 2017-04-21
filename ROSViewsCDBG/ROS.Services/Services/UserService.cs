@@ -27,6 +27,12 @@ namespace ROS.Services.Services
         {
             return _repository.GetAllWhereEntitiesMatchPredicate(user => user.Email == email && user.Active).First();
         }
+
+
+        public void UpdateUser(User user)
+        {
+            _repository.UpdateEntity(user);
+        }
     }
 
 }

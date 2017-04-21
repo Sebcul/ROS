@@ -34,5 +34,22 @@ namespace ROS.Services.Test.Test_Utilities
             return this;
         }
 
+
+        public RepositoryFactoryBuilder ThatReturnsAMockRepositoryThatTracksCallsToTheUpdateEntityFunction<TEntity>(
+            out Mock<IRepository<TEntity>> mock) 
+            where TEntity : class
+        {
+            var mockRepository = new Mock<IRepository<TEntity>>();
+            mockRepository.Setup(repository => repository.UpdateEntity(It.IsAny<TEntity>())).Verifiable();
+
+            mock = mockRepository;
+
+            var mockFactory = new Mock<IRepositoryFactory>();
+            mockFactory.Setup(factory => factory.CreateRepository<TEntity>()).Returns(mockRepository.Object);
+
+            _repositoryFactory = mockFactory.Object;
+
+            return this;
+        }
     }
 }
