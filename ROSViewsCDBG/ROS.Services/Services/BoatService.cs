@@ -12,11 +12,11 @@ namespace Ros.Services.Services
 {
     public class BoatService : IBoatService
     {
-        private Repository<Boat> repository;
+        private readonly IRepository<Boat> _repository;
 
-        public BoatService(Repository<Boat> repository)
+        public BoatService(IRepositoryFactory repositoryFactory)
         {
-            this.repository = repository;
+            _repository = repositoryFactory.CreateRepository<Boat>();
         }
 
         public void DeleteBoat(Boat boat)
@@ -26,12 +26,12 @@ namespace Ros.Services.Services
 
         public void UpdateBoat(Boat boat)
         {
-            repository.UpdateEntity(boat);
+            _repository.UpdateEntity(boat);
         }
 
         public void AddBoat(Boat boat)
         {
-            repository.InsertEntity(boat);
+            _repository.InsertEntity(boat);
         }
 
         public Boat GetBoat(int id)
@@ -41,7 +41,7 @@ namespace Ros.Services.Services
 
         public List<Boat> GetAllBoats()
         {
-            return repository.GetAllWhereEntitiesMatchPredicate((x => x.Active)).ToList();
+            return _repository.GetAllWhereEntitiesMatchPredicate((x => x.Active)).ToList();
         }
     }
 }

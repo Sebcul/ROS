@@ -38,14 +38,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\RegattaRecordFactory.cs" />
+    <Compile Include="Models\IRegattaRecord.cs" />
+    <Compile Include="Models\RegattaRecord.cs" />
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />
     <Compile Include="Services\Interfaces\IBoatService.cs" />
     <Compile Include="Services\Interfaces\IEntryService.cs" />
     <Compile Include="Services\Interfaces\IResultService.cs" />
     <Compile Include="Services\Interfaces\ITeamService.cs" />
+    <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\Interfaces\IRegattaService.cs" />
+    <Compile Include="Services\RegattaService.cs" />
     <Compile Include="Services\ResultService.cs" />
     <Compile Include="Services\TeamService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
