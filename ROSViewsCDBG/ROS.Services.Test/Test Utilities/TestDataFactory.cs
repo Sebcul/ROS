@@ -52,6 +52,8 @@ namespace ROS.Services.Test.Test_Utilities
                 new Regatta {Id = 3, Name = "Regatta 3", Active = false, StartTime = DateTime.MinValue, EndTime = DateTime.MinValue},
                 new Regatta {Id = 4, Name = "Regatta 4", Active = true, StartTime = DateTime.Today, EndTime = DateTime.Today},
                 new Regatta {Id = 5, Name = "Regatta 5", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MinValue},
+                new Regatta {Id = 5, Name = "Regatta 6", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MaxValue},
+                new Regatta {Id = 5, Name = "Regatta 7", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MaxValue}
             };
         }
 

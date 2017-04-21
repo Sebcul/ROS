@@ -33,7 +33,7 @@ namespace ROS.Services.Test.Service_Tests
 
 
         [Fact]
-        public void Should_ReturnAListContainingFourElements_When_GetAllRegattasIsCalled()
+        public void Should_ReturnSixRegattas_When_GetAllRegattasIsCalled()
         {
             //Arrange
             var stubRepositoryFactory =
@@ -47,7 +47,7 @@ namespace ROS.Services.Test.Service_Tests
             var resultRegattas = serviceSut.GetAllRegattas();
 
             //Assert
-            Assert.Equal(4, resultRegattas.Count());
+            Assert.Equal(6, resultRegattas.Count());
         }
 
 
@@ -84,6 +84,25 @@ namespace ROS.Services.Test.Service_Tests
             //Act
             var resultRegattas = regattaServiceSut.GetPastRegattas();
 
+
+            //Assert
+            Assert.Equal(2, resultRegattas.Count());
+        }
+
+
+        [Fact]
+        public void Should_ReturnTwoRegattas_When_OngoingRegattasIsCalled()
+        {
+            //Arrange
+            var stubRepositoryFactory =
+                A.RepositoryFactory()
+                    .ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateRegattaTestData())
+                    .Build();
+
+            var regattaServiceSut = new RegattaService(stubRepositoryFactory);
+
+            //Act
+            var resultRegattas = regattaServiceSut.GetOngoingRegattas();
 
             //Assert
             Assert.Equal(2, resultRegattas.Count());

@@ -61,5 +61,12 @@ namespace ROS.Services.Services
             return _repository.GetAllWhereEntitiesMatchPredicate(regatta => regatta.Active &&
                                                                             regatta.EndTime < DateTime.Now);
         }
+
+        public IEnumerable<Regatta> GetOngoingRegattas()
+        {
+            return
+                _repository.GetAllWhereEntitiesMatchPredicate(
+                    regatta => regatta.Active && regatta.StartTime < DateTime.Now && regatta.EndTime > DateTime.Now);
+        }
     }
 }
