@@ -21,7 +21,7 @@ namespace ROS.Services.Test.Service_Tests
         public void ValidCredentialsShouldReturnTrue()
         {
             var email = "sven@svensson.com";
-            var password = "password";
+            var password = "Password123";
             var service = new LoginService();
 
             var result = service.ConfirmUserCredentials(email, password);
