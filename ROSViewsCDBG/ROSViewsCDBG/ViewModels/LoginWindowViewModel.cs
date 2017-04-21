@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ROS.Services;
+using ROS.Services.Helpers;
 using ROS.Services.Services;
 using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;

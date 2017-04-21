@@ -4,7 +4,7 @@ using ROS.Services.Services;
 using ROS.Services.Services.Interfaces;
 using ROSPersistence.Repository;
 
-namespace ROS.Services
+namespace ROS.Services.Helpers
 {
     public class ServiceLocator
     {
