@@ -24,7 +24,7 @@ namespace ROS.Services.Services
             var regattas = _repository.GetAllWhereEntitiesMatchPredicate(
                 regatta => regatta.Active && regatta.Entries.Any(
                                entry => entry.RegisteredUsers.Any(
-                                   user => user.Id == id)));
+                                   user => user.UserId == id)));
 
             return ConvertRegattasToRegattaUserRecords(regattas);
         }

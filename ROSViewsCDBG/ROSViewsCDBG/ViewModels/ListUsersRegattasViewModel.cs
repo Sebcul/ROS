@@ -13,13 +13,14 @@ using ROSViewsCDBG.Helper_classes;
 
 namespace ROSViewsCDBG.ViewModels
 {
+
     public class ListUsersRegattasViewModel : ViewModelBase
     {
         private IRegattaService _regattaService;
 
         private ObservableCollection<IRegattaUserRecord> _regattaUserRecords;
 
-        private User _user;
+        private int _id;
 
 
         public ListUsersRegattasViewModel()
@@ -33,19 +34,19 @@ namespace ROSViewsCDBG.ViewModels
 
         private void Initialize()
         {
-            Messenger.Default.Register<User>(this, OnUserObjectRecieved);
+            Messenger.Default.Register<string>(this, OnUserObjectRecieved);
 
             _regattaService = ServiceLocator.Instance.RegattaService;
 
-            var regattas = _regattaService.FindRegattasParticipatedInByUserId(_user.Id);
+            var regattas = _regattaService.FindRegattasParticipatedInByUserId(_id);
 
             _regattaUserRecords = regattas.ToObservableCollection();
         }
 
 
-        private void OnUserObjectRecieved(User user)
+        private void OnUserObjectRecieved(string s)
         {
-            _user = user;
+            //_id = id;
         }
     }
 }

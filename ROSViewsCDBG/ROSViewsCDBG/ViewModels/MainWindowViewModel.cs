@@ -93,6 +93,7 @@ namespace ROSViewsCDBG.ViewModels
         private void OpenUserRegattas(object obj)
         {
             SelectedUserControl = new ListUsersRegattasView();
+            Messenger.Default.Send(_email);
         }
 
         private void OpenUserEvents(object obj)
