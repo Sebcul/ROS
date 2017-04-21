@@ -23,5 +23,10 @@ namespace ROSPersistence.Repository
         {
             return new LoginRepository(_context);
         }
+
+        public IAddUserRepository CreateAddUserRepository()
+        {
+            return new AddUserRepository(_context);
+        }
     }
 }
