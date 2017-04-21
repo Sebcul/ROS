@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ROS.Services;
+using ROS.Services.Helpers;
 using ROS.Services.Models;
 using ROS.Services.Services.Interfaces;
 using ROSPersistence.ROSDB;
