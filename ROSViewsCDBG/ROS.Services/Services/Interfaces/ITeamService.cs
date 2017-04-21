@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ros.Services.Services.Interfaces
 {
-    interface ITeamService
+    public interface ITeamService
     {
     }
 }

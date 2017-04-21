@@ -12,11 +12,11 @@ namespace ROS.Services.Services
 {
     public class AddUserService : IAddUserService
     {
-        private readonly IAddUserRepository _repository;
+        private IAddUserRepository _repository;
 
-        public AddUserService()
+        public AddUserService(IRepositoryFactory repositoryFactory)
         {
-            _repository = RepositoryFactory.Instance.CreateAddUserRepository();
+            _repository = repositoryFactory.CreateAddUserRepository();
         }
         public void AddUser(User user, string password)
         {

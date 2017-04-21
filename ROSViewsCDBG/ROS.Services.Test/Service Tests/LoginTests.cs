@@ -11,7 +11,7 @@ namespace ROS.Services.Test.Service_Tests
         {
             var email = "test123";
             var password = "test123";
-            var service = new LoginService();
+            var service = ServiceLocator.LoginService;
 
             var result = service.ConfirmUserCredentials(email, password);
             
@@ -22,7 +22,7 @@ namespace ROS.Services.Test.Service_Tests
         {
             var email = "sven@svensson.com";
             var password = "Password123";
-            var service = new LoginService();
+            var service = ServiceLocator.LoginService;
 
             var result = service.ConfirmUserCredentials(email, password);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ros.Services.Services.Interfaces
 {
-    class IEntryService
+    public class IEntryService
     {
     }
 }

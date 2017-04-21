@@ -13,9 +13,9 @@ namespace ROS.Services.Services
     {
         private readonly IPasswordRepository _repository;
 
-        public PasswordService()
+        public PasswordService(IRepositoryFactory repositoryFactory)
         {
-            _repository = RepositoryFactory.Instance.CreatePasswordRepository();
+            _repository = repositoryFactory.CreatePasswordRepository();
         }
         public void UpdatePassword(int id, string oldPassword, string newPassword)
         {
