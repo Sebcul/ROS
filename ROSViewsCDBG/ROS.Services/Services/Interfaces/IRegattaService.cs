@@ -5,6 +5,6 @@ namespace ROS.Services.Services.Interfaces
 {
     public interface IRegattaService
     {
-        IEnumerable<IRegattaRecord> FindRegattaHistoryByUserId(int id);
+        IEnumerable<IRegattaUserRecord> FindRegattasParticipatedInByUserId(int id);
     }
 }

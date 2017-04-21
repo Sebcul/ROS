@@ -24,7 +24,7 @@ namespace ROS.Services.Test.Service_Tests
             var regattaServiceSut = new RegattaService(stubRepositoryFactory);
 
             //Act
-            var regattaHistoryResult = regattaServiceSut.FindRegattaHistoryByUserId(33);
+            var regattaHistoryResult = regattaServiceSut.FindRegattasParticipatedInByUserId(33);
 
             //Assert
             Assert.True(regattaHistoryResult.First().Name == "Westcoast S-Regatta 2016");
@@ -33,7 +33,7 @@ namespace ROS.Services.Test.Service_Tests
 
 
         [Fact]
-        public void Should_ReturnAListContainingTwoElements_When_GetAllRegattasIsCalled()
+        public void Should_ReturnAListContainingFourElements_When_GetAllRegattasIsCalled()
         {
             //Arrange
             var stubRepositoryFactory =
@@ -47,7 +47,46 @@ namespace ROS.Services.Test.Service_Tests
             var resultRegattas = serviceSut.GetAllRegattas();
 
             //Assert
-            Assert.Equal(resultRegattas.Count(), 2);
+            Assert.Equal(4, resultRegattas.Count());
+        }
+
+
+        [Fact]
+        public void Should_ReturnTwoRegattas_When_GetUpcomingRegattasIsCalled()
+        {
+            //Arrange
+            var stubRepositoryFactory =
+                A.RepositoryFactory()
+                    .ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateRegattaTestData())
+                    .Build();
+
+            var regattaServiceSut = new RegattaService(stubRepositoryFactory);
+
+            //Act
+            var resultRegattas = regattaServiceSut.GetUpcomingRegattas();
+
+            //Assert
+            Assert.Equal(2, resultRegattas.Count());
+        }
+
+
+        [Fact]
+        public void Should_ReturnTwoRegattas_When_GetPastRegattasIsCalled()
+        {
+            //Arrange
+            var stubRepositoryFactory =
+                A.RepositoryFactory()
+                    .ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateRegattaTestData())
+                    .Build();
+
+            var regattaServiceSut = new RegattaService(stubRepositoryFactory);
+
+            //Act
+            var resultRegattas = regattaServiceSut.GetPastRegattas();
+
+
+            //Assert
+            Assert.Equal(2, resultRegattas.Count());
         }
     }
 }

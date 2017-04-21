@@ -11,9 +11,9 @@ namespace ROS.Services.Factories
         private RegattaRecordFactory() { }
 
 
-        public IRegattaRecord CreateRegattaRecord(Regatta regatta)
+        public IRegattaUserRecord CreateRegattaRecord(Regatta regatta)
         {
-            return new RegattaRecord(regatta);
+            return new RegattaUserRecord(regatta);
         }
     }
 }
