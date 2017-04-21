@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ROS.Services;
+using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.Views.UserControls;
 
@@ -17,12 +19,15 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _userRegattasCommand;
         private ICommand _userSocialEventsCommand;
         private ICommand _userClubsCommand;
+        private IUserService _serviceLocator;
+        private string _userFullName;
         private object _selectedUserControl;
         private string _email;
 
         public MainWindowViewModel()
         {
             RegisterMessages();
+            _serviceLocator = ServiceLocator.Instance.UserService;
         }
 
         public ICommand EditUserInfoCommand
@@ -74,6 +79,17 @@ namespace ROSViewsCDBG.ViewModels
                 OnPropertyChanged();
             }
         }
+        
+        public string UserFullName
+        {
+            get { return _userFullName; }
+            set
+            {
+                _userFullName = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private void OpenEditUserInfo(object obj)
         {
@@ -114,6 +130,8 @@ namespace ROSViewsCDBG.ViewModels
         private void OnEmailReceived(string email)
         {
             Email = email;
+            var user =_serviceLocator.FindUserByEmail(Email);
+            UserFullName = user.FirstName + " " + user.LastName;
         }
     }
 }
