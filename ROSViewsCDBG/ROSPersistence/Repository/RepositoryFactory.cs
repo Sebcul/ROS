@@ -21,12 +21,17 @@ namespace ROSPersistence.Repository
 
         public ILoginRepository CreateLoginRepository()
         {
-            return new LoginRepository(_context);
+            return new UserRepository(_context);
         }
 
         public IAddUserRepository CreateAddUserRepository()
         {
-            return new AddUserRepository(_context);
+            return new UserRepository(_context);
+        }
+
+        public IPasswordRepository CreatePasswordRepository()
+        {
+            return new UserRepository(_context);
         }
     }
 }
