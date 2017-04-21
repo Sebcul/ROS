@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Service Tests\BoatServiceTests.cs" />
+    <Compile Include="Service Tests\RegattaServiceTests.cs" />
+    <Compile Include="Service Tests\TestDataFactory.cs" />
     <Compile Include="Test Utilities\RepositoryFactoryBuilder.cs" />
     <Compile Include="Test Utilities\RepositoryFake.cs" />
     <Compile Include="Service Tests\UserServiceTests.cs" />
@@ -92,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ROS.Services\ROS.Services.csproj">
+      <Project>{FE6ACEE4-3670-4678-B934-80B99C29B606}</Project>
+      <Name>ROS.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ROSPersistenceUnitTests\ROSPersistenceUnitTests.csproj">
       <Project>{3afb4fac-28b9-473a-9382-80e835f56994}</Project>
       <Name>ROSPersistenceUnitTests</Name>
