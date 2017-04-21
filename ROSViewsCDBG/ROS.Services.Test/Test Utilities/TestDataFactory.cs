@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ROSPersistence.ROSDB;
 
-namespace ROS.Services.Test.Service_Tests
+namespace ROS.Services.Test.Test_Utilities
 {
     public class TestDataFactory
     {
@@ -44,6 +41,21 @@ namespace ROS.Services.Test.Service_Tests
             };
         }
 
+
+
+        public static List<Regatta> CreateRegattaTestData()
+        {
+            return new List<Regatta>
+            {
+                new Regatta {Id = 1, Name = "Regatta 1", Active = true, StartTime = DateTime.MaxValue, EndTime = DateTime.MaxValue},
+                new Regatta {Id = 2, Name = "Regatta 2", Active = true, StartTime = DateTime.MaxValue, EndTime = DateTime.MaxValue},
+                new Regatta {Id = 3, Name = "Regatta 3", Active = false, StartTime = DateTime.MinValue, EndTime = DateTime.MinValue},
+                new Regatta {Id = 4, Name = "Regatta 4", Active = true, StartTime = DateTime.Today, EndTime = DateTime.Today},
+                new Regatta {Id = 5, Name = "Regatta 5", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MinValue},
+                new Regatta {Id = 5, Name = "Regatta 6", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MaxValue},
+                new Regatta {Id = 5, Name = "Regatta 7", Active = true, StartTime = DateTime.MinValue, EndTime = DateTime.MaxValue}
+            };
+        }
 
 
         public static List<Regatta> CreateRegattaTestDataWithUser(User user)

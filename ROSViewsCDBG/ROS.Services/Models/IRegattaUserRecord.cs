@@ -1,9 +1,11 @@
 ﻿namespace ROS.Services.Models
 {
-    public interface IRegattaRecord
+    public interface IRegattaUserRecord
     {
-        string EndDate { get; }
         string Name { get; }
+
+        string EndDate { get; }
+        
         string StartDate { get; }
     }
 }

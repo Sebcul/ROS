@@ -2,12 +2,12 @@
 
 namespace ROS.Services.Models
 {
-    public class RegattaRecord : IRegattaRecord
+    public class RegattaUserRecord : IRegattaUserRecord
     {
         private readonly Regatta _regatta;
 
 
-        public RegattaRecord(Regatta regatta)
+        public RegattaUserRecord(Regatta regatta)
         {
             _regatta = regatta;
         }

@@ -39,8 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\RegattaRecordFactory.cs" />
-    <Compile Include="Models\IRegattaRecord.cs" />
-    <Compile Include="Models\RegattaRecord.cs" />
+    <Compile Include="Models\IRegattaUserRecord.cs" />
+    <Compile Include="Models\RegattaUserRecord.cs" />
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />
     <Compile Include="Services\Interfaces\IBoatService.cs" />

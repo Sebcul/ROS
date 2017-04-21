@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ROS.Services.Factories;
 using ROS.Services.Models;
@@ -12,26 +13,27 @@ namespace ROS.Services.Services
     {
         private readonly IRepository<Regatta> _repository;
 
+
         public RegattaService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<Regatta>();
         }
 
-        public IEnumerable<IRegattaRecord> FindRegattaHistoryByUserId(int id)
+
+        public IEnumerable<IRegattaUserRecord> FindRegattasParticipatedInByUserId(int id)
         {
             var regattas = _repository.GetAllWhereEntitiesMatchPredicate(
                 regatta => regatta.Active && regatta.Entries.Any(
                     entry => entry.RegisteredUsers.Any(
                         user => user.Id == id)));
 
-             return ConvertRegattasToRegattaRecords(regattas);
+             return ConvertRegattasToRegattaUserRecords(regattas);
         }
 
 
-
-        private List<IRegattaRecord> ConvertRegattasToRegattaRecords(IList<Regatta> regattas)
+        private List<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IList<Regatta> regattas)
         {
-            var regattaRecords = new List<IRegattaRecord>();
+            var regattaRecords = new List<IRegattaUserRecord>();
 
             foreach (var regatta in regattas)
             {
@@ -39,6 +41,36 @@ namespace ROS.Services.Services
             }
 
             return regattaRecords;
+        }
+
+
+
+        public IEnumerable<Regatta> GetAllRegattas()
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(regatta => regatta.Active);
+        }
+
+
+        public IEnumerable<Regatta> GetUpcomingRegattas()
+        {
+            return
+                _repository.GetAllWhereEntitiesMatchPredicate(
+                    regatta => regatta.Active && regatta.StartTime > DateTime.Now);
+        }
+
+
+        public IEnumerable<Regatta> GetPastRegattas()
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(regatta => regatta.Active &&
+                                                                            regatta.EndTime < DateTime.Now);
+        }
+
+
+        public IEnumerable<Regatta> GetOngoingRegattas()
+        {
+            return
+                _repository.GetAllWhereEntitiesMatchPredicate(
+                    regatta => regatta.Active && regatta.StartTime < DateTime.Now && regatta.EndTime > DateTime.Now);
         }
     }
 }
