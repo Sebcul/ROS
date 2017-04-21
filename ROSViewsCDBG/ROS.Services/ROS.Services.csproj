@@ -42,6 +42,7 @@
     <Compile Include="Factories\RegattaRecordFactory.cs" />
     <Compile Include="Models\IRegattaUserRecord.cs" />
     <Compile Include="Models\RegattaUserRecord.cs" />
+    <Compile Include="ServiceLocator.cs" />
     <Compile Include="Services\AddUserService.cs" />
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />

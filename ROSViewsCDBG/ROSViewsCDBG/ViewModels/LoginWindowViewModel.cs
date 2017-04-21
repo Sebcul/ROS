@@ -2,7 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ROS.Services;
 using ROS.Services.Services;
+using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.UserControls;
 
@@ -13,11 +15,11 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _loginCommand;
         private ICommand _registerCommand;
         private string _email;
-        private readonly LoginService _loginService;
+        private readonly ILoginService _loginService;
 
         public LoginWindowViewModel()
         {
-            _loginService = new LoginService();
+            _loginService = ServiceLocator.Instance.LoginService;
 
             Email = "";
         }

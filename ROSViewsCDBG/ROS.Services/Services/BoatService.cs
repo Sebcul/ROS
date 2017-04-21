@@ -12,11 +12,11 @@ namespace Ros.Services.Services
 {
     public class BoatService : IBoatService
     {
-        private Repository<Boat> repository;
+        private IRepository<Boat> _repository;
 
-        public BoatService(Repository<Boat> repository)
+        public BoatService(IRepositoryFactory repositoryFactory)
         {
-            this.repository = repository;
+            _repository = repositoryFactory.CreateRepository<Boat>();
         }
 
         public void DeleteEntity(Boat Boat)

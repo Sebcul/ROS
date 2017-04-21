@@ -8,9 +8,9 @@ namespace ROS.Services.Services
     {
         private readonly ILoginRepository _repository;
 
-        public LoginService()
+        public LoginService(IRepositoryFactory repositoryFactory)
         {
-            _repository = RepositoryFactory.Instance.CreateLoginRepository();
+            _repository = repositoryFactory.CreateLoginRepository();
         }
 
         public bool ConfirmUserCredentials(string email, string password)
