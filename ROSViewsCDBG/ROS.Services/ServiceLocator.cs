@@ -34,23 +34,23 @@ namespace ROS.Services
             _repositoryFactory = RepositoryFactory.Instance;
         }
 
-        public static IAddUserService AddUserService => new AddUserService(_instance._repositoryFactory);
+        public IAddUserService AddUserService => new AddUserService(_instance._repositoryFactory);
 
-        public static IUserService UserService => new UserService(_instance._repositoryFactory);
+        public IUserService UserService => new UserService(_instance._repositoryFactory);
 
-        public static IBoatService BoatService => new BoatService(_instance._repositoryFactory);
+        public IBoatService BoatService => new BoatService(_instance._repositoryFactory);
 
-        public static IEntryService EntryService => new EntryService(_instance._repositoryFactory);
+        public IEntryService EntryService => new EntryService(_instance._repositoryFactory);
 
-        public static ILoginService LoginService => new LoginService(_instance._repositoryFactory);
+        public ILoginService LoginService => new LoginService(_instance._repositoryFactory);
 
-        public static IPasswordService PasswordService => new PasswordService(_instance._repositoryFactory);
+        public IPasswordService PasswordService => new PasswordService(_instance._repositoryFactory);
 
-        public static IRegattaService RegattaService => new RegattaService(_instance._repositoryFactory);
+        public IRegattaService RegattaService => new RegattaService(_instance._repositoryFactory);
 
-        public static IResultService ResultService => new ResultService(_instance._repositoryFactory);
+        public IResultService ResultService => new ResultService(_instance._repositoryFactory);
 
-        public static ITeamService TeamService => new TeamService(_instance._repositoryFactory);
+        public ITeamService TeamService => new TeamService(_instance._repositoryFactory);
 
     }
 }
