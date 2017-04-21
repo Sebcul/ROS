@@ -9,7 +9,7 @@ using ROSPersistence.ROSDB;
 
 namespace Ros.Services.Services
 {
-    class EntryService : IEntryService
+    public class EntryService : IEntryService
     {
         private readonly IRepository<Entry> _repository;
 
@@ -17,5 +17,30 @@ namespace Ros.Services.Services
         {
             _repository = repositoryFactory.CreateRepository<Entry>();
         }
+
+        public void DeleteEntry(Entry entry)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateEntry(Entry entry)
+        {
+            _repository.UpdateEntity(entry);
+        }
+
+        public void AddEntry(Entry entry)
+        {
+            _repository.InsertEntity(entry);
+        }
+
+        public List<Entry> GetAllEnteries()
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate((e => e.Active)).ToList();
+        }
+        public Entry GetEntry(int id)
+        {
+            throw new NotImplementedException();
+        }
+    
     }
 }

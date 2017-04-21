@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Service Tests\BoatServiceTests.cs" />
+    <Compile Include="Service Tests\EntryServiceTests.cs" />
     <Compile Include="Service Tests\RegattaServiceTests.cs" />
     <Compile Include="Test Utilities\TestDataFactory.cs" />
     <Compile Include="Test Utilities\RepositoryFactoryBuilder.cs" />
