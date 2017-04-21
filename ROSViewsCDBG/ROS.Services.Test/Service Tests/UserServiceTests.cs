@@ -15,7 +15,7 @@ namespace ROS.Services.Test.Service_Tests
         public void Should_ReturnAllActiveEntities_When_GetAllActiveEntitiesIsCalled()
         {
             //Arrange
-            var stubRepositoryFactory = A.RepositoryFactory().ThatReturnsAFakeRepositoryWithTestUsers(TestDataFactory.CreateDataForUserRepository()).Build();
+            var stubRepositoryFactory = A.RepositoryFactory().ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateDataForUserRepository()).Build();
 
             var userServiceSut = new UserService(stubRepositoryFactory);
 
@@ -36,7 +36,7 @@ namespace ROS.Services.Test.Service_Tests
         public void Should_ReturnUser_When_EmailIsMatchingAndUserIsActive(string expectedEmail)
         {
             //Arrange
-            var stubRepositoryFactory = A.RepositoryFactory().ThatReturnsAFakeRepositoryWithTestUsers(TestDataFactory.CreateDataForUserRepository()).Build();
+            var stubRepositoryFactory = A.RepositoryFactory().ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateDataForUserRepository()).Build();
 
             var userServiceSut = new UserService(stubRepositoryFactory);
 

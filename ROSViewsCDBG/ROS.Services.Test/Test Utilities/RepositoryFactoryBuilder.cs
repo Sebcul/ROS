@@ -24,7 +24,7 @@ namespace ROS.Services.Test.Test_Utilities
         public IRepositoryFactory Build() => _repositoryFactory;
 
 
-        public RepositoryFactoryBuilder ThatReturnsAFakeRepositoryWithTestUsers<TEntity>(List<TEntity> testData) where TEntity : class
+        public RepositoryFactoryBuilder ThatReturnsAFakeRepositoryWithTestEntities<TEntity>(List<TEntity> testData) where TEntity : class
         {
             var stubFactory = new Mock<IRepositoryFactory>();
             stubFactory.Setup(factory => factory.CreateRepository<TEntity>()).Returns(new RepositoryFake<TEntity>(testData));

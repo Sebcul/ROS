@@ -27,8 +27,6 @@ namespace ROS.Services.Services
              return ConvertRegattasToRegattaRecords(regattas);
         }
 
-
-
         private List<IRegattaRecord> ConvertRegattasToRegattaRecords(IList<Regatta> regattas)
         {
             var regattaRecords = new List<IRegattaRecord>();
@@ -39,6 +37,12 @@ namespace ROS.Services.Services
             }
 
             return regattaRecords;
+        }
+
+
+        public IEnumerable<Regatta> GetAllRegattas()
+        {
+            return _repository.GetAllWhereEntitiesMatchPredicate(regatta => regatta.Active);
         }
     }
 }

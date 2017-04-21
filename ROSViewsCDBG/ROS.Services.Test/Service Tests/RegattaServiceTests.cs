@@ -13,7 +13,7 @@ namespace ROS.Services.Test.Service_Tests
         {
             //Arrange
             var stubRepositoryFactory = A.RepositoryFactory()
-                .ThatReturnsAFakeRepositoryWithTestUsers(
+                .ThatReturnsAFakeRepositoryWithTestEntities(
                     TestDataFactory.CreateRegattaTestDataWithUser(new User
                     {
                         Id = 33,
@@ -24,11 +24,30 @@ namespace ROS.Services.Test.Service_Tests
             var regattaServiceSut = new RegattaService(stubRepositoryFactory);
 
             //Act
-            var regattaHistory = regattaServiceSut.FindRegattaHistoryByUserId(33);
+            var regattaHistoryResult = regattaServiceSut.FindRegattaHistoryByUserId(33);
 
             //Assert
-            Assert.True(regattaHistory.First().Name == "Westcoast S-Regatta 2016");
-            Assert.True(regattaHistory.Last().Name == "Eastcoast S-Regatta 2016");
+            Assert.True(regattaHistoryResult.First().Name == "Westcoast S-Regatta 2016");
+            Assert.True(regattaHistoryResult.Last().Name == "Eastcoast S-Regatta 2016");
+        }
+
+
+        [Fact]
+        public void Should_ReturnAListContainingTwoElements_When_GetAllRegattasIsCalled()
+        {
+            //Arrange
+            var stubRepositoryFactory =
+                A.RepositoryFactory()
+                    .ThatReturnsAFakeRepositoryWithTestEntities(TestDataFactory.CreateRegattaTestData()).Build();
+
+            var serviceSut = new RegattaService(stubRepositoryFactory);
+
+
+            //Act
+            var resultRegattas = serviceSut.GetAllRegattas();
+
+            //Assert
+            Assert.Equal(resultRegattas.Count(), 2);
         }
     }
 }

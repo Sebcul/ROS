@@ -46,6 +46,17 @@ namespace ROS.Services.Test.Service_Tests
 
 
 
+        public static List<Regatta> CreateRegattaTestData()
+        {
+            return new List<Regatta>
+            {
+                new Regatta {Id = 1, Name = "Regatta 1", Active = true},
+                new Regatta {Id = 2, Name = "Regatta 2", Active = true},
+                new Regatta {Id = 3, Name = "Regatta 3", Active = false},
+            };
+        }
+
+
         public static List<Regatta> CreateRegattaTestDataWithUser(User user)
         {
             return new List<Regatta>
