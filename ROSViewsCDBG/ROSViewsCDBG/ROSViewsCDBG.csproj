@@ -61,8 +61,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper classes\Messenger.cs" />
+    <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="ViewModels\ClubAdminViewModel.cs" />
+    <Compile Include="ViewModels\ClubInfoViewModel.cs" />
+    <Compile Include="ViewModels\ClubMemberViewModel.cs" />
+    <Compile Include="ViewModels\ClubRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\CreateClubViewModel.cs" />
+    <Compile Include="ViewModels\CreateEntryViewModel.cs" />
+    <Compile Include="ViewModels\CreateRaceEventViewModel.cs" />
+    <Compile Include="ViewModels\CreateRegattaViewModel.cs" />
+    <Compile Include="ViewModels\CreateSocialEventViewModel.cs" />
+    <Compile Include="ViewModels\DistanceMeasuredRaceEventInfoViewModel.cs" />
+    <Compile Include="ViewModels\EditUserInfoViewModel.cs" />
+    <Compile Include="ViewModels\EntryInfoViewModel.cs" />
+    <Compile Include="ViewModels\ListUsersClubsViewModel.cs" />
+    <Compile Include="ViewModels\ListUsersRegattasViewModel.cs" />
+    <Compile Include="ViewModels\ListUsersResultsViewModel.cs" />
+    <Compile Include="ViewModels\ListUsersTeamsViewModel.cs" />
+    <Compile Include="ViewModels\LoginWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\RegattaAdminViewModel.cs" />
+    <Compile Include="ViewModels\RegattaInfoViewModel.cs" />
+    <Compile Include="ViewModels\RegisterToRaceEventViewModel.cs" />
+    <Compile Include="ViewModels\RegisterToSocialEventViewModel.cs" />
+    <Compile Include="ViewModels\RegisterToTeamViewModel.cs" />
+    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\SocialEventInfoViewModel.cs" />
+    <Compile Include="ViewModels\TeamInfoViewModel.cs" />
+    <Compile Include="ViewModels\TimeMeasuredRaceEventInfoViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\UserControls\ClubAdminView.xaml.cs">
       <DependentUpon>ClubAdminView.xaml</DependentUpon>
     </Compile>
@@ -182,10 +213,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\UserControls\RegattaAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -235,9 +262,6 @@
     </Compile>
     <Compile Include="Views\UserControls\CreateSocialEventView.xaml.cs">
       <DependentUpon>CreateSocialEventView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserControls\LoginView.xaml.cs">
-      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\EditUserInfoView.xaml.cs">
       <DependentUpon>EditUserInfoView.xaml</DependentUpon>
@@ -305,11 +329,17 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
+    <ProjectReference Include="..\ROS.Services\ROS.Services.csproj">
+      <Project>{FE6ACEE4-3670-4678-B934-80B99C29B606}</Project>
+      <Name>ROS.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
       <Project>{46061c95-a183-4cea-aca4-2b37fe413402}</Project>
       <Name>ROSPersistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

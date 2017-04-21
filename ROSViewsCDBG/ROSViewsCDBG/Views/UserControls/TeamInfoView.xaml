@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projektet"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="400" d:DesignWidth="400"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=TeamInfoViewModel}">
     <Grid Background="AliceBlue">
         <!--TODO: Remove background color-->
         <Grid.ColumnDefinitions>

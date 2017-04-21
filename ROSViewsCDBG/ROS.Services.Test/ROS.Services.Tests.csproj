@@ -86,7 +86,7 @@
     <Compile Include="Test Utilities\RepositoryFactoryBuilder.cs" />
     <Compile Include="Test Utilities\RepositoryFake.cs" />
     <Compile Include="Service Tests\UserServiceTests.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Service Tests\LoginTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
