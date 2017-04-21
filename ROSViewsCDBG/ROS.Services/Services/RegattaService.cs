@@ -13,10 +13,12 @@ namespace ROS.Services.Services
     {
         private readonly IRepository<Regatta> _repository;
 
+
         public RegattaService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<Regatta>();
         }
+
 
         public IEnumerable<IRegattaUserRecord> FindRegattasParticipatedInByUserId(int id)
         {
@@ -27,6 +29,7 @@ namespace ROS.Services.Services
 
              return ConvertRegattasToRegattaUserRecords(regattas);
         }
+
 
         private List<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IList<Regatta> regattas)
         {
@@ -61,6 +64,7 @@ namespace ROS.Services.Services
             return _repository.GetAllWhereEntitiesMatchPredicate(regatta => regatta.Active &&
                                                                             regatta.EndTime < DateTime.Now);
         }
+
 
         public IEnumerable<Regatta> GetOngoingRegattas()
         {
