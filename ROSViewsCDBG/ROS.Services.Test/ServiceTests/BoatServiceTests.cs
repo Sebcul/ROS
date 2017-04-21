@@ -16,6 +16,14 @@ namespace ROS.Services.Test.ServiceTests
         {
             private Dictionary<int, T> _data = new Dictionary<int, T>();
 
+            // For using Expression to get data
+            private readonly IQueryable<T> _queryableData;
+
+            public FakeRepository(List<T> queryableData)
+            {
+                _queryableData = queryableData.AsQueryable();
+            }
+
             public void Add(T entity)
             {
                 _data[entity.Id] = entity;
@@ -35,8 +43,7 @@ namespace ROS.Services.Test.ServiceTests
 
             public IList<T> GetAllWhereEntitiesMatchPredicate(Expression<Func<T, bool>> predicate)
             {
-                
-                return null;
+                return _queryableData.AsQueryable().Where(predicate).ToList();
             }
 
             public void UpdateEntity(T entity)
@@ -59,17 +66,17 @@ namespace ROS.Services.Test.ServiceTests
                 this.fakeRepository = fakeRepository;
             }
 
-            public void DeleteEntity(Boat boat)
+            public void DeleteBoat(Boat boat)
             {
                 fakeRepository.Delete(boat);
             }
 
-            public void UpdateEntity(Boat boat)
+            public void UpdateBoat(Boat boat)
             {
                 fakeRepository.UpdateEntity(boat);
             }
 
-            public void AddEntity(Boat boat)
+            public void AddBoat(Boat boat)
             {
                 fakeRepository.Add(boat);
             }
@@ -81,7 +88,7 @@ namespace ROS.Services.Test.ServiceTests
 
             public List<Boat> GetAllBoats()
             {
-                return fakeRepository.GetAllWhereEntitiesMatchPredicate((x => x.Active)).ToList();
+                return fakeRepository.GetAllWhereEntitiesMatchPredicate(x => x.Active).ToList();
             }
         }
 
@@ -117,8 +124,8 @@ namespace ROS.Services.Test.ServiceTests
             fakeRepository = new FakeRepository<Boat>();
             boatService = new BoatService(fakeRepository);
             // Act
-            boatService.AddEntity(boat1);
-            boatService.AddEntity(boat2);
+            boatService.AddBoat(boat1);
+            boatService.AddBoat(boat2);
             // Assert
             fakeRepository.Get(1).Handicap.Should().Be(10.5);
             fakeRepository.Get(2).Handicap.Should().Be(2.5);
@@ -153,8 +160,8 @@ namespace ROS.Services.Test.ServiceTests
             fakeRepository = new FakeRepository<Boat>();
             boatService = new BoatService(fakeRepository);
             // Act
-            boatService.AddEntity(boat1);
-            boatService.AddEntity(boat2);
+            boatService.AddBoat(boat1);
+            boatService.AddBoat(boat2);
             // Assert
             Assert.Throws<NotImplementedException>(() => fakeRepository.GetAllWhereEntitiesMatchPredicate(p => p.Name.Equals("Helsike")).Count);
         }
@@ -188,9 +195,9 @@ namespace ROS.Services.Test.ServiceTests
             fakeRepository = new FakeRepository<Boat>();
             boatService = new BoatService(fakeRepository);
             // Act
-            boatService.AddEntity(boat1);
-            boatService.AddEntity(boat2);
-            boatService.DeleteEntity(boat1);
+            boatService.AddBoat(boat1);
+            boatService.AddBoat(boat2);
+            boatService.DeleteBoat(boat1);
             // Assert
             Assert.Throws<Exception>(() => boatService.GetBoat(1));
         }

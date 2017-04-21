@@ -7,11 +7,11 @@ namespace Ros.Services.Services.Interfaces
 {
     public interface IBoatService
     {
-        void AddEntity(Boat boat);
+        void AddBoat(Boat boat);
 
-        void DeleteEntity(Boat boat);
+        void DeleteBoat(Boat boat);
 
-        void UpdateEntity(Boat boat);
+        void UpdateBoat(Boat boat);
 
         List<Boat> GetAllBoats();
             

@@ -19,17 +19,17 @@ namespace Ros.Services.Services
             this.repository = repository;
         }
 
-        public void DeleteEntity(Boat boat)
+        public void DeleteBoat(Boat boat)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateEntity(Boat boat)
+        public void UpdateBoat(Boat boat)
         {
             repository.UpdateEntity(boat);
         }
 
-        public void AddEntity(Boat boat)
+        public void AddBoat(Boat boat)
         {
             repository.InsertEntity(boat);
         }
