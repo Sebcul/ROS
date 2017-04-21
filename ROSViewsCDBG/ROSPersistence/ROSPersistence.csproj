@@ -50,14 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AddUserRepository.cs" />
     <Compile Include="Repository\IAddUserRepository.cs" />
     <Compile Include="Repository\ILoginRepository.cs" />
+    <Compile Include="Repository\IPasswordRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
+    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RepositoryFactory.cs" />
-    <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="ROSDB\Models\Boat.cs" />
     <Compile Include="ROSDB\Models\Class.cs" />
     <Compile Include="ROSDB\Models\Club.cs" />
