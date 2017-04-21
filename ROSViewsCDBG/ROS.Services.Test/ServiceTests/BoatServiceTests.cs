@@ -170,6 +170,17 @@ namespace ROS.Services.Test.ServiceTests
         public void DeleteShouldArchiveObjectInDB_Test()
         {
             // Arrange
+            List<Boat> boatList = new List<Boat>(
+                new Boat{
+                    Active = true,
+                    Description = "A boat",
+                    Entries = null,
+                    Handicap = 10.5,
+                    Id = 1,
+                    Model = null,
+                    Name = "SomeBoat",
+                    SailNo = 122
+                },
             var boat1 = new Boat
             {
                 Active = true,
