@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ROSViewsCDBG.ViewModels
 {
-    public class RegisterUserViewModel : ViewModelBase
+    public class RegisterUserWindowViewModel : ViewModelBase
     {
     }
 }

@@ -114,9 +114,9 @@ namespace ROSViewsCDBG.ViewModels
             get { return new RegisterToTeamViewModel(); }
         }
 
-        public static RegisterUserViewModel RegisterUserViewModel
+        public static RegisterUserWindowViewModel RegisterUserWindowViewModel
         {
-            get { return new RegisterUserViewModel(); }
+            get { return new RegisterUserWindowViewModel(); }
         }
 
         public static SocialEventInfoViewModel SocialEventInfoViewModel

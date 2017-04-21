@@ -10,18 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ROSViewsCDBG.Views.UserControls;
 
-namespace ROSViewsCDBG.UserControls
+namespace ROSViewsCDBG.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for RegisterUserView.xaml
+    /// Interaction logic for RegisterUserWindow.xaml
     /// </summary>
-    public partial class RegisterUserView : UserControl
+    public partial class RegisterUserWindow : Window
     {
-        public RegisterUserView()
+        public RegisterUserWindow()
         {
             InitializeComponent();
         }

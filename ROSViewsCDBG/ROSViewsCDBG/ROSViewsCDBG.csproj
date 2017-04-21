@@ -87,7 +87,7 @@
     <Compile Include="ViewModels\RegisterToRaceEventViewModel.cs" />
     <Compile Include="ViewModels\RegisterToSocialEventViewModel.cs" />
     <Compile Include="ViewModels\RegisterToTeamViewModel.cs" />
-    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\RegisterUserWindowViewModel.cs" />
     <Compile Include="ViewModels\SocialEventInfoViewModel.cs" />
     <Compile Include="ViewModels\TeamInfoViewModel.cs" />
     <Compile Include="ViewModels\TimeMeasuredRaceEventInfoViewModel.cs" />
@@ -154,8 +154,8 @@
     <Compile Include="Views\UserControls\RegisterToTeamView.xaml.cs">
       <DependentUpon>RegisterToTeamView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\RegisterUserView.xaml.cs">
-      <DependentUpon>RegisterUserView.xaml</DependentUpon>
+    <Compile Include="Views\Windows\RegisterUserWindow.xaml.cs">
+      <DependentUpon>RegisterUserWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\UserControls\ClubAdminView.xaml">
       <SubType>Designer</SubType>
@@ -291,9 +291,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControls\RegisterUserView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\Windows\RegisterUserWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

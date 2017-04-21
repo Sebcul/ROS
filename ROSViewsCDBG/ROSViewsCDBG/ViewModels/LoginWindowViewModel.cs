@@ -7,6 +7,7 @@ using ROS.Services.Services;
 using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.UserControls;
+using ROSViewsCDBG.Views.Windows;
 
 namespace ROSViewsCDBG.ViewModels
 {
@@ -67,16 +68,18 @@ namespace ROSViewsCDBG.ViewModels
 
         private void Register(object obj)
         {
-            Window registerUserWindow = new Window
-            {
-                Title = "Register",
-                Content = new RegisterUserView(),
-                MaxHeight = 600,
-                MaxWidth = 370,
-                MinWidth = 370,
-                MinHeight = 600
-            };
+            var registerUserWindow = new RegisterUserWindow();
             registerUserWindow.ShowDialog();
+            //Window registerUserWindow = new Window
+            //{
+            //    Title = "Register",
+            //    Content = new RegisterUserView(),
+            //    MaxHeight = 600,
+            //    MaxWidth = 370,
+            //    MinWidth = 370,
+            //    MinHeight = 600
+            //};
+            //registerUserWindow.ShowDialog();
         }
     }
 }
