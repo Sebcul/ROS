@@ -134,7 +134,6 @@ namespace ROSPersistenceUnitTests
             };
 
             var mockSet = new Mock<DbSet<User>>().SetupData(data);
-            mockSet.Setup(set => set.AsNoTracking()).Returns(mockSet.Object);
 
             var mockContext = new Mock<DbContext>();
             mockContext.Setup(ctx => ctx.Set<User>()).Returns(mockSet.Object);
