@@ -13,7 +13,6 @@ namespace ROS.Services.Services
     {
         private readonly IRepository<Regatta> _repository;
 
-
         public RegattaService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<Regatta>();
@@ -24,10 +23,10 @@ namespace ROS.Services.Services
         {
             var regattas = _repository.GetAllWhereEntitiesMatchPredicate(
                 regatta => regatta.Active && regatta.Entries.Any(
-                    entry => entry.RegisteredUsers.Any(
-                        user => user.Id == id)));
+                               entry => entry.RegisteredUsers.Any(
+                                   user => user.Id == id)));
 
-             return ConvertRegattasToRegattaUserRecords(regattas);
+            return ConvertRegattasToRegattaUserRecords(regattas);
         }
 
 
@@ -36,13 +35,10 @@ namespace ROS.Services.Services
             var regattaRecords = new List<IRegattaUserRecord>();
 
             foreach (var regatta in regattas)
-            {
                 regattaRecords.Add(RegattaRecordFactory.Instance.CreateRegattaRecord(regatta));
-            }
 
             return regattaRecords;
         }
-
 
 
         public IEnumerable<Regatta> GetAllRegattas()
@@ -53,9 +49,8 @@ namespace ROS.Services.Services
 
         public IEnumerable<Regatta> GetUpcomingRegattas()
         {
-            return
-                _repository.GetAllWhereEntitiesMatchPredicate(
-                    regatta => regatta.Active && regatta.StartTime > DateTime.Now);
+            return _repository.GetAllWhereEntitiesMatchPredicate(
+                regatta => regatta.Active && regatta.StartTime > DateTime.Now);
         }
 
 
