@@ -4,6 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using ROS.Services;
+using ROS.Services.Services.Interfaces;
+using ROSPersistence.ROSDB;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.Models;
 using ROSViewsCDBG.Views.Windows;
@@ -12,6 +15,8 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class RegisterUserWindowViewModel : ViewModelBase
     {
+        //TODO: Add methods in AddUserService to handle phone number and address!
+
         private ICommand _addPhoneNumberCommand;
         private ICommand _removePhoneNumberCommand;
         private ICommand _addAddressCommand;
@@ -28,12 +33,14 @@ namespace ROSViewsCDBG.ViewModels
         private UserAddress _selectedAddress;
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
         private UserAddress _address;
+        private IAddUserService _addUserService;
 
         public RegisterUserWindowViewModel()
         {
             _phoneNumbers = new ObservableCollection<string>();
             _listOfUserAddresses = new ObservableCollection<UserAddress>();
             _phoneNumbersTypeAndPhoneNumber = new Dictionary<string, string>();
+            _addUserService = ServiceLocator.Instance.AddUserService;
             RegisterMessages();
         }
 
@@ -191,7 +198,15 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RegisterUser(object obj)
         {
-            
+            var userToRegister = new User() {Active = true, Email = Email, FirstName = FirstName, LastName = LastName, };
+            if (Password.Equals(PasswordRepeat))
+            {
+                //_addUserService.AddUser(userToRegister, Password);
+            }
+            else
+            {
+                MessageBox.Show("Lösenorden stämmer inte överrens.");
+            }
         }
 
         private void OnPhoneNumberAndTypeReceived(Dictionary<string, string> phoneNumberAndType)

@@ -51,8 +51,17 @@ namespace ROSViewsCDBG.ViewModels
 
         private void SaveAddress(object obj)
         {
-            Messenger.Default.Send(Address, "AddressSent");
-            CloseWindow();
+            if (String.IsNullOrEmpty(Address.City) || String.IsNullOrEmpty(Address.Country) ||
+                String.IsNullOrEmpty(Address.Street) || Address.Zip_Code == 0)
+            {
+                MessageBox.Show("Du måste lägga in korrekta värden i respektive fält.");
+            }
+            else
+            {
+                Messenger.Default.Send(Address, "AddressSent");
+                CloseWindow();
+            }
+
         }
 
         private void AddAddressTypes()

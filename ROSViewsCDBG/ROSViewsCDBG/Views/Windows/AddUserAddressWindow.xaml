@@ -31,9 +31,9 @@
         <TextBlock Text="Gata:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10,10,10" Text="{Binding Address.Street}"/>
         <TextBlock Text="Postnummer: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,10,10,10" Text="{Binding Address.Zip_Code}"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,10,10,10" Text="{Binding Address.Zip_Code, Mode=TwoWay, StringFormat='{}{0:#}'}" />
         <TextBlock Text="Boxnummer:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Margin="0,10,10,10" Text="{Binding Address.BoxNo}"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Margin="0,10,10,10" Text="{Binding Address.BoxNo, Mode=TwoWay, StringFormat='{}{0:#}'}"/>
         <TextBlock Text="Kommentar:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBox Grid.Column="1" Grid.Row="5" Height="50" Margin="0,10,10,10" Text="{Binding Address.Description}"/>
         <TextBlock Text="Addresstyp:" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
