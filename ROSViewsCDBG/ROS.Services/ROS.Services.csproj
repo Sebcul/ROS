@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\RegattaRecordFactory.cs" />
+    <Compile Include="Models\EntryInfo.cs" />
+    <Compile Include="Models\IEntryInfo.cs" />
     <Compile Include="Models\IRegattaUserRecord.cs" />
     <Compile Include="Models\RegattaUserRecord.cs" />
     <Compile Include="ServiceLocator.cs" />
