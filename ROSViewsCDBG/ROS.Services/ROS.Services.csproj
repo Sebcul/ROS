@@ -43,6 +43,7 @@
     <Compile Include="Helpers\ServiceLocator.cs" />
     <Compile Include="Models\IRegattaUserRecord.cs" />
     <Compile Include="Models\RegattaUserRecord.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Services\AddUserService.cs" />
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />
