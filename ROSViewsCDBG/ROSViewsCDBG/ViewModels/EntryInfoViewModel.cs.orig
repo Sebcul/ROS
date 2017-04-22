@@ -8,7 +8,6 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class EntryInfoViewModel : ViewModelBase
     {
-<<<<<<< Updated upstream
         private int _no;
         private int _skipperId;
         private Boat _boatName;
@@ -32,18 +31,33 @@ namespace ROSViewsCDBG.ViewModels
         }
         public int SkipperId
         {
+<<<<<<< Updated upstream
+        get => _regattaId;
+        set {_regattaId = value; OnPropertyChanged(); }
+=======
             get => _skipperId;
             set { _skipperId = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
         public Boat BoatName
         {
+<<<<<<< Updated upstream
+        get => _regattaName;
+        set {_regattaName = value; OnPropertyChanged(); }
+=======
             get => _boatName;
             set { _boatName = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
         public Regatta RegattaId
         {
+<<<<<<< Updated upstream
+        get => _registeredUsers;
+        set {_registeredUsers = value; OnPropertyChanged(); }
+=======
             get => _regattaId;
             set { _regattaId = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
         public int TotalSumPaid
         {
@@ -70,7 +84,3 @@ namespace ROSViewsCDBG.ViewModels
     }
 }
 
-=======
-    }
-}
->>>>>>> Stashed changes

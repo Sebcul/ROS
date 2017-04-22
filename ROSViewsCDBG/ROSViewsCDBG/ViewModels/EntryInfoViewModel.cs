@@ -13,6 +13,8 @@ namespace ROSViewsCDBG.ViewModels
         private int _totalSumPaid;
         private string _description;
         private string _regattaName;
+        private string _boatName;
+        private int _regattaId;
         private ObservableCollection<RegisteredUser> _registeredUsers;
         private readonly IEntryService _entryService;
 
@@ -32,15 +34,15 @@ namespace ROSViewsCDBG.ViewModels
             get => _skipperId;
             set { _skipperId = value; OnPropertyChanged(); }
         }
-        public Boat BoatName
+        public string BoatName
         {
             get => _boatName;
             set { _boatName = value; OnPropertyChanged(); }
         }
-        public Regatta RegattaId
+        public int RegattaId
         {
-        get => _regattaId;
-        set {_regattaId = value; OnPropertyChanged(); }
+            get => _regattaId;
+            set { _regattaId = value; OnPropertyChanged(); }
         }
         public int TotalSumPaid
         {
@@ -52,16 +54,16 @@ namespace ROSViewsCDBG.ViewModels
             get => _description;
             set { _description = value; OnPropertyChanged(); }
         }
-        public Regatta RegattaName
+        public string RegattaName
         {
-        get => _regattaName;
-        set {_regattaName = value; OnPropertyChanged(); }
+            get => _regattaName;
+            set { _regattaName = value; OnPropertyChanged(); }
         }
         public ObservableCollection<RegisteredUser> RegisteredUsers
         {
-        get => _registeredUsers;
-        set {_registeredUsers = value; OnPropertyChanged(); }
-            
+            get => _registeredUsers;
+            set { _registeredUsers = value; OnPropertyChanged(); }
+
 
         }
     }
