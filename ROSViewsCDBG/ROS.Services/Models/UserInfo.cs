@@ -19,8 +19,7 @@ namespace ROS.Services.Models
         }
 
         public string Name => $"{_user.FirstName} {_user.LastName}";
-        public IEnumerable<string> Club => _user.Members.SelectMany(u => u.Clubs.Select(c => c.Name));
+        public IEnumerable<string> Clubs => _user.Members.SelectMany(u => u.Clubs.Select(c => c.Name));
         public IEnumerable<UserContactInformation> ContactInformation => _user.UserContactInformations;
-
     }
 }

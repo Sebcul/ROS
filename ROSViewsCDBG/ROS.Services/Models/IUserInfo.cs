@@ -5,7 +5,7 @@ namespace ROS.Services.Models
 {
     public interface IUserInfo
     {
-        IEnumerable<string> Club { get; }
+        IEnumerable<string> Clubs { get; }
         IEnumerable<UserContactInformation> ContactInformation { get; }
         string Name { get; }
     }

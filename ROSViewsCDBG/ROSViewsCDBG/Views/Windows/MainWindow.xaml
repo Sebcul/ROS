@@ -36,6 +36,7 @@
             <Button Content="Mina regattor" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserRegattasCommand}"/>
             <Button Content="Mina event" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserSocialEventsCommand}"/>
             <Button Content="Mina klubbar" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserClubsCommand}"/>
+            <Button Content="Test" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="40" Command="{Binding UserInfoCommand}"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <ContentControl Content="{Binding SelectedUserControl}" Margin="60,0,0,0">
