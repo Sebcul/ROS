@@ -18,8 +18,8 @@ namespace ROS.Services.Models
         public string Location { get { return _regatta.Location; } }
 
 
-        public string StartDate { get { return $"{_regatta.StartTime:u}"; } }
+        public string StartDate { get { return $"{_regatta.StartTime:g}"; } }
 
-        public string EndDate { get { return $"{_regatta.EndTime:u}"; } }
+        public string EndDate { get { return $"{_regatta.EndTime:g}"; } }
     }
 }

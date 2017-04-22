@@ -34,9 +34,17 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical"  Margin="15, 15, 15, 15">
 
-            <Label Content="Mina Pågående Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical"  Margin="15, 15, 15, 15" >
+
+            <Label Content="Det finns ingen information om regattor assosierad till ditt användarkonto." 
+                   FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"
+                   Visibility="{Binding VisibilityOfNoInformationAboutUsersRegattasMessage}"/>
+
+            <Label Content="Mina Pågående Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"
+                   Visibility="{Binding VisibilityOfUsersOngoingRegattasLabelHeader}"/>
+                
             <Label Content="Du är inte anmäld till några pågående regattor." 
                    FontSize="14" FontWeight="Light" HorizontalAlignment="Center" Foreground="Gray"
                    
@@ -60,17 +68,12 @@
             
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10" HorizontalAlignment="Center"  
+                    Visibility="{Binding VisibilityOfUsersUpcomingRegattasContainer}">
 
-            <Label Content="Mina Kommande Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
-            
-            <Label Content="Du är inte anmäld till några kommande regattor." 
-                   FontSize="14" FontWeight="Light" HorizontalAlignment="Center" Foreground="Gray" 
-                   
-                   Visibility="{Binding VisibilityOfUserHasNoUpcomingRegattasMessage}" />
             
             
-            <DataGrid ItemsSource="{Binding UsersUpcomingRegattas }" >
+            <DataGrid ItemsSource="{Binding UsersUpcomingRegattas }">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
                     <DataGridTextColumn Header="Plats" Binding="{Binding Location}" />
@@ -85,15 +88,11 @@
         </StackPanel>
 
         
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10" HorizontalAlignment="Center" 
+                    Visibility="{Binding VisibilityOfUsersParticipationRecordsContainer}">
 
             <Label Content="Mina Avslutade Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
-            <Label Content="Det finns ingen historik över regattor du deltagit i."
-                   FontSize="14" FontWeight="Light" HorizontalAlignment="Center" Foreground="Gray"
-                   
-                   Visibility="{Binding VisibilityOfUserHasNoRecordOfParticipationInRegattasMessage}" />
 
-            
             <DataGrid  ItemsSource="{Binding RegattasUserParticipatedIn }">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
