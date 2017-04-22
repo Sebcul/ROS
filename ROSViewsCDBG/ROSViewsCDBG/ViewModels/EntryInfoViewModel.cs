@@ -3,6 +3,7 @@ using ROS.Services;
 using ROSPersistence.ROSDB;
 using System;
 using System.Collections.ObjectModel;
+using ROS.Services.Helpers;
 
 namespace ROSViewsCDBG.ViewModels
 {

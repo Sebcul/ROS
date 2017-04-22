@@ -9,6 +9,7 @@ using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.UserControls;
 using ROSViewsCDBG.Views.Windows;
+using ServiceLocator = ROS.Services.Helpers.ServiceLocator;
 
 namespace ROSViewsCDBG.ViewModels
 {
