@@ -1,5 +1,6 @@
 ﻿using Ros.Services.Services.Interfaces;
 using ROS.Services;
+using ROSPersistence.ROSDB;
 using System;
 using System.Collections.ObjectModel;
 
@@ -9,18 +10,18 @@ namespace ROSViewsCDBG.ViewModels
     {
         private int _no;
         private int _skipperId;
-        private string _boatName;
-        private int _regattaId;
+        private Boat _boatName;
+        private Regatta _regattaId;
         private int _totalSumPaid;
         private string _description;
-        private string _regattaName;
-        private ObservableCollection<string> _registeredUsers;
+        private Regatta _regattaName;
+        private ObservableCollection<RegisteredUser> _registeredUsers;
         private readonly IEntryService _entryService;
 
         public EntryInfoViewModel()
         {
             _entryService = ServiceLocator.Instance.EntryService;
-                        
+
         }
 
         public int No
@@ -33,12 +34,12 @@ namespace ROSViewsCDBG.ViewModels
             get => _skipperId;
             set { _skipperId = value; OnPropertyChanged(); }
         }
-        public string BoatName
+        public Boat BoatName
         {
             get => _boatName;
             set { _boatName = value; OnPropertyChanged(); }
         }
-        public int RegattaId
+        public Regatta RegattaId
         {
             get => _regattaId;
             set { _regattaId = value; OnPropertyChanged(); }
@@ -53,17 +54,18 @@ namespace ROSViewsCDBG.ViewModels
             get => _description;
             set { _description = value; OnPropertyChanged(); }
         }
-        public string RegattaName
+        public Regatta RegattaName
         {
             get => _regattaName;
             set { _regattaName = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<string> RegisteredUsers
+        public ObservableCollection<RegisteredUser> RegisteredUsers
         {
             get => _registeredUsers;
-            set { _registeredUsers = value;OnPropertyChanged(); }
-        }
+            set { _registeredUsers = value; OnPropertyChanged(); }
             
+
         }
     }
+}
 
