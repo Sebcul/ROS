@@ -9,7 +9,7 @@ using ROSPersistence.ROSDB;
 
 namespace ROS.Services.Models
 {
-    class UserInfo
+    public class UserInfo : IUserInfo
     {
         private readonly IUser _user;
 
