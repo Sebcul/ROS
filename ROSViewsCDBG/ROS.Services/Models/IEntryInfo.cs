@@ -12,5 +12,6 @@ namespace ROS.Services.Models
         int TotalSumPaid { get; }
         string Description { get; }
         string RegattaName { get; }
+        IEnumerable<RegisteredUser> RegisteredUser { get; }
     }
 }

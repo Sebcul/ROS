@@ -29,5 +29,7 @@ namespace ROS.Services.Models
         public int TotalSumPaid => Convert.ToInt32(_entry.TotalSumPaid);
 
         public string RegattaName => _entry.Regatta.Name;
+
+        public IEnumerable<RegisteredUser> RegisteredUser => _entry.RegisteredUsers.Where(r => r.Id == _entry.Id);
     }
 }

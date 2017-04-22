@@ -1,12 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using ROS.Services.Services.Interfaces;
-using ROSPersistence.ROSDB;
-using ROSViewsCDBG.Extensions;
-using ROSViewsCDBG.Helper_classes;
-using Ros.Services.Services.Interfaces;
+﻿using Ros.Services.Services.Interfaces;
 using ROS.Services;
+using System;
+using System.Collections.ObjectModel;
 
 namespace ROSViewsCDBG.ViewModels
 {
@@ -19,13 +14,15 @@ namespace ROSViewsCDBG.ViewModels
         private int _totalSumPaid;
         private string _description;
         private string _regattaName;
+        private ObservableCollection<string> _registeredUsers;
         private readonly IEntryService _entryService;
 
         public EntryInfoViewModel()
         {
             _entryService = ServiceLocator.Instance.EntryService;
-            
+                        
         }
+
         public int No
         {
             get => _no;
@@ -60,6 +57,11 @@ namespace ROSViewsCDBG.ViewModels
         {
             get => _regattaName;
             set { _regattaName = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<string> RegisteredUsers
+        {
+            get => _registeredUsers;
+            set { _registeredUsers = value;OnPropertyChanged(); }
         }
             
         }
