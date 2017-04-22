@@ -33,7 +33,19 @@ namespace ROSViewsCDBG.ViewModels
         }
 
 
-        public ObservableCollection<IRegattaUserRecord> RegattaUserRecords { get { return _regattaUserRecords; } }
+        public ObservableCollection<IRegattaUserRecord> RegattaUserRecords
+        {
+            get
+            {
+                return _regattaUserRecords;
+            }
+
+            set
+            {
+                _regattaUserRecords = value;
+                OnPropertyChanged();
+            }
+        }
 
 
 
@@ -45,6 +57,8 @@ namespace ROSViewsCDBG.ViewModels
             _regattaUserRecords.Add(new Record());
             _regattaUserRecords.Add(new Record());
             _regattaUserRecords.Add(new Record());
+
+            RegattaUserRecords = _regattaUserRecords;
 
             //_regattaUserRecords = _regattaService.FindRegattasParticipatedInByUserId(_userId).ToObservableCollection();
         }
