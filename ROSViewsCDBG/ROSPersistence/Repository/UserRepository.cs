@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ROSPersistence.ROSDB;
 
 namespace ROSPersistence.Repository
 {
@@ -24,6 +25,7 @@ namespace ROSPersistence.Repository
             _context.Database.ExecuteSqlCommand(
                 "sp_AddUserInApplication @Email, @Password, @FirstName, @LastName, @Description", 
                 email, password, firstName, lastName, description);
+
         }
 
         public bool ConfirmUserCredentials(SqlParameter emailParam, SqlParameter passwordParam)

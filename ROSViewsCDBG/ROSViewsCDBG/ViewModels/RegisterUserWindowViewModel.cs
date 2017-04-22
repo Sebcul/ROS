@@ -16,7 +16,7 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class RegisterUserWindowViewModel : ViewModelBase
     {
-        //TODO: Add methods in AddUserService to handle phone number and address!
+        //TODO: Check if ContactInformationType already exists in database, will throw an exception if it already exists
 
         private ICommand _addPhoneNumberCommand;
         private ICommand _removePhoneNumberCommand;
@@ -35,6 +35,7 @@ namespace ROSViewsCDBG.ViewModels
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
         private UserAddress _address;
         private IAddUserService _addUserService;
+        private IUserService _userService;
 
         public RegisterUserWindowViewModel()
         {
@@ -42,6 +43,7 @@ namespace ROSViewsCDBG.ViewModels
             _listOfUserAddresses = new ObservableCollection<UserAddress>();
             _phoneNumbersTypeAndPhoneNumber = new Dictionary<string, string>();
             _addUserService = ServiceLocator.Instance.AddUserService;
+            _userService = ServiceLocator.Instance.UserService;
             RegisterMessages();
         }
 
@@ -199,15 +201,55 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RegisterUser(object obj)
         {
-            var userToRegister = new User() {Active = true, Email = Email, FirstName = FirstName, LastName = LastName, };
+            var userToRegister = new User
+            {
+                Active = true,
+                Email = Email,
+                FirstName = FirstName,
+                LastName = LastName,
+                Description = ""
+            };
+
             if (Password.Equals(PasswordRepeat))
             {
-                //_addUserService.AddUser(userToRegister, Password);
+                _addUserService.AddUser(userToRegister, Password);
             }
             else
             {
                 MessageBox.Show("Lösenorden stämmer inte överrens.");
             }
+            var savedUser = _userService.FindUserByEmail(userToRegister.Email);
+
+            var userContactInformationToRegister = new UserContactInformation()
+            {
+                Active = true,
+                BoxNo = Address.BoxNo,
+                Country = Address.Country,
+                City = Address.City,
+                Street = Address.Street,
+                Zip_Code = Address.Zip_Code,
+                Description = Address.Description
+            };
+            savedUser.UserContactInformations.Add(userContactInformationToRegister);
+
+            var userContactInformationType = savedUser.UserContactInformations.FirstOrDefault().ContactInformationTypes = new List<ContactInformationType>();
+
+            var userContactInformationTypeToRegister = new ContactInformationType()
+            {
+                Active = true,
+                Type = Address.AddressType
+            };
+
+            userContactInformationType.Add(userContactInformationTypeToRegister);
+
+            var phoneNumberList = userContactInformationToRegister.UserPhoneNumbers = new List<UserPhoneNumber>();
+            foreach (var number in PhoneNumbers)
+            {
+                phoneNumberList.Add(new UserPhoneNumber() { Active = true, PhoneNumber = number });
+            }
+            
+            _userService.UpdateUser(userToRegister);
+            
         }
 
         private void OnPhoneNumberAndTypeReceived(Dictionary<string, string> phoneNumberAndType)
