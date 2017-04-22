@@ -11,5 +11,7 @@ namespace ROS.Services.Services.Interfaces
         IEnumerable<Regatta> GetOngoingRegattas();
         IEnumerable<Regatta> GetPastRegattas();
         IEnumerable<Regatta> GetUpcomingRegattas();
+        IEnumerable<IRegattaUserRecord> FindUsersOngoingRegattasById(int id);
+        IEnumerable<IRegattaUserRecord> FindUsersUpcomingRegattasByUserId(int id);
     }
 }

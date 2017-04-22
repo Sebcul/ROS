@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ROS.Services;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using ROS.Services.Helpers;
 using ROS.Services.Models;
 using ROS.Services.Services.Interfaces;
-using ROSPersistence.ROSDB;
 using ROSViewsCDBG.Extensions;
 using ROSViewsCDBG.Helper_classes;
 
@@ -19,7 +13,15 @@ namespace ROSViewsCDBG.ViewModels
     {
         private IRegattaService _regattaService;
 
-        private ObservableCollection<IRegattaUserRecord> _regattaUserRecords;
+
+        private ObservableCollection<IRegattaUserRecord> _regattasUserParticipatedIn;
+        private ObservableCollection<IRegattaUserRecord> _usersUpcomingRegattas;
+        private ObservableCollection<IRegattaUserRecord> _usersOngoingRegattas;
+
+        private Visibility _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage;
+        private Visibility _visibilityOfUserHasNoUpcomingRegattasMessage;
+        private Visibility _visibilityOfUserHasNoOngoingRegattasMessage;
+
 
         private int _userId;
 
@@ -30,46 +32,111 @@ namespace ROSViewsCDBG.ViewModels
 
             _regattaService = ServiceLocator.Instance.RegattaService;
 
+            InitializeCollections();
+        }
+
+        private void InitializeCollections()
+        {
+            RegattasUserParticipatedIn = _regattaService.FindRegattasParticipatedInByUserId(_userId).ToObservableCollection();
+            UsersOngoingRegattas = _regattaService.FindUsersOngoingRegattasById(_userId).ToObservableCollection();
+            UsersUpcomingRegattas = _regattaService.FindUsersUpcomingRegattasByUserId(_userId).ToObservableCollection();
         }
 
 
-        public ObservableCollection<IRegattaUserRecord> RegattaUserRecords
+        public ObservableCollection<IRegattaUserRecord> RegattasUserParticipatedIn
         {
             get
             {
-                return _regattaUserRecords;
+                VisibilityOfUserHasNoRecordOfParticipationInRegattasMessage = RegattaCollectionIsEmpty(_regattasUserParticipatedIn)
+                    ? Visibility.Visible : Visibility.Collapsed;
+                return _regattasUserParticipatedIn;
             }
-
             set
             {
-                _regattaUserRecords = value;
+                _regattasUserParticipatedIn = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<IRegattaUserRecord> UsersUpcomingRegattas
+        {
+            get
+            {
+                VisibilityOfUserHasNoUpcomingRegattasMessage = RegattaCollectionIsEmpty(_usersUpcomingRegattas) 
+                    ? Visibility.Visible : Visibility.Collapsed;
+
+                return _usersUpcomingRegattas;
+            }
+            set
+            {
+                _usersUpcomingRegattas = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<IRegattaUserRecord> UsersOngoingRegattas
+        {
+            get
+            {
+                VisibilityOfUserHasNoOngoingRegattasMessage = RegattaCollectionIsEmpty(_usersOngoingRegattas)
+                    ? Visibility.Visible : Visibility.Collapsed;
+                return _usersOngoingRegattas;
+            }
+            set
+            {
+                _usersOngoingRegattas = value;
+                OnPropertyChanged();
+            }
+        }
+        
+
+
+
+
+        public Visibility VisibilityOfUserHasNoUpcomingRegattasMessage
+        {
+            get { return _visibilityOfUserHasNoUpcomingRegattasMessage; }
+            set
+            {
+                _visibilityOfUserHasNoUpcomingRegattasMessage = value;
                 OnPropertyChanged();
             }
         }
 
 
+        public Visibility VisibilityOfUserHasNoOngoingRegattasMessage
+        {
+            get { return _visibilityOfUserHasNoOngoingRegattasMessage; }
+            set
+            {
+                _visibilityOfUserHasNoOngoingRegattasMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility VisibilityOfUserHasNoRecordOfParticipationInRegattasMessage
+        {
+            get { return _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage; }
+            set
+            {
+                _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private void OnUserIdRecieved(int id)
         {
             _userId = id;
-            _regattaUserRecords = new List<IRegattaUserRecord>().ToObservableCollection();
-            _regattaUserRecords.Add(new Record());
-            _regattaUserRecords.Add(new Record());
-            _regattaUserRecords.Add(new Record());
-            _regattaUserRecords.Add(new Record());
-
-            RegattaUserRecords = _regattaUserRecords;
-
-            //_regattaUserRecords = _regattaService.FindRegattasParticipatedInByUserId(_userId).ToObservableCollection();
         }
 
 
+        private bool RegattaCollectionIsEmpty(ObservableCollection<IRegattaUserRecord> regattaCollection)
+        {
+            return regattaCollection.Count == 0;
+        }
+
     }
 
-    public class Record : IRegattaUserRecord
-    {
-        public string Name { get; } = "Regatta 1";
-        public string EndDate { get; } = "24/7 2016";
-        public string StartDate { get; } = "24/7 2016";
-    }
+  
 }
