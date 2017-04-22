@@ -31,13 +31,13 @@
         <TextBlock Text="Anmälningar" Grid.Row="5" Margin="5"/>
         <TextBlock Text="Beskrivning" Grid.Row="6" Margin="5"/>
 
-        <TextBlock Grid.Column="1" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="2" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="3" Width="250" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Width="250" Margin="5" Text="{Binding No}" />
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Margin="5" Text="{Binding Name}" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Width="250" Margin="5" Text="{Binding SkipperId}" />
+        <TextBlock Grid.Column="1" Grid.Row="3" Width="250" Margin="5" Text="{Binding BoatName}" />
         <ListBox Grid.Column="1" Grid.Row="4" Width="250" Margin="5"/>
         <ListBox Grid.Column="1" Grid.Row="5" Width="250" Margin="5"/>
-        <TextBlock Grid.Column="1" Grid.Row="6" Width="250" Height="150" Margin="5"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="6" Width="250" Height="150" Margin="5" Text="{Binding Description}" />
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center">
             <Button Content="Tillbaka" Margin="0,10,0,0"/>
         </StackPanel>

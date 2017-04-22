@@ -34,12 +34,7 @@ namespace Ros.Services.Services
             _repository.InsertEntity(boat);
         }
 
-        public Boat GetBoat(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Boat> IBoatService.GetAllBoats()
+        public IEnumerable<Boat> GetAllBoats()
         {
             return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Active);
         }
