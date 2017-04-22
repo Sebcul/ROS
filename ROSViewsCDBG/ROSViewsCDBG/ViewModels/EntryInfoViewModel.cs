@@ -8,31 +8,44 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class EntryInfoViewModel : ViewModelBase
     {
+        private string _boatName;
+        private int _regattaId;
         private int _no;
-        private int _skipperId;
-        private Boat _boatName;
-        private Regatta _regattaId;
         private int _totalSumPaid;
-        private string _description;
-        private Regatta _regattaName;
-        private ObservableCollection<RegisteredUser> _registeredUsers;
+        private string _regattaName;
+        private ObservableCollection<string> _registeredUsers;
         private readonly IEntryService _entryService;
 
         public EntryInfoViewModel()
         {
             _entryService = ServiceLocator.Instance.EntryService;
-
-        }
+                        
+    	}
 
         public int No
         {
             get => _no;
             set { _no = value; OnPropertyChanged(); }
-        }
-        public int SkipperId
+	}
+        public string BoatName
         {
-            get => _skipperId;
-            set { _skipperId = value; OnPropertyChanged(); }
+        get => _boatName;
+        set {_boatName = value; OnPropertyChanged(); }
+        }
+        public int RegattaId
+        {
+        get => _regattaId;
+        set {_regattaId = value; OnPropertyChanged(); }
+        }
+        public string RegattaName
+        {
+        get => _regattaName;
+        set {_regattaName = value; OnPropertyChanged(); }
+        }
+        public ObservableCollection<string> RegisteredUsers
+        {
+        get => _registeredUsers;
+        set {_boatName = value; OnPropertyChanged(); }
         }
         public Boat BoatName
         {
@@ -54,18 +67,8 @@ namespace ROSViewsCDBG.ViewModels
             get => _description;
             set { _description = value; OnPropertyChanged(); }
         }
-        public Regatta RegattaName
-        {
-            get => _regattaName;
-            set { _regattaName = value; OnPropertyChanged(); }
-        }
-        public ObservableCollection<RegisteredUser> RegisteredUsers
-        {
-            get => _registeredUsers;
-            set { _registeredUsers = value; OnPropertyChanged(); }
-            
 
-        }
     }
+}
 }
 
