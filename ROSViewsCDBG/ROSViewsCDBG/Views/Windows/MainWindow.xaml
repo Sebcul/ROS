@@ -1,4 +1,4 @@
-﻿<Window x:Class="ROSViewsCDBG.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,17 +7,22 @@
         xmlns:userControls="clr-namespace:ROSViewsCDBG.Views.UserControls"
         xmlns:projektet="clr-namespace:Projektet"
 
+        x:Class="ROSViewsCDBG.MainWindow"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainWindowViewModel}">
+        >
     <Window.Resources>
         <userControls:ListUsersTeamsView x:Key="ListUsersTeamsView"/>
     </Window.Resources>
+    <Window.DataContext>
+        <Binding Path="MainWindowViewModel" Source="{StaticResource ViewModelLocator}"/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -28,9 +33,7 @@
         <StackPanel Grid.Row="1">
             <TextBlock Text="Inloggad som" HorizontalAlignment="Center" FontStyle="Italic" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding UserFullName}" HorizontalAlignment="Center" FontStyle="Italic" Margin="10,5,10,10"/>
-            <TextBox Margin="10">
-                <TextBox.Text>Sök...</TextBox.Text>
-            </TextBox>
+            <TextBox Margin="10">Sök...</TextBox>
             <Button Content="Mina uppgifter" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding EditUserInfoCommand}"/>
             <Button Content="Mina lag" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserTeamsCommand}"/>
             <Button Content="Mina resultat" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="10" Command="{Binding UserResultsCommand}"/>
@@ -40,8 +43,7 @@
             <Button Content="Test" Background="LightBlue" BorderThickness="2" BorderBrush="Black" Margin="40" Command="{Binding UserInfoCommand}"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <ContentControl Content="{Binding SelectedUserControl}" Margin="60,0,0,0">
-            </ContentControl>
+            <ContentControl Content="{Binding SelectedUserControl}" Margin="60,0,0,0"/>
         </ScrollViewer>
     </Grid>
 </Window>

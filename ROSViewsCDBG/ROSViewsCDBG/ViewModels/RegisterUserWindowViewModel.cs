@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using ROS.Services;
+using ROS.Services.Helpers;
 using ROS.Services.Services.Interfaces;
 using ROSPersistence.ROSDB;
 using ROSViewsCDBG.Helper_classes;
