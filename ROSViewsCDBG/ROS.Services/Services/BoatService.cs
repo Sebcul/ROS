@@ -12,36 +12,46 @@ namespace Ros.Services.Services
 {
     public class BoatService : IBoatService
     {
-        private IRepository<Boat> _repository;
+        private readonly IRepository<Boat> _repository;
 
         public BoatService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<Boat>();
         }
 
-        public void DeleteEntity(Boat Boat)
+        public void DeleteBoat(Boat boat)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Boat> GetAllBoatsThatMatchPredicate(Expression<Func<Boat, bool>> predicate)
+        public void UpdateBoat(Boat boat)
+        {
+            _repository.UpdateEntity(boat);
+        }
+
+        public void AddBoat(Boat boat)
+        {
+            _repository.InsertEntity(boat);
+        }
+
+        public Boat GetBoat(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateEntity(Boat Boat)
+        IEnumerable<Boat> IBoatService.GetAllBoats()
         {
-            throw new NotImplementedException();
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Active);
         }
 
-        public void InsertEntity(Boat Boat)
+        public IEnumerable<Boat> GetAllBoatsWithHandicap(int handicap)
         {
-            throw new NotImplementedException();
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Handicap == handicap);
         }
 
-        public void AddEntity(Boat Boat)
+        public IBoat GetBoatByName(string name)
         {
-            throw new NotImplementedException();
+            return _repository.GetAllWhereEntitiesMatchPredicate(boat => boat.Name == name).FirstOrDefault();
         }
     }
 }

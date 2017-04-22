@@ -39,6 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Json, Version=4.19.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.Json.4.19.0\lib\net45\FluentAssertions.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -69,6 +78,8 @@
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>
@@ -83,10 +94,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service Tests\BoatServiceTests.cs" />
     <Compile Include="Service Tests\EntryServiceTests.cs" />
-    <Compile Include="Service Tests\RegattaServiceTests.cs" />
     <Compile Include="Test Utilities\TestDataFactory.cs" />
+    <Compile Include="ServiceTests\BoatServiceTests.cs" />
+    <Compile Include="Service Tests\RegattaServiceTests.cs" />
+    <Compile Include="ServiceTests\TeamServiceTests.cs" />
     <Compile Include="Test Utilities\RepositoryFactoryBuilder.cs" />
     <Compile Include="Test Utilities\RepositoryFake.cs" />
     <Compile Include="Service Tests\UserServiceTests.cs" />
@@ -94,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -102,6 +115,12 @@
       <Project>{FE6ACEE4-3670-4678-B934-80B99C29B606}</Project>
       <Name>ROS.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ROSPersistence\ROSPersistence.csproj">
+      <Project>{46061C95-A183-4CEA-ACA4-2B37FE413402}</Project>
+      <Name>ROSPersistence</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ROSPersistenceUnitTests\ROSPersistenceUnitTests.csproj">
       <Project>{3afb4fac-28b9-473a-9382-80e835f56994}</Project>
       <Name>ROSPersistenceUnitTests</Name>
