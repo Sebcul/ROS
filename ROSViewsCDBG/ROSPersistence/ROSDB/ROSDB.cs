@@ -39,7 +39,7 @@ namespace ROSPersistence.ROSDB
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<SocialEventAttendee> SocialEventAttendees { get; set; }
         public virtual DbSet<SocialEvent> SocialEvents { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<sysdiagram> Sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<TimeMeasuredRaceEvent> TimeMeasuredRaceEvents { get; set; }
         public virtual DbSet<TimeResult> TimeResults { get; set; }
