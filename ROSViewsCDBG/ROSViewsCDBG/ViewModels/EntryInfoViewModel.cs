@@ -26,11 +26,11 @@ namespace ROSViewsCDBG.ViewModels
         {
             get => _no;
             set { _no = value; OnPropertyChanged(); }
-	}
+    	}
         public string BoatName
         {
-        get => _boatName;
-        set {_boatName = value; OnPropertyChanged(); }
+            get => _boatName;
+            set {_boatName = value; OnPropertyChanged(); }
         }
         public int RegattaId
         {
@@ -45,30 +45,17 @@ namespace ROSViewsCDBG.ViewModels
         public ObservableCollection<string> RegisteredUsers
         {
         get => _registeredUsers;
-        set {_boatName = value; OnPropertyChanged(); }
+        set {_registeredUsers = value; OnPropertyChanged(); }
         }
-        public Boat BoatName
-        {
-            get => _boatName;
-            set { _boatName = value; OnPropertyChanged(); }
-        }
-        public Regatta RegattaId
-        {
-            get => _regattaId;
-            set { _regattaId = value; OnPropertyChanged(); }
-        }
+
         public int TotalSumPaid
         {
             get => _totalSumPaid;
             set { _totalSumPaid = value; OnPropertyChanged(); }
         }
-        public string Description
-        {
-            get => _description;
-            set { _description = value; OnPropertyChanged(); }
-        }
+        
 
     }
 }
-}
+
 
