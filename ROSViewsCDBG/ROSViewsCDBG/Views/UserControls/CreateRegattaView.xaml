@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <TextBlock Text="Värdklubb:" Margin="10,10,10,0"/>
-            <ComboBox Margin="10" ItemsSource="{Binding Clubs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ComboBox Margin="10" ItemsSource="{Binding Clubs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding HostClub}" SelectedIndex="0"/>
         </StackPanel>
         <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Text="Skapa Ny Regatta" />
         <TextBlock Grid.Row="1" Margin="10" Text="Regattanamn:" />

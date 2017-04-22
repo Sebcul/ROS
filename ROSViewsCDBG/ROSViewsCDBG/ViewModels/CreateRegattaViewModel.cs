@@ -18,13 +18,13 @@ namespace ROSViewsCDBG.ViewModels
         private readonly IRegattaService _regattaService;
         private readonly IUserService _userService; 
         private string _name;
-        private ObservableCollection<User> _admins;
         private string _location;
         private string _startDate;
         private string _endDate;
         private string _startTime;
         private string _endTime;
         private string _description;
+        private ObservableCollection<User> _admins;
         private ObservableCollection<User> _hostClubMembers;
         private ObservableCollection<Event> _events;
         private ObservableCollection<Club> _clubs;
@@ -40,7 +40,18 @@ namespace ROSViewsCDBG.ViewModels
         {
             _regattaService = ServiceLocator.Instance.RegattaService;
             _userService = ServiceLocator.Instance.UserService;
+
+            InitializeCollections();
+
             RegisterMessages();
+        }
+
+        private void InitializeCollections()
+        {
+            _admins = new ObservableCollection<User>();
+            _hostClubMembers = new ObservableCollection<User>();
+            _events = new ObservableCollection<Event>();
+            _clubs = new ObservableCollection<Club>();
         }
 
         public string Name
@@ -108,7 +119,7 @@ namespace ROSViewsCDBG.ViewModels
         }
         public ObservableCollection<User> HostClubMembers
         {
-            get { return HostClub.Members.SelectMany(m => m.Users).ToObservableCollection(); }
+            get { return /*HostClub.Members.SelectMany(m => m.Users).ToObservableCollection() ??*/ _hostClubMembers; } //Throws NullReferenceException
             set { _hostClubMembers = value; OnPropertyChanged(); }
         }
 
