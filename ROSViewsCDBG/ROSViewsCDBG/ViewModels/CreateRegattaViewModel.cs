@@ -40,6 +40,7 @@ namespace ROSViewsCDBG.ViewModels
         {
             _regattaService = ServiceLocator.Instance.RegattaService;
             _userService = ServiceLocator.Instance.UserService;
+            RegisterMessages();
         }
 
         public string Name
@@ -156,15 +157,13 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RegisterMessages()
         {
-            Messenger.Default.Register<string>(this, OnEmailReceived);
+            Messenger.Default.Register<int>(this, OnEmailReceived);
         }
 
-        private void OnEmailReceived(string email)
+        private void OnEmailReceived(int id)
         {
-            var user = _userService.FindUserByEmail(email);
+            var user = _userService.FindUserById(id);
             Clubs = user.Members.SelectMany(u => u.Clubs).ToObservableCollection();
-
-
         }
     }
 }
