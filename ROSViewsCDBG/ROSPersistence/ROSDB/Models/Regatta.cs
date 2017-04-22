@@ -8,14 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Regatta : IRegatta
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Regatta()
-        {
-            Entries = new HashSet<Entry>();
-            Events = new HashSet<Event>();
-            RegattasFees = new HashSet<RegattasFee>();
-            ResponsibleRegattaMembers = new HashSet<ResponsibleRegattaMember>();
-        }
+
 
         public int Id { get; set; }
 

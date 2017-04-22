@@ -16,7 +16,7 @@ namespace ROSPersistence.Repository
         public Repository(DbContext context)
         {
             _context = context;
-            _context.Configuration.LazyLoadingEnabled = false;
+            //_context.Configuration.LazyLoadingEnabled = false;
 
             _dbSet = _context.Set<TEntity>();
         }

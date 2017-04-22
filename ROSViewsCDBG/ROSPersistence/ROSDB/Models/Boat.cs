@@ -8,11 +8,6 @@ namespace ROSPersistence.ROSDB
 
     public partial class Boat : IBoat
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Boat()
-        {
-            Entries = new HashSet<Entry>();
-        }
 
         public int Id { get; set; }
 

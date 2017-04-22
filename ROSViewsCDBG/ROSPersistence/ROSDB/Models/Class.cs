@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Class
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Class()
-        {
-            RaceEvents = new HashSet<RaceEvent>();
-        }
+
 
         public int Id { get; set; }
 

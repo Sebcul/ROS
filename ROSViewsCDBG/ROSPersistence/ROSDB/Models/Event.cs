@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Event : IEvent
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Event()
-        {
-            EventsFees = new HashSet<EventsFee>();
-        }
+
 
         public int Id { get; set; }
 

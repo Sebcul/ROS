@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using ROS.Services.Helpers;
 using ROS.Services.Services.Interfaces;
@@ -58,12 +59,12 @@ namespace ROSViewsCDBG.ViewModels
         {
             var contactCollection = new ObservableCollection<string>();
 
-            //var builder = new StringBuilder();
-
             foreach (var contact in contactInformation)
-            {
-                var boxNo = $"BOX: {contact.BoxNo.ToString()}\n" ?? "";
-                contactCollection.Add($"{contact.ContactInformationTypes}{contact.Street}\n" +
+            { 
+                var boxNo = contact.BoxNo.HasValue ? $"BOX: {contact.BoxNo}\n" : "";
+                var contactInformationType = contact.ContactInformationTypes.Select(u => u.Type).First();
+
+                contactCollection.Add($"{contactInformationType}\n{contact.Street}\n" +
                                       $"{boxNo}{contact.City}\n{contact.Zip_Code}\n{contact.Country}\n\n");
             }
             return contactCollection;

@@ -8,13 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Team : ITeam
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Team()
-        {
-            CrewMembers = new HashSet<CrewMember>();
-            Results = new HashSet<Result>();
-            RaceEvents = new HashSet<RaceEvent>();
-        }
+
 
         public int Id { get; set; }
 

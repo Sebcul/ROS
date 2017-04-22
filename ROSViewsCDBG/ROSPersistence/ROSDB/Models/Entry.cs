@@ -8,14 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Entry : IEntry
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Entry()
-        {
-            RegisteredUsers = new HashSet<RegisteredUser>();
-            EventsFees = new HashSet<EventsFee>();
-            RegattasFees = new HashSet<RegattasFee>();
-            Teams = new HashSet<Team>();
-        }
+
 
         public int Id { get; set; }
 

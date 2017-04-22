@@ -9,12 +9,6 @@ namespace ROSPersistence.ROSDB
     [Table("UserContactInformation")]
     public partial class UserContactInformation
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserContactInformation()
-        {
-            UserPhoneNumbers = new HashSet<UserPhoneNumber>();
-            ContactInformationTypes = new HashSet<ContactInformationType>();
-        }
 
         public int Id { get; set; }
 
