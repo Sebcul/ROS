@@ -21,7 +21,7 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _userSocialEventsCommand;
         private ICommand _userClubsCommand;
         private ICommand _userInfoCommand;
-        private IUserService _serviceLocator;
+        private readonly IUserService _serviceLocator;
         private string _userFullName;
         private object _selectedUserControl;
         private string _email;

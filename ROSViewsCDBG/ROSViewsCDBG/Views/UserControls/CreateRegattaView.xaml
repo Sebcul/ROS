@@ -27,8 +27,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <TextBlock Text="Värdklubb:" Margin="10,10,10,0"/>
-            <ComboBox Margin="10" ItemsSource="{Binding Clubs}"/>
-
+            <ComboBox Margin="10" ItemsSource="{Binding Clubs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
         <TextBlock Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Text="Skapa Ny Regatta" />
         <TextBlock Grid.Row="1" Margin="10" Text="Regattanamn:" />
@@ -39,47 +38,43 @@
         <TextBlock Grid.Row="6" Margin="10" Text="Beskrivning:" />
         <TextBlock Grid.Row="7" Margin="10" Text="Events:" />
 
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Width="250" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Width="250" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
             <StackPanel Orientation="Horizontal" Margin="5,5,5,0" Width="250">
-                <ComboBox Width="220" />
+                <ComboBox Width="220" ItemsSource="{Binding HostClubMembers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Content="+" Width="30" />
             </StackPanel>
-            <ListBox Width="250" Height="100">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="regattaAdmin1" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="regattaAdmin2" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="regattaAdmin3" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-            </ListBox>
+            <ListBox Width="250" Height="100" ItemsSource="{Binding Admins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Ta bort markerad" HorizontalAlignment="Right" Margin="0,0,5,5"/>
         </StackPanel>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" />
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" />
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" />
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" Height="100" />
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Margin="5,0,0,0" Text="Datum: (YYYY-MM-DD)"/>
+                <TextBox Margin="5,0,5,5" Width="150" Text="{Binding StarDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Tid: (HH:MM)" Margin="5,0,0,0"/>
+                <TextBox Margin="5,0,5,5" Width="90" Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Margin="5,0,0,0" Text="Datum: (YYYY-MM-DD)"/>
+                <TextBox Margin="5,0,5,5" Width="150" Text="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Margin="5,0,0,0" Text="Tid: (HH:MM)"/>
+                <TextBox Margin="5,0,5,5" Width="90" Text="{Binding EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </StackPanel>
+        <TextBox Grid.Row="6" Grid.Column="1" Height="100" TextWrapping="Wrap" Margin="5" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="1">
-            <ListBox Width="250" Height="100" Margin="5,5,5,0">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="event1 - [StartTid] - [SlutTid]" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="event2 - [StartTid] - [SlutTid]" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="event3 - [StartTid] - [SlutTid]" VerticalAlignment="Center" />
-                    <Button Content="-" Width="20" Margin="5,0,5,0" />
-                </StackPanel>
-            </ListBox>
-            <Button Content="Skapa Nytt Event" Margin="0,5,0,5" HorizontalAlignment="Center" />
+            <ListBox Width="250" Height="100" Margin="5,5,5,0" ItemsSource="{Binding Events, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Skapa nytt event" Margin="10,5,0,5"/>
+                <Button Content="Ta bort markerat event" Margin="25,5,0,5"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center">
             <Button Content="Registrera" MinWidth="50" Margin="1,10,50,0"/>
