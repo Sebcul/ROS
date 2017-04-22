@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ROSViewsCDBG.Views.Windows"
+        xmlns:vm="clr-namespace:ROSViewsCDBG.ViewModels"
         mc:Ignorable="d" 
-        Title="RegisterUserWindow" Width="370" Height="600" ResizeMode="NoResize"
+        Title="RegisterUserWindow" Width="370" Height="430" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=RegisterUserWindowViewModel}">
     <Grid Background="AliceBlue">
 
@@ -48,7 +50,9 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" Margin="5">
-            <ListView Width="230" ItemsSource="{Binding ListOfUserAddresses, Path=Address.AddressType}"/>
+            <ListView Width="230" ItemsSource="{Binding ListOfUserAddresses}" DisplayMemberPath="AddressType" SelectedItem="{Binding SelectedAddress}">
+
+            </ListView>
             <StackPanel Orientation="Vertical">
                 <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddAddressCommand}"/>
                 <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding RemoveAddressCommand}"/>

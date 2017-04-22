@@ -25,7 +25,7 @@ namespace ROSViewsCDBG.ViewModels
         private ObservableCollection<string> _phoneNumbers;
         private ObservableCollection<UserAddress> _listOfUserAddresses;
         private string _selectedPhoneNumber;
-        private string _selectedAddress;
+        private UserAddress _selectedAddress;
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
         private UserAddress _address;
 
@@ -132,7 +132,7 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
-        public string SelectedAddress
+        public UserAddress SelectedAddress
         {
             get { return _selectedAddress; }
             set
@@ -186,7 +186,7 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RemoveAddress(object obj)
         {
-            
+            ListOfUserAddresses.Remove(SelectedAddress);
         }
 
         private void RegisterUser(object obj)
@@ -239,12 +239,13 @@ namespace ROSViewsCDBG.ViewModels
         private void OnNewAddressRecieved(UserAddress address)
         {
             Address = address;
+            ListOfUserAddresses.Add(Address);
         }
 
         private void RegisterMessages()
         {
             Messenger.Default.Register<Dictionary<string, string>>(this, OnPhoneNumberAndTypeReceived);
-            Messenger.Default.Register<UserAddress>(this, OnNewAddressRecieved);
+            Messenger.Default.Register<UserAddress>(this, OnNewAddressRecieved, "AddressSent");
         }
     }
 }

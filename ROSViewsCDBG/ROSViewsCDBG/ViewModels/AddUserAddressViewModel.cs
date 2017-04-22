@@ -51,7 +51,7 @@ namespace ROSViewsCDBG.ViewModels
 
         private void SaveAddress(object obj)
         {
-            Messenger.Default.Send(_address);
+            Messenger.Default.Send(Address, "AddressSent");
             CloseWindow();
         }
 

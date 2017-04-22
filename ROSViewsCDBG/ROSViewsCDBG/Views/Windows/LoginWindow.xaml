@@ -11,6 +11,7 @@
         MinWidth="525" MinHeight="350"
         MaxWidth="525" MaxHeight="350"
         Name="LoginWindowView"
+        WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=LoginWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>

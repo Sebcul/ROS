@@ -9,6 +9,7 @@
 
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainWindowViewModel}">
     <Window.Resources>
         <userControls:ListUsersTeamsView x:Key="ListUsersTeamsView"/>
