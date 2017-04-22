@@ -164,12 +164,12 @@ namespace ROSViewsCDBG.ViewModels
 
             if (AllRegattaCollectionsAreEmpty())
             {
-                VisibilityOfUsersOngoingRegattasLabelHeader = Visibility.Collapsed;
-                VisibilityOfUserHasNoOngoingRegattasMessage = Visibility.Collapsed;
-                VisibilityOfNoInformationAboutUsersRegattasMessage = Visibility.Visible;
+                HideOngoingRegattasContent();
+                DisplayNoInformationAboutUsersRegattasMessage();
+
             }
-              
-                
+
+
 
         }
 
@@ -185,7 +185,20 @@ namespace ROSViewsCDBG.ViewModels
                             && RegattaCollectionIsEmpty(_usersOngoingRegattas);
         }
 
-        
+
+        private void HideOngoingRegattasContent()
+        {
+            VisibilityOfUsersOngoingRegattasLabelHeader = Visibility.Collapsed;
+            VisibilityOfUserHasNoOngoingRegattasMessage = Visibility.Collapsed;
+
+        }
+
+        private void DisplayNoInformationAboutUsersRegattasMessage()
+        {
+            VisibilityOfNoInformationAboutUsersRegattasMessage = Visibility.Visible;
+        }
+
+
     }
 
   
