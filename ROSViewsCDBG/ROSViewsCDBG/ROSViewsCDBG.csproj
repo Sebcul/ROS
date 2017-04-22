@@ -64,6 +64,10 @@
     <Compile Include="Helper classes\Messenger.cs" />
     <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\UserAddress.cs" />
+    <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\AddUserAddressViewModel.cs" />
     <Compile Include="ViewModels\ClubAdminViewModel.cs" />
     <Compile Include="ViewModels\ClubInfoViewModel.cs" />
     <Compile Include="ViewModels\ClubMemberViewModel.cs" />
@@ -87,7 +91,7 @@
     <Compile Include="ViewModels\RegisterToRaceEventViewModel.cs" />
     <Compile Include="ViewModels\RegisterToSocialEventViewModel.cs" />
     <Compile Include="ViewModels\RegisterToTeamViewModel.cs" />
-    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\RegisterUserWindowViewModel.cs" />
     <Compile Include="ViewModels\SocialEventInfoViewModel.cs" />
     <Compile Include="ViewModels\TeamInfoViewModel.cs" />
     <Compile Include="ViewModels\TimeMeasuredRaceEventInfoViewModel.cs" />
@@ -154,8 +158,14 @@
     <Compile Include="Views\UserControls\RegisterToTeamView.xaml.cs">
       <DependentUpon>RegisterToTeamView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\RegisterUserView.xaml.cs">
-      <DependentUpon>RegisterUserView.xaml</DependentUpon>
+    <Compile Include="Views\Windows\AddPhoneNumberWindow.xaml.cs">
+      <DependentUpon>AddPhoneNumberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\AddUserAddressWindow.xaml.cs">
+      <DependentUpon>AddUserAddressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\RegisterUserWindow.xaml.cs">
+      <DependentUpon>RegisterUserWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\UserControls\ClubAdminView.xaml">
       <SubType>Designer</SubType>
@@ -245,6 +255,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Windows\AddPhoneNumberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\AddUserAddressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,9 +309,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControls\RegisterUserView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\Windows\RegisterUserWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

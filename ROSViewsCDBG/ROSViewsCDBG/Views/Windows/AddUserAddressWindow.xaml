@@ -1,0 +1,46 @@
+﻿<Window x:Class="ROSViewsCDBG.Views.Windows.AddUserAddressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ROSViewsCDBG.Views.Windows"
+        mc:Ignorable="d"
+        Title="AddUserAddressWindow" Height="370" Width="400"
+        Name="AddUserAddress"
+        DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=AddUserAddressViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Land:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,10,10,10" Text="{Binding Address.Country}"/>
+        <TextBlock Text="Stad:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,10,10,10" Text="{Binding Address.City}"/>
+        <TextBlock Text="Gata:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10,10,10" Text="{Binding Address.Street}"/>
+        <TextBlock Text="Postnummer: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,10,10,10" Text="{Binding Address.Zip_Code}"/>
+        <TextBlock Text="Boxnummer:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Margin="0,10,10,10" Text="{Binding Address.BoxNo}"/>
+        <TextBlock Text="Kommentar:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Height="50" Margin="0,10,10,10" Text="{Binding Address.Description}"/>
+        <TextBlock Text="Addresstyp:" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <ComboBox Grid.Column="1" Grid.Row="6" Margin="0,10,10,10" ItemsSource="{Binding AddressTypes}" SelectedIndex="0" SelectedItem="{Binding Address.AddressType}"/>
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3">
+            <Button Content="Spara" HorizontalAlignment="Center" VerticalAlignment="Center"  Padding="2" Command="{Binding SaveAddressCommand}"/>
+            <Button Content="Avbryt" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Padding="2" IsCancel="True"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

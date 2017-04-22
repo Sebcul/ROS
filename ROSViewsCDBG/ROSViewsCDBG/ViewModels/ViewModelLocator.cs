@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ROSViewsCDBG.Views.UserControls;
+using ROSViewsCDBG.Views.Windows;
 
 namespace ROSViewsCDBG.ViewModels
 {
@@ -114,9 +115,9 @@ namespace ROSViewsCDBG.ViewModels
             get { return new RegisterToTeamViewModel(); }
         }
 
-        public static RegisterUserViewModel RegisterUserViewModel
+        public static RegisterUserWindowViewModel RegisterUserWindowViewModel
         {
-            get { return new RegisterUserViewModel(); }
+            get { return new RegisterUserWindowViewModel(); }
         }
 
         public static SocialEventInfoViewModel SocialEventInfoViewModel
@@ -147,6 +148,16 @@ namespace ROSViewsCDBG.ViewModels
         public static MainWindowViewModel MainWindowViewModel
         {
             get { return new MainWindowViewModel(); }
+        }
+
+        public static AddPhoneNumberViewModel AddPhoneNumberViewModel
+        {
+            get { return new AddPhoneNumberViewModel(); }
+        }
+
+        public static AddUserAddressViewModel AddUserAddressViewModel
+        {
+            get { return new AddUserAddressViewModel(); }
         }
         
     }
