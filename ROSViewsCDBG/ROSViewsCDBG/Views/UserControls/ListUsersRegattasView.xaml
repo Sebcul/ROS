@@ -8,16 +8,88 @@
              d:DesignHeight="300" d:DesignWidth="400"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ListUsersRegattasViewModel}">
 
+    <UserControl.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="Margin" Value="10, 10, 10, 10"></Setter>
+            <Setter Property="FontFamily" Value="Verdana"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="#e0f7fa"></Setter>
+            <Setter Property="AlternationCount" Value="2"></Setter>
+            <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+            <Setter Property="HorizontalGridLinesBrush" Value="Gainsboro"></Setter>
+            <Setter Property="VerticalGridLinesBrush" Value="Gainsboro"></Setter>
+            <Setter Property="Foreground" Value="#263238"></Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <DataGrid Margin="10, 10, 10, 10" ItemsSource="{Binding RegattaUserRecords }"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10">
+
+            <Label Content="Mina Pågående Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
+            <ListBox ItemsSource="{Binding RegattaUserRecords}" BorderThickness="0" HorizontalContentAlignment="Center">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" TextAlignment="Center" Margin="3" FontFamily="Verdana" FontSize="14"
+                                       FontWeight="Light" Foreground="#263238"/>
+                            <TextBlock Text="{Binding Location}" TextAlignment="Center" Margin="3" FontFamily="Verdana" FontSize="14" 
+                                       FontWeight="Light" Foreground="#263238"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10">
+
+            <Label Content="Mina Kommande Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
+            <DataGrid ItemsSource="{Binding RegattaUserRecords }" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Plats" Binding="{Binding Location}" />
+                    <DataGridTextColumn Header="Start Datum" Binding="{Binding StartDate}" />
+                    <DataGridTextColumn Header="Slut Datum" Binding="{Binding EndDate}" />
+                </DataGrid.Columns>
+
+                
+
+            </DataGrid>
+            
+        </StackPanel>
+
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
+
+            <Label Content="Mina Avslutade Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
+
+            <DataGrid  ItemsSource="{Binding RegattaUserRecords }">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Plats" Binding="{Binding Location}" />
+                    <DataGridTextColumn Header="Start Datum" Binding="{Binding StartDate}" />
+                    <DataGridTextColumn Header="Slut Datum" Binding="{Binding EndDate}" />
+                </DataGrid.Columns>
+
+                
+            </DataGrid>
+            
+        </StackPanel>
+        
+
 
     </Grid>
 </UserControl>

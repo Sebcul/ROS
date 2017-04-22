@@ -69,7 +69,8 @@ namespace ROSViewsCDBG.ViewModels
     public class Record : IRegattaUserRecord
     {
         public string Name { get; } = "Regatta 1";
-        public string EndDate { get; } = "24/7 2016";
         public string StartDate { get; } = "24/7 2016";
+        public string EndDate { get; } = "24/7 2016";
+        public string Location { get; } = "Göteborg";
     }
 }
