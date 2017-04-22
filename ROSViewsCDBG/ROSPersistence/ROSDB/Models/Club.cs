@@ -8,13 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class Club : IClub
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Club()
-        {
-            ClubContactInformations = new HashSet<ClubContactInformation>();
-            Regattas = new HashSet<Regatta>();
-            Members = new HashSet<Member>();
-        }
+
 
         public int Id { get; set; }
 

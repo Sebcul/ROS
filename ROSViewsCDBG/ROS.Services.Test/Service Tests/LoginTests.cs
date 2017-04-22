@@ -1,4 +1,5 @@
-﻿using ROS.Services.Services;
+﻿using ROS.Services.Helpers;
+using ROS.Services.Services;
 using Xunit;
 
 namespace ROS.Services.Test.Service_Tests

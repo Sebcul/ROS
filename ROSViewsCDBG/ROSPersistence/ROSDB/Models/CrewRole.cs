@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class CrewRole
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CrewRole()
-        {
-            CrewMembers = new HashSet<CrewMember>();
-        }
+
 
         public int Id { get; set; }
 

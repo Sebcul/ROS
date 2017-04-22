@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ROS.Services;
+using ROS.Services.Helpers;
 using ROS.Services.Services.Interfaces;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.Views.UserControls;
@@ -19,10 +20,12 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _userRegattasCommand;
         private ICommand _userSocialEventsCommand;
         private ICommand _userClubsCommand;
+        private ICommand _userInfoCommand;
         private IUserService _serviceLocator;
         private string _userFullName;
         private object _selectedUserControl;
         private string _email;
+        private int _userId;
 
         public MainWindowViewModel()
         {
@@ -58,6 +61,11 @@ namespace ROSViewsCDBG.ViewModels
         public ICommand UserClubsCommand
         {
             get { return _userClubsCommand ?? (_userClubsCommand = new RelayCommand(OpenUserClubs)); }
+        }
+
+        public ICommand UserInfoCommand
+        {
+            get { return _userInfoCommand ?? (_userInfoCommand = new RelayCommand(OpenUserInfo)); }
         }
 
         public object SelectedUserControl
@@ -108,7 +116,16 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenUserRegattas(object obj)
         {
+ 
             SelectedUserControl = new ListUsersRegattasView();
+            Messenger.Default.Send<int>(_userId);
+
+        }
+
+        private void OpenUserInfo(object obj)
+        {
+            SelectedUserControl = new UserInfoView();
+            Messenger.Default.Send<string>(_email);
         }
 
         private void OpenUserEvents(object obj)
@@ -131,6 +148,7 @@ namespace ROSViewsCDBG.ViewModels
             Email = email;
             var user =_serviceLocator.FindUserByEmail(Email);
             UserFullName = user.FirstName + " " + user.LastName;
+            _userId = user.Id;
         }
     }
 }

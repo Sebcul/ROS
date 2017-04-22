@@ -4,10 +4,9 @@ namespace ROS.Services.Models
 {
     public class RegattaUserRecord : IRegattaUserRecord
     {
-        private readonly Regatta _regatta;
+        private readonly IRegatta _regatta;
 
-
-        public RegattaUserRecord(Regatta regatta)
+        public RegattaUserRecord(IRegatta regatta)
         {
             _regatta = regatta;
         }
@@ -16,9 +15,11 @@ namespace ROS.Services.Models
         public string Name { get { return _regatta.Name; } }
 
 
-        public string StartDate { get { return $"{_regatta.StartTime:u}"; } }
+        public string Location { get { return _regatta.Location; } }
 
-        public string EndDate { get { return $"{_regatta.EndTime:u}"; } }
 
+        public string StartDate { get { return $"{_regatta.StartTime:g}"; } }
+
+        public string EndDate { get { return $"{_regatta.EndTime:g}"; } }
     }
 }

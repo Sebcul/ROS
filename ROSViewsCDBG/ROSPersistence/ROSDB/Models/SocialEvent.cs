@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class SocialEvent
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SocialEvent()
-        {
-            SocialEventAttendees = new HashSet<SocialEventAttendee>();
-        }
+
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class TimeMeasuredRaceEvent
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TimeMeasuredRaceEvent()
-        {
-            TimeResults = new HashSet<TimeResult>();
-        }
+
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

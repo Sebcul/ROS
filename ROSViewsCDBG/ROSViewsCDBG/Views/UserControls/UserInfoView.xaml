@@ -19,31 +19,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Anvädarnummer" Margin="5"/>
-        <TextBlock Text="Förnamn" Grid.Row="1" Margin="5"/>
-        <TextBlock Text="Efternamn" Grid.Row="2" Margin="5"/>
-        <TextBlock Text="Klubb" Grid.Row="3" Margin="5"/>
-        <TextBlock Text="Land" Grid.Row="4" Margin="5"/>
-        <TextBlock Text="Stad" Grid.Row="5" Margin="5"/>
-        <TextBlock Text="Adress" Grid.Row="6" Margin="5"/>
-        <TextBlock Text="Postnummer" Grid.Row="7" Margin="5"/>
-    
 
-        <TextBlock Grid.Column="1" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="2" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="3" Width="250" Margin="5"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="4" Width="250" Margin="5"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" Width="250" Margin="5"/>
-        <TextBlock Grid.Column="1" Grid.Row="6" Width="250" Margin="5"/>
-        <TextBlock Grid.Column="1" Grid.Row="7" Width="250" Margin="5"/>
-        
+        </Grid.RowDefinitions>
+        <TextBlock Text="Namn" Margin="5"/>
+        <TextBlock Text="Klubbar" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Adresser" Grid.Row="2" Margin="5"/>
+
+        <TextBlock Grid.Column="1" Width="250" Margin="5" Text="{Binding Name}"/>
+        <ListBox Grid.Column="1" Grid.Row="1" Width="250" Margin="5" ItemsSource="{Binding Clubs}"/>
+        <ListBox Grid.Column="1" Grid.Row="2" Width="250" Margin="5" ItemsSource="{Binding ContactInformation}"/>
+
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" Margin="10,60,100,80">
             <Button Content="Tillbaka" Margin="10,10,10,10"/>
         </StackPanel>

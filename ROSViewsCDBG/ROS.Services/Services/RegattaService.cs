@@ -13,7 +13,6 @@ namespace ROS.Services.Services
     {
         private readonly IRepository<Regatta> _repository;
 
-
         public RegattaService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<Regatta>();
@@ -24,25 +23,47 @@ namespace ROS.Services.Services
         {
             var regattas = _repository.GetAllWhereEntitiesMatchPredicate(
                 regatta => regatta.Active && regatta.Entries.Any(
-                    entry => entry.RegisteredUsers.Any(
-                        user => user.Id == id)));
+                               entry => entry.RegisteredUsers.Any(
+                                   user => user.UserId == id)));
 
-             return ConvertRegattasToRegattaUserRecords(regattas);
+            return ConvertRegattasToRegattaUserRecords(regattas);
         }
 
 
-        private List<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IList<Regatta> regattas)
+        public IEnumerable<IRegattaUserRecord> FindUsersOngoingRegattasById(int id)
+        {
+            var regattas =
+                GetOngoingRegattas().Where(
+                    regatta => regatta.Entries.Any(
+                        entry => entry.RegisteredUsers.Any(
+                            user => user.UserId == id)));
+
+            return ConvertRegattasToRegattaUserRecords(regattas);
+        }
+
+
+        public IEnumerable<IRegattaUserRecord> FindUsersUpcomingRegattasByUserId(int id)
+        {
+            var regattas =
+                GetUpcomingRegattas().Where(
+                    regatta => regatta.Entries.Any(
+                        entry => entry.RegisteredUsers.Any(
+                            user => user.UserId == id)));
+
+            return ConvertRegattasToRegattaUserRecords(regattas);
+        }
+
+
+
+        private IEnumerable<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IEnumerable<Regatta> regattas)
         {
             var regattaRecords = new List<IRegattaUserRecord>();
 
             foreach (var regatta in regattas)
-            {
                 regattaRecords.Add(RegattaRecordFactory.Instance.CreateRegattaRecord(regatta));
-            }
 
             return regattaRecords;
         }
-
 
 
         public IEnumerable<Regatta> GetAllRegattas()
@@ -53,9 +74,8 @@ namespace ROS.Services.Services
 
         public IEnumerable<Regatta> GetUpcomingRegattas()
         {
-            return
-                _repository.GetAllWhereEntitiesMatchPredicate(
-                    regatta => regatta.Active && regatta.StartTime > DateTime.Now);
+            return _repository.GetAllWhereEntitiesMatchPredicate(
+                regatta => regatta.Active && regatta.StartTime > DateTime.Now);
         }
 
 
@@ -72,5 +92,7 @@ namespace ROS.Services.Services
                 _repository.GetAllWhereEntitiesMatchPredicate(
                     regatta => regatta.Active && regatta.StartTime < DateTime.Now && regatta.EndTime > DateTime.Now);
         }
+
+        
     }
 }

@@ -8,11 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class NextOfKin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NextOfKin()
-        {
-            NextOfKinPhoneNumbers = new HashSet<NextOfKinPhoneNumber>();
-        }
+
 
         public int Id { get; set; }
 

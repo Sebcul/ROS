@@ -7,9 +7,7 @@ namespace ROS.Services.Factories
     {
         public static readonly RegattaRecordFactory Instance = new RegattaRecordFactory();
 
-
         private RegattaRecordFactory() { }
-
 
         public IRegattaUserRecord CreateRegattaRecord(Regatta regatta)
         {

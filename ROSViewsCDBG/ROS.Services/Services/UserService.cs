@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ROS.Services.Factories;
+using ROS.Services.Models;
 using ROS.Services.Services.Interfaces;
 using ROSPersistence.Repository;
 using ROSPersistence.ROSDB;
@@ -8,8 +10,7 @@ namespace ROS.Services.Services
 {
     public class UserService : IUserService
     {
-        private IRepository<User> _repository;
-
+        private readonly IRepository<User> _repository;
 
         public UserService(IRepositoryFactory repositoryFactory)
         {
@@ -28,10 +29,15 @@ namespace ROS.Services.Services
             return _repository.GetAllWhereEntitiesMatchPredicate(user => user.Email == email && user.Active).First();
         }
 
-
         public void UpdateUser(User user)
         {
             _repository.UpdateEntity(user);
+        }
+
+        public IUserInfo GetUserInfoDisplayObjectByEmail(string email)
+        {
+            var user = FindUserByEmail(email);
+            return ModelFactory.Instance.CreateUserInfo(user);
         }
     }
 

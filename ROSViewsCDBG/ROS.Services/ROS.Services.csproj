@@ -39,10 +39,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\IModelFactory.cs" />
+    <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Factories\RegattaRecordFactory.cs" />
+    <Compile Include="Helpers\ServiceLocator.cs" />
     <Compile Include="Models\IRegattaUserRecord.cs" />
+    <Compile Include="Models\IUserInfo.cs" />
     <Compile Include="Models\RegattaUserRecord.cs" />
-    <Compile Include="ServiceLocator.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Services\AddUserService.cs" />
     <Compile Include="Services\BoatService.cs" />
     <Compile Include="Services\EntryService.cs" />
@@ -82,5 +86,6 @@
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,7 +15,7 @@ namespace ROSPersistence.Repository
         public UserRepository(DbContext context)
         {
             _context = context;
-            _context.Configuration.LazyLoadingEnabled = false;
+            //_context.Configuration.LazyLoadingEnabled = false;
         }
 
         public void AddUserToDataBase(SqlParameter email, SqlParameter password,

@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using ROSPersistence.ROSDB;
 
 namespace Ros.Services.Services.Interfaces
 {
     public interface IBoatService
     {
-        //void AddEntity(DomainBoat domainBoat);
+        void AddBoat(Boat boat);
 
-        //void DeleteEntity(DomainBoat domainBoat);
+        void DeleteBoat(Boat boat);
 
-        //IList<IDomainBoat> GetAllBoatsThatMatchPredicate(Expression<Func<IDomainBoat, bool>> predicate);
+        void UpdateBoat(Boat boat);
 
-        //void UpdateEntity(DomainBoat domainBoat);
+        IEnumerable<Boat> GetAllBoats();
 
-        //void InsertEntity(DomainBoat domainBoat);
+        IEnumerable<Boat> GetAllBoatsWithHandicap(int handicap);
+        
+        IBoat GetBoatByName(string name);
     }
 }

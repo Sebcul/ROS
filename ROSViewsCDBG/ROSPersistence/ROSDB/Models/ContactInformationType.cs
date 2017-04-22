@@ -8,12 +8,6 @@ namespace ROSPersistence.ROSDB
 
     public partial class ContactInformationType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContactInformationType()
-        {
-            ClubContactInformations = new HashSet<ClubContactInformation>();
-            UserContactInformations = new HashSet<UserContactInformation>();
-        }
 
         public int Id { get; set; }
 

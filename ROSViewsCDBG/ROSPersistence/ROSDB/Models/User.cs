@@ -8,15 +8,7 @@ namespace ROSPersistence.ROSDB
 
     public partial class User : IUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            Entries = new HashSet<Entry>();
-            NextOfKins = new HashSet<NextOfKin>();
-            RegisteredUsers = new HashSet<RegisteredUser>();
-            UserContactInformations = new HashSet<UserContactInformation>();
-            Members = new HashSet<Member>();
-        }
+
 
         public int Id { get; set; }
 
@@ -51,7 +43,7 @@ namespace ROSPersistence.ROSDB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisteredUser> RegisteredUsers { get; set; }
-
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserContactInformation> UserContactInformations { get; set; }
 
