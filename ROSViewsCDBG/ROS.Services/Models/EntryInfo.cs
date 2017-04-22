@@ -22,6 +22,12 @@ namespace ROS.Services.Models
 
         public string Description { get { return _entry.Description; } }
 
-       
+        public string Boat => _entry.Boat.Name;
+
+        public int Regatta => _entry.RegattadId;
+
+        public int TotalSumPaid => Convert.ToInt32(_entry.TotalSumPaid);
+
+        public string RegattaName => _entry.Regatta.Name;
     }
 }

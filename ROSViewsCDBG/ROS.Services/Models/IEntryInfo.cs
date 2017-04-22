@@ -7,10 +7,10 @@ namespace ROS.Services.Models
     {      
         int No { get; }
         int SkipperId { get; }
-        IEnumerable<string> Boat{ get; }
-        IEnumerable<int>  Regatta { get; }
-        decimal TotalSumPaid { get; }
+        string Boat { get; }
+        int Regatta { get; }
+        int TotalSumPaid { get; }
         string Description { get; }
-
+        string RegattaName { get; }
     }
 }
