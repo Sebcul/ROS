@@ -10,11 +10,11 @@ namespace ROSViewsCDBG.ViewModels
     {
         private int _no;
         private int _skipperId;
+        private Boat _boatName;
+        private Regatta _regattaId;
         private int _totalSumPaid;
         private string _description;
-        private string _regattaName;
-        private string _boatName;
-        private int _regattaId;
+        private Regatta _regattaName;
         private ObservableCollection<RegisteredUser> _registeredUsers;
         private readonly IEntryService _entryService;
 
@@ -31,18 +31,33 @@ namespace ROSViewsCDBG.ViewModels
         }
         public int SkipperId
         {
+<<<<<<< Updated upstream
+        get => _regattaId;
+        set {_regattaId = value; OnPropertyChanged(); }
+=======
             get => _skipperId;
             set { _skipperId = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
-        public string BoatName
+        public Boat BoatName
         {
+<<<<<<< Updated upstream
+        get => _regattaName;
+        set {_regattaName = value; OnPropertyChanged(); }
+=======
             get => _boatName;
             set { _boatName = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
-        public int RegattaId
+        public Regatta RegattaId
         {
+<<<<<<< Updated upstream
+        get => _registeredUsers;
+        set {_registeredUsers = value; OnPropertyChanged(); }
+=======
             get => _regattaId;
             set { _regattaId = value; OnPropertyChanged(); }
+>>>>>>> Stashed changes
         }
         public int TotalSumPaid
         {
@@ -54,7 +69,7 @@ namespace ROSViewsCDBG.ViewModels
             get => _description;
             set { _description = value; OnPropertyChanged(); }
         }
-        public string RegattaName
+        public Regatta RegattaName
         {
             get => _regattaName;
             set { _regattaName = value; OnPropertyChanged(); }
@@ -63,7 +78,7 @@ namespace ROSViewsCDBG.ViewModels
         {
             get => _registeredUsers;
             set { _registeredUsers = value; OnPropertyChanged(); }
-
+            
 
         }
     }
