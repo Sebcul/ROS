@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ROS.Services;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using ROS.Services.Helpers;
 using ROS.Services.Models;
 using ROS.Services.Services.Interfaces;
-using ROSPersistence.ROSDB;
 using ROSViewsCDBG.Extensions;
 using ROSViewsCDBG.Helper_classes;
 
@@ -24,6 +18,10 @@ namespace ROSViewsCDBG.ViewModels
         private ObservableCollection<IRegattaUserRecord> _usersUpcomingRegattas;
         private ObservableCollection<IRegattaUserRecord> _usersOngoingRegattas;
 
+        private Visibility _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage;
+        private Visibility _visibilityOfUserHasNoUpcomingRegattasMessage;
+        private Visibility _visibilityOfUserHasNoOngoingRegattasMessage;
+
 
         private int _userId;
 
@@ -34,10 +32,7 @@ namespace ROSViewsCDBG.ViewModels
 
             _regattaService = ServiceLocator.Instance.RegattaService;
 
-
             InitializeCollections();
-
-
         }
 
         private void InitializeCollections()
@@ -52,17 +47,8 @@ namespace ROSViewsCDBG.ViewModels
         {
             get
             {
-                if (RegattaCollectionIsEmpty())
-                {
-                    var collection = new ObservableCollection<IRegattaUserRecord>();
-                    var emptyRegatta = new NonExistingRegattaUserRecord();
-                    emptyRegatta.Name = "Du har inte deltagit i några regattor.";
-
-                    collection.Add(emptyRegatta);
-
-                    return collection;;
-                }
-
+                VisibilityOfUserHasNoRecordOfParticipationInRegattasMessage = RegattaCollectionIsEmpty(_regattasUserParticipatedIn)
+                    ? Visibility.Visible : Visibility.Collapsed;
                 return _regattasUserParticipatedIn;
             }
             set
@@ -72,14 +58,15 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
-        private bool RegattaCollectionIsEmpty()
-        {
-            return _regattasUserParticipatedIn.Count == 0;
-        }
-
         public ObservableCollection<IRegattaUserRecord> UsersUpcomingRegattas
         {
-            get { return _usersUpcomingRegattas; }
+            get
+            {
+                VisibilityOfUserHasNoUpcomingRegattasMessage = RegattaCollectionIsEmpty(_usersUpcomingRegattas) 
+                    ? Visibility.Visible : Visibility.Collapsed;
+
+                return _usersUpcomingRegattas;
+            }
             set
             {
                 _usersUpcomingRegattas = value;
@@ -89,10 +76,50 @@ namespace ROSViewsCDBG.ViewModels
 
         public ObservableCollection<IRegattaUserRecord> UsersOngoingRegattas
         {
-            get { return _usersOngoingRegattas; }
+            get
+            {
+                VisibilityOfUserHasNoOngoingRegattasMessage = RegattaCollectionIsEmpty(_usersOngoingRegattas)
+                    ? Visibility.Visible : Visibility.Collapsed;
+                return _usersOngoingRegattas;
+            }
             set
             {
                 _usersOngoingRegattas = value;
+                OnPropertyChanged();
+            }
+        }
+        
+
+
+
+
+        public Visibility VisibilityOfUserHasNoUpcomingRegattasMessage
+        {
+            get { return _visibilityOfUserHasNoUpcomingRegattasMessage; }
+            set
+            {
+                _visibilityOfUserHasNoUpcomingRegattasMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public Visibility VisibilityOfUserHasNoOngoingRegattasMessage
+        {
+            get { return _visibilityOfUserHasNoOngoingRegattasMessage; }
+            set
+            {
+                _visibilityOfUserHasNoOngoingRegattasMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility VisibilityOfUserHasNoRecordOfParticipationInRegattasMessage
+        {
+            get { return _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage; }
+            set
+            {
+                _visibilityOfVisibilityOfUserHasNoParticipationRecordsMessage = value;
                 OnPropertyChanged();
             }
         }
@@ -101,20 +128,14 @@ namespace ROSViewsCDBG.ViewModels
         private void OnUserIdRecieved(int id)
         {
             _userId = id;
-     
-            
         }
 
 
-
-
-        private class NonExistingRegattaUserRecord : IRegattaUserRecord
+        private bool RegattaCollectionIsEmpty(ObservableCollection<IRegattaUserRecord> regattaCollection)
         {
-            public string Name { get; set; }
-            public string Location { get; }
-            public string EndDate { get; }
-            public string StartDate { get; }
+            return regattaCollection.Count == 0;
         }
+
     }
 
   
