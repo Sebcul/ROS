@@ -30,7 +30,32 @@ namespace ROS.Services.Services
         }
 
 
-        private List<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IList<Regatta> regattas)
+        public IEnumerable<IRegattaUserRecord> FindUsersOngoingRegattasById(int id)
+        {
+            var regattas =
+                GetOngoingRegattas().Where(
+                    regatta => regatta.Entries.Any(
+                        entry => entry.RegisteredUsers.Any(
+                            user => user.UserId == id)));
+
+            return ConvertRegattasToRegattaUserRecords(regattas);
+        }
+
+
+        public IEnumerable<IRegattaUserRecord> FindUsersUpcomingRegattasByUserId(int id)
+        {
+            var regattas =
+                GetUpcomingRegattas().Where(
+                    regatta => regatta.Entries.Any(
+                        entry => entry.RegisteredUsers.Any(
+                            user => user.UserId == id)));
+
+            return ConvertRegattasToRegattaUserRecords(regattas);
+        }
+
+
+
+        private IEnumerable<IRegattaUserRecord> ConvertRegattasToRegattaUserRecords(IEnumerable<Regatta> regattas)
         {
             var regattaRecords = new List<IRegattaUserRecord>();
 
@@ -67,5 +92,7 @@ namespace ROS.Services.Services
                 _repository.GetAllWhereEntitiesMatchPredicate(
                     regatta => regatta.Active && regatta.StartTime < DateTime.Now && regatta.EndTime > DateTime.Now);
         }
+
+        
     }
 }
