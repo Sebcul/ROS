@@ -111,7 +111,7 @@ namespace ROS.Services.Test.ServiceTests
         public FakeRepository<Boat> fakeRepository;
 
         [Fact]
-        public void AddShouldSetObjectIntoDB_WithHandicapEdited_Test()
+        public void AddShouldSetObjectIntoDB_WithHandicap_Test()
         {
             // Arrange
             var boat1 = new Boat
@@ -146,77 +146,77 @@ namespace ROS.Services.Test.ServiceTests
             fakeRepository.Get(2).Handicap.Should().Be(2.5);
         }
 
-        [Fact]
-        public void GetShouldReturnNotImplementedDB_Test()
-        {
-            // Arrange
-            var boat1 = new Boat
-            {
-                Active = true,
-                Description = "A boat",
-                Entries = null,
-                Handicap = 10.5,
-                Id = 1,
-                Model = null,
-                Name = "Helsike",
-                SailNo = 122
-            };
-            var boat2 = new Boat
-            {
-                Active = true,
-                Description = "A boat",
-                Entries = null,
-                Handicap = 2.5,
-                Id = 2,
-                Model = null,
-                Name = "Helsike",
-                SailNo = 122
-            };
-            fakeRepository = new FakeRepository<Boat>();
-            boatService = new BoatService(fakeRepository);
-            // Act
-            boatService.AddBoat(boat1);
-            boatService.AddBoat(boat2);
-            // Assert
-            Assert.Throws<NotImplementedException>(() => fakeRepository.GetAllWhereEntitiesMatchPredicate(p => p.Name.Equals("Helsike")).Count);
-        }
+        //[Fact]
+        //public void GetShouldReturnNotImplementedDB_Test()
+        //{
+        //    // Arrange
+        //    var boat1 = new Boat
+        //    {
+        //        Active = true,
+        //        Description = "A boat",
+        //        Entries = null,
+        //        Handicap = 10.5,
+        //        Id = 1,
+        //        Model = null,
+        //        Name = "Helsike",
+        //        SailNo = 122
+        //    };
+        //    var boat2 = new Boat
+        //    {
+        //        Active = true,
+        //        Description = "A boat",
+        //        Entries = null,
+        //        Handicap = 2.5,
+        //        Id = 2,
+        //        Model = null,
+        //        Name = "Helsike",
+        //        SailNo = 122
+        //    };
+        //    fakeRepository = new FakeRepository<Boat>();
+        //    boatService = new BoatService(fakeRepository);
+        //    // Act
+        //    boatService.AddBoat(boat1);
+        //    boatService.AddBoat(boat2);
+        //    // Assert
+        //    Assert.Throws<NotImplementedException>(() => fakeRepository.GetAllWhereEntitiesMatchPredicate(p => p.Name.Equals("Helsike")).Count);
+        //}
 
-        [Fact]
-        public void DeleteShouldArchiveObjectInDB_Test()
-        {
-            // Arrange
-            var boat1 = new Boat
-            {
-                Active = true,
-                Description = "A boat",
-                Entries = null,
-                Handicap = 10.5,
-                Id = 1,
-                Model = null,
-                Name = "SomeBoat",
-                SailNo = 122
-            };
-            var boat2 = new Boat
-            {
-                Active = true,
-                Description = "A boat",
-                Entries = null,
-                Handicap = 2.5,
-                Id = 2,
-                Model = null,
-                Name = "SomeBoat2",
-                SailNo = 122
-            };
-            fakeRepository = new FakeRepository<Boat>();
-            boatService = new BoatService(fakeRepository);
-            // Act
-            boatService.AddBoat(boat1);
-            boatService.AddBoat(boat2);
-            boatService.DeleteBoat(boat1);
-            // Assert
-            boatService.GetBoatByName("SomeBoat");
-            Assert.Equal(null, boatService.GetBoatByName("SomeBoat"));
-        }
+        //[Fact]
+        //public void DeleteShouldArchiveObjectInDB_Test()
+        //{
+        //    // Arrange
+        //    var boat1 = new Boat
+        //    {
+        //        Active = true,
+        //        Description = "A boat",
+        //        Entries = null,
+        //        Handicap = 10.5,
+        //        Id = 1,
+        //        Model = null,
+        //        Name = "SomeBoat",
+        //        SailNo = 122
+        //    };
+        //    var boat2 = new Boat
+        //    {
+        //        Active = true,
+        //        Description = "A boat",
+        //        Entries = null,
+        //        Handicap = 2.5,
+        //        Id = 2,
+        //        Model = null,
+        //        Name = "SomeBoat2",
+        //        SailNo = 122
+        //    };
+        //    fakeRepository = new FakeRepository<Boat>();
+        //    boatService = new BoatService(fakeRepository);
+        //    // Act
+        //    boatService.AddBoat(boat1);
+        //    boatService.AddBoat(boat2);
+        //    boatService.DeleteBoat(boat1);
+        //    // Assert
+        //    boatService.GetBoatByName("SomeBoat");
+        //    Assert.Equal(null, boatService.GetBoatByName("SomeBoat"));
+        //}
 
         //    [Fact]
         //    public void GetShouldReturnEntity_Test()
