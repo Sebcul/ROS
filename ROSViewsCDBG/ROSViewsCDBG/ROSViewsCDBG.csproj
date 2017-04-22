@@ -64,6 +64,7 @@
     <Compile Include="Helper classes\Messenger.cs" />
     <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\AddUserAddressViewModel.cs" />

@@ -155,9 +155,9 @@ namespace ROSViewsCDBG.ViewModels
             get { return new AddPhoneNumberViewModel(); }
         }
 
-        public static AddUserAddressWindow AddUserAddressWindow
+        public static AddUserAddressViewModel AddUserAddressViewModel
         {
-            get { return new AddUserAddressWindow(); }
+            get { return new AddUserAddressViewModel(); }
         }
         
     }

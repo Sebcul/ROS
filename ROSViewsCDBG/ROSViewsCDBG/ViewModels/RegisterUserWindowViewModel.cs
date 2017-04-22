@@ -14,6 +14,8 @@ namespace ROSViewsCDBG.ViewModels
     {
         private ICommand _addPhoneNumberCommand;
         private ICommand _removePhoneNumberCommand;
+        private ICommand _addAddressCommand;
+        private ICommand _removeAddressCommand;
         private ICommand _registerUserCommand;
         private string _firstName;
         private string _lastName;
@@ -21,13 +23,16 @@ namespace ROSViewsCDBG.ViewModels
         private string _password;
         private string _passwordRepeat;
         private ObservableCollection<string> _phoneNumbers;
+        private ObservableCollection<UserAddress> _listOfUserAddresses;
         private string _selectedPhoneNumber;
+        private string _selectedAddress;
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
         private UserAddress _address;
 
         public RegisterUserWindowViewModel()
         {
             _phoneNumbers = new ObservableCollection<string>();
+            _listOfUserAddresses = new ObservableCollection<UserAddress>();
             _phoneNumbersTypeAndPhoneNumber = new Dictionary<string, string>();
             RegisterMessages();
         }
@@ -40,6 +45,16 @@ namespace ROSViewsCDBG.ViewModels
         public ICommand RemovePhoneNumberCommand
         {
             get { return _removePhoneNumberCommand ?? (_removePhoneNumberCommand = new RelayCommand(RemovePhoneNumber)); }
+        }
+
+        public ICommand AddAddressCommand
+        {
+            get { return _addAddressCommand ?? (_addAddressCommand = new RelayCommand(AddAddress)); }
+        }
+
+        public ICommand RemoveAddressCommand
+        {
+            get { return _removeAddressCommand ?? (_removeAddressCommand = new RelayCommand(RemoveAddress)); }
         }
 
         public ICommand RegisterUserCommand
@@ -117,12 +132,36 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
+        public string SelectedAddress
+        {
+            get { return _selectedAddress; }
+            set
+            {
+                _selectedAddress = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
         public UserAddress Address
         {
             get { return _address; }
-            set { _address = value; }
+            set
+            {
+                _address = value;
+                OnPropertyChanged();
+            }
         }
 
+        public ObservableCollection<UserAddress> ListOfUserAddresses
+        {
+            get { return _listOfUserAddresses; }
+            set
+            {
+                _listOfUserAddresses = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void AddPhoneNumber(object obj)
         {
@@ -139,6 +178,16 @@ namespace ROSViewsCDBG.ViewModels
             }
             
         }
+        
+        private void AddAddress(object obj)
+        {
+            new AddUserAddressWindow().ShowDialog();
+        }
+
+        private void RemoveAddress(object obj)
+        {
+            
+        }
 
         private void RegisterUser(object obj)
         {
@@ -150,7 +199,7 @@ namespace ROSViewsCDBG.ViewModels
             if (phoneNumberAndType.Any(keyValuePairReceivedDictionary =>
                 _phoneNumbersTypeAndPhoneNumber.ContainsValue(keyValuePairReceivedDictionary.Value)))
             {
-                MessageBox.Show("The number is already added.");
+                MessageBox.Show("Numret är redan tillagt.");
                 return;
             }
 
@@ -187,9 +236,15 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
+        private void OnNewAddressRecieved(UserAddress address)
+        {
+            Address = address;
+        }
+
         private void RegisterMessages()
         {
             Messenger.Default.Register<Dictionary<string, string>>(this, OnPhoneNumberAndTypeReceived);
+            Messenger.Default.Register<UserAddress>(this, OnNewAddressRecieved);
         }
     }
 }

@@ -48,11 +48,10 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" Margin="5">
-            <ListView Width="230">
-            </ListView>
+            <ListView Width="230" ItemsSource="{Binding ListOfUserAddresses, Path=Address.AddressType}"/>
             <StackPanel Orientation="Vertical">
-                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddAddressCommand}"/>
+                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding RemoveAddressCommand}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center">
