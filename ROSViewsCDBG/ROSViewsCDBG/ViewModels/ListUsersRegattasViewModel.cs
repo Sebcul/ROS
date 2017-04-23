@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 using ROS.Services.Helpers;
 using ROS.Services.Models;
 using ROS.Services.Services.Interfaces;
@@ -41,12 +43,11 @@ namespace ROSViewsCDBG.ViewModels
             InitializeCollections();
         }
 
-        private void InitializeCollections()
-        {
-            RegattasUserParticipatedIn = new ObservableCollection<IRegattaUserRecord>();
-            UsersOngoingRegattas = new ObservableCollection<IRegattaUserRecord>();
-            UsersUpcomingRegattas = new ObservableCollection<IRegattaUserRecord>();
-        }
+        
+        public ICollectionView CollectionView { get; set; }
+
+
+        public ICommand DoubleClickCommand { get; set; }
 
 
         public ObservableCollection<IRegattaUserRecord> RegattasUserParticipatedIn
@@ -198,7 +199,12 @@ namespace ROSViewsCDBG.ViewModels
             VisibilityOfNoInformationAboutUsersRegattasMessage = Visibility.Visible;
         }
 
-
+        private void InitializeCollections()
+        {
+            RegattasUserParticipatedIn = new ObservableCollection<IRegattaUserRecord>();
+            UsersOngoingRegattas = new ObservableCollection<IRegattaUserRecord>();
+            UsersUpcomingRegattas = new ObservableCollection<IRegattaUserRecord>();
+        }
     }
 
   

@@ -74,6 +74,13 @@
             
             
             <DataGrid ItemsSource="{Binding UsersUpcomingRegattas }">
+                <DataGrid.InputBindings>
+                    <MouseBinding 
+                        MouseAction="LeftDoubleClick"
+                        Command="{Binding DoubleClickCommand}"
+                        CommandParameter="{Binding CollectionView/}"/>
+                </DataGrid.InputBindings>
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
                     <DataGridTextColumn Header="Plats" Binding="{Binding Location}" />
@@ -93,7 +100,13 @@
 
             <Label Content="Mina Avslutade Regattor" FontFamily="Verdana" FontSize="18" FontWeight="Light" HorizontalAlignment="Center"/>
 
-            <DataGrid  ItemsSource="{Binding RegattasUserParticipatedIn }">
+            <DataGrid  ItemsSource="{Binding RegattasUserParticipatedIn }" IsSynchronizedWithCurrentItem="True">
+
+                <MouseBinding 
+                        MouseAction="LeftDoubleClick"
+                        Command="{Binding DoubleClickCommand}"
+                        CommandParameter="{Binding CollectionView/}"/>
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Regatta" Binding="{Binding Name}" />
                     <DataGridTextColumn Header="Plats" Binding="{Binding Location}" />
