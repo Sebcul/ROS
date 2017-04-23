@@ -12,7 +12,7 @@ namespace ROSViewsCDBG.Models
         private string _city;
         private string _street;
         private int _zipCode;
-        private int _boxNo;
+        private int? _boxNo;
         private string _addressType;
         private string _description;
 
@@ -56,7 +56,7 @@ namespace ROSViewsCDBG.Models
             }
         }
 
-        public int BoxNo
+        public int? BoxNo
         {
             get { return _boxNo; }
             set
@@ -84,6 +84,14 @@ namespace ROSViewsCDBG.Models
                 _description = value;
                 OnPropertyChanged();
             }
+        }
+
+        public override string ToString()
+        {
+
+            string boxNoToString = BoxNo != 0 || BoxNo == null ? $"\n{BoxNo}" : "";
+
+            return $"{Country}\n{Street}\n{City}\n{Zip_Code}{boxNoToString}";
         }
     }
 }
