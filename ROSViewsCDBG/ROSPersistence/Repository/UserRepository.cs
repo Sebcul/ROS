@@ -43,5 +43,6 @@ namespace ROSPersistence.Repository
             _context.Database.ExecuteSqlCommand("sp_UpdatePassword @Id, @OldPassword, NewPassword", 
                 idParam, oldPasswordParam, oldPasswordParam);
         }
+
     }
 }

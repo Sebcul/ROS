@@ -30,7 +30,7 @@ namespace ROSPersistence.Repository
 
         public void UpdateEntity(TEntity entity)
         {
-            _context.Entry(entity);
+            _context.Entry(entity).CurrentValues.SetValues(entity);
             _context.SaveChanges();
         }
 
