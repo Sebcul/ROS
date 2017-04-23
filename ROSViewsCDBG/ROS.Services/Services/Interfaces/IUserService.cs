@@ -10,5 +10,6 @@ namespace ROS.Services.Services.Interfaces
         IEnumerable<User> GetAllUsers();
         IUserInfo GetUserInfoDisplayObjectByEmail(string email);
         void UpdateUser(User user);
+        User AddContactInformationType(User user);
     }
 }

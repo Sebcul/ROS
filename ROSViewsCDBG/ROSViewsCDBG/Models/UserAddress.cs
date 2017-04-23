@@ -91,7 +91,7 @@ namespace ROSViewsCDBG.Models
 
             string boxNoToString = BoxNo != 0 || BoxNo == null ? $"\n{BoxNo}" : "";
 
-            return $"{Country}\n{Street}\n{City}\n{Zip_Code}{boxNoToString}";
+            return $"{AddressType}\n{Country}\n{Street}\n{City}\n{Zip_Code}{boxNoToString}";
         }
     }
 }

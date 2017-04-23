@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\UserAddressConverter.cs" />
     <Compile Include="Helper classes\Messenger.cs" />
+    <Compile Include="Helper classes\PasswordHelper.cs" />
     <Compile Include="Helper classes\RelayCommand.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Models\ModelBase.cs" />
