@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,13 @@ namespace ROSViewsCDBG.ViewModels
         private string _description;
         private string _regattaName;
         private ObservableCollection<string> _registeredUsers;
-                        
+        public string BoatName;
+        public int RegattaId;
+        public string RegattaName;
+        public ObservableCollection<string> RegisteredUsers;
+
+
     }
+
 }
-        public string BoatName
-        public int RegattaId
-        public string RegattaName
-        public ObservableCollection<string> RegisteredUsers
-            set { _registeredUsers = value;OnPropertyChanged(); }
-            
-        }
-    }
+     
