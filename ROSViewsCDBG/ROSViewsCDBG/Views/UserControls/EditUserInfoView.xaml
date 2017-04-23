@@ -4,14 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ROSViewsCDBG.Views.UserControls"
+             xmlns:hc="clr-namespace:ROSViewsCDBG.Helper_classes"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="400"
              DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=EditUserInfoViewModel}">
     <Grid Background="AliceBlue">
-        <!--TODO: Remove background color-->
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,57 +27,45 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Ändra uppgifter" Grid.Column="1" Margin="10" FontSize="15" />
-        <TextBlock Text="Namn:" Grid.Row="1" Margin="5"/>
+        <TextBlock Text="Föramn:" Grid.Row="1" Margin="5"/>
         <TextBlock Text="Efternamn:" Grid.Row="2" Margin="5"/>
-        <TextBlock Text="Password:" Grid.Row="3" Margin="5"/>
+        <TextBlock Text="Nuvarande lösenord:" Grid.Row="3" Margin="5" />
         <TextBlock Text="Nytt lösenord:" Grid.Row="4" Margin="5"/>
         <TextBlock Text="Upprepa nytt lösenord:" Grid.Row="5" Margin="5"/>
         <TextBlock Text="Telefonnummer:" Grid.Row="6" Margin="5"/>
         <TextBlock Text="Adress:" Grid.Row="7" Margin="5"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Width="250" Margin="5">
-            <TextBox.Text>[Förnamn]</TextBox.Text>
-        </TextBox>
-        <TextBox Grid.Column="1" Grid.Row="2" Width="250" Margin="5">
-        <TextBox.Text>[Efternamn]</TextBox.Text>
-        </TextBox>
-        <TextBox Grid.Column="1" Grid.Row="3" Width="250" Margin="5">
-        <TextBox.Text>[mail@mail.com]</TextBox.Text>
-        </TextBox>
-        <TextBox Grid.Column="1" Grid.Row="4" Width="250" Margin="5"/>
-        <TextBox Grid.Column="1" Grid.Row="5" Width="250" Margin="5"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="1" Width="250" Margin="5" Text="{Binding FirstName}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Width="250" Margin="5" Text="{Binding LastName}"/>
+        
+        <PasswordBox hc:PasswordHelper.Attach="True" Grid.Row="3" Grid.Column="1" Margin="5"
+                     hc:PasswordHelper.Password="{Binding Text, ElementName=plainCurrent, Mode=TwoWay}" />
+        <TextBlock Padding="10,0" x:Name="plainCurrent" Visibility="Collapsed" Text="{Binding CurrentPassword, Mode=TwoWay}"/>
+
+        <PasswordBox hc:PasswordHelper.Attach="True" Grid.Row="4" Grid.Column="1" Margin="5"
+                     hc:PasswordHelper.Password="{Binding Text, ElementName=plainNew, Mode=TwoWay}" />
+        <TextBlock Padding="10,0" x:Name="plainNew" Visibility="Collapsed" Text="{Binding NewPassword, Mode=TwoWay}"/>
+
+        <PasswordBox hc:PasswordHelper.Attach="True" Grid.Row="5" Grid.Column="1" Margin="5"
+                     hc:PasswordHelper.Password="{Binding Text, ElementName=plainRepeatNew, Mode=TwoWay}" />
+        <TextBlock Padding="10,0" x:Name="plainRepeatNew" Visibility="Collapsed" Text="{Binding RepeatNewPassword, Mode=TwoWay}"/>
+
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Margin="5">
-            <ListBox Width="230" >
-                <TextBlock Text="0709876543"/>
-                <TextBlock Text="Info: Mobil" FontWeight="Bold"/>
-                <TextBlock Text="-------------"></TextBlock>
-                <TextBlock Text="031456934"/>
-                <TextBlock Text="Info: Hem" FontWeight="Bold"/>
-            </ListBox>
+            <ListView Width="230" ItemsSource="{Binding UserPhoneNumbers}" />
             <StackPanel Orientation="Vertical">
-                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddPhoneNumberCommand}"/>
+                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding RemovePhoneNumberCommand}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" Margin="5">
-            <ListBox x:Name="ClubContactInformationListBox" Width="230">
-                <TextBlock Text="Typ: Postadress" FontWeight="Bold"/>
-                <TextBlock Text="Gatan 2"/>
-                <TextBlock Text="417 22 Staden"/>
-                <TextBlock Text="Sverige"/>
-                <TextBlock Text="-------------------------------"/>
-                <TextBlock Text="Typ: Fakturaadress" FontWeight="Bold"/>
-                <TextBlock Text="B-Gatan 63"/>
-                <TextBlock Text="417 22 Staden"/>
-                <TextBlock Text="Sverige"/>
-            </ListBox>
+            <ListView x:Name="ClubContactInformationListBox" Width="230" ItemsSource="{Binding UserAddresses}"/>
             <StackPanel Orientation="Vertical">
-                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Button Content="+" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding AddAddressCommand}"/>
+                <Button Content="-" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{Binding RemoveAddressCommand}"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1">
-            <Button Content="Spara" MinWidth="50" Margin="5,10,50,0"/>
-            <Button Content="Avbryt" MinWidth="50" Margin="80,10,0,0" Height="20" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1">
+            <Button Content="Spara" MinWidth="50" Margin="5,10,50,0" Command="{Binding SaveCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

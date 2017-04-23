@@ -102,6 +102,7 @@ namespace ROSViewsCDBG.ViewModels
         private void OpenEditUserInfo(object obj)
         {
             SelectedUserControl = new EditUserInfoView();
+            Messenger.Default.Send<int>(_userId, "ToEditUserInfo");
         }
 
         private void OpenUserTeams(object obj)

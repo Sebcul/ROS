@@ -11,10 +11,12 @@ namespace ROS.Services.Services
     public class UserService : IUserService
     {
         private readonly IRepository<User> _repository;
+        private readonly IRepository<ContactInformationType> _contactInformationTypeRepository;
 
         public UserService(IRepositoryFactory repositoryFactory)
         {
             _repository = repositoryFactory.CreateRepository<User>();
+            _contactInformationTypeRepository = repositoryFactory.CreateRepository<ContactInformationType>();
         }
 
 
@@ -39,6 +41,42 @@ namespace ROS.Services.Services
             var user = FindUserByEmail(email);
             return ModelFactory.Instance.CreateUserInfo(user);
         }
+
+        public User AddContactInformationType(User user)
+        {
+            var allContactInformations = _contactInformationTypeRepository.GetAllWhereEntitiesMatchPredicate(x => x.Active);
+            var allUserContactTypes = new List<ContactInformationType>();
+
+            for (int i = 0; i < user.UserContactInformations.Count; i++)
+            {
+                allUserContactTypes.Add(user.UserContactInformations.ElementAt(i).ContactInformationTypes.ElementAt(0));
+                user.UserContactInformations.ElementAt(i).ContactInformationTypes.ElementAt(0).Id = i;
+            }
+
+            foreach (var allConctactTypesType in allContactInformations)
+            {
+                foreach (var allUserContactTypesType in allUserContactTypes)
+                {
+                    if (allConctactTypesType.Type == allUserContactTypesType.Type)
+                    {
+                        var userContactInformation = user.UserContactInformations.FirstOrDefault(x => x.Id == allUserContactTypesType.Id);
+
+                        if (userContactInformation != null)
+                        {
+                            var hej = userContactInformation.ContactInformationTypes.ElementAt(0);
+                            hej.Id = 0;
+                            foreach (var contactInformationTypeForUser in user.UserContactInformations)
+                            {
+                                contactInformationTypeForUser.ContactInformationTypes.Remove(hej);
+                                contactInformationTypeForUser.ContactInformationTypes.Add(allConctactTypesType);
+                            }
+                        }
+                    }
+                }
+            }
+            return user;
+        }
+
     }
 
 }
