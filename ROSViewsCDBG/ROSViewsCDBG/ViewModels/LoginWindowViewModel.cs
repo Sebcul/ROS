@@ -72,16 +72,6 @@ namespace ROSViewsCDBG.ViewModels
         {
             var registerUserWindow = new RegisterUserWindow();
             registerUserWindow.ShowDialog();
-            //Window registerUserWindow = new Window
-            //{
-            //    Title = "Register",
-            //    Content = new RegisterUserView(),
-            //    MaxHeight = 600,
-            //    MaxWidth = 370,
-            //    MinWidth = 370,
-            //    MinHeight = 600
-            //};
-            //registerUserWindow.ShowDialog();
         }
     }
 }

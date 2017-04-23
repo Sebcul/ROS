@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using ROS.Services;
+using ROS.Services.Helpers;
+using ROS.Services.Services.Interfaces;
+using ROSPersistence.ROSDB;
 using ROSViewsCDBG.Helper_classes;
 using ROSViewsCDBG.Models;
 using ROSViewsCDBG.Views.Windows;
@@ -12,6 +17,8 @@ namespace ROSViewsCDBG.ViewModels
 {
     public class RegisterUserWindowViewModel : ViewModelBase
     {
+        //TODO: Check if ContactInformationType already exists in database, will throw an exception if it already exists
+
         private ICommand _addPhoneNumberCommand;
         private ICommand _removePhoneNumberCommand;
         private ICommand _addAddressCommand;
@@ -25,15 +32,19 @@ namespace ROSViewsCDBG.ViewModels
         private ObservableCollection<string> _phoneNumbers;
         private ObservableCollection<UserAddress> _listOfUserAddresses;
         private string _selectedPhoneNumber;
-        private string _selectedAddress;
+        private UserAddress _selectedAddress;
         private Dictionary<string, string> _phoneNumbersTypeAndPhoneNumber;
         private UserAddress _address;
+        private IAddUserService _addUserService;
+        private IUserService _userService;
 
         public RegisterUserWindowViewModel()
         {
             _phoneNumbers = new ObservableCollection<string>();
             _listOfUserAddresses = new ObservableCollection<UserAddress>();
             _phoneNumbersTypeAndPhoneNumber = new Dictionary<string, string>();
+            _addUserService = ServiceLocator.Instance.AddUserService;
+            _userService = ServiceLocator.Instance.UserService;
             RegisterMessages();
         }
 
@@ -132,7 +143,7 @@ namespace ROSViewsCDBG.ViewModels
             }
         }
 
-        public string SelectedAddress
+        public UserAddress SelectedAddress
         {
             get { return _selectedAddress; }
             set
@@ -186,12 +197,83 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RemoveAddress(object obj)
         {
-            
+            ListOfUserAddresses.Remove(SelectedAddress);
         }
 
         private void RegisterUser(object obj)
         {
+            var userToRegister = new User
+            {
+                Active = true,
+                Email = Email,
+                FirstName = FirstName,
+                LastName = LastName,
+                Description = ""
+            };
+
+            if (Password.Equals(PasswordRepeat))
+            {
+                _addUserService.AddUser(userToRegister, Password);
+            }
+            else
+            {
+                MessageBox.Show("Lösenorden stämmer inte överrens.");
+            }
+
+            var savedUser = _userService.FindUserByEmail(userToRegister.Email);
+
+            UserContactInformation userContactInformationToRegister = CreateUserContactInformation();
+
+            savedUser.UserContactInformations.Add(userContactInformationToRegister);
+
+            var userContactInformationType = savedUser.UserContactInformations.FirstOrDefault().ContactInformationTypes = new List<ContactInformationType>();
+
+            ContactInformationType userContactInformationTypeToRegister = CreateContactInformationType();
+
+            userContactInformationType.Add(userContactInformationTypeToRegister);
+
+            var phoneNumberList = userContactInformationToRegister.UserPhoneNumbers = new List<UserPhoneNumber>();
+            foreach (var number in PhoneNumbers)
+            {
+                phoneNumberList.Add(new UserPhoneNumber() { Active = true, PhoneNumber = number });
+            }
+
+            try
+            {
+                _userService.UpdateUser(userToRegister);
+            }
+            catch (DbUpdateException)
+            {
+                //Tanken är här att man kollar om usern finns eller några andra delar som är unika i databasen.
+                //Finns det så ska det som ligger i databasen användas, annars används det som användaren matat in.
+                //Detta implementeras tyvärr inte pga. tidsbrist.
+                MessageBox.Show("Already exists.");
+            }
             
+
+        }
+
+        private ContactInformationType CreateContactInformationType()
+        {
+            return new ContactInformationType()
+            {
+                Active = true,
+                Type = Address.AddressType
+            };
+        }
+
+        private UserContactInformation CreateUserContactInformation()
+        {
+            return new UserContactInformation()
+            {
+                Active = true,
+                BoxNo = Address.BoxNo,
+                Country = Address.Country,
+                City = Address.City,
+                Street = Address.Street,
+                Zip_Code = Address.Zip_Code,
+                Description = Address.Description
+            };
         }
 
         private void OnPhoneNumberAndTypeReceived(Dictionary<string, string> phoneNumberAndType)
@@ -239,12 +321,13 @@ namespace ROSViewsCDBG.ViewModels
         private void OnNewAddressRecieved(UserAddress address)
         {
             Address = address;
+            ListOfUserAddresses.Add(Address);
         }
 
         private void RegisterMessages()
         {
             Messenger.Default.Register<Dictionary<string, string>>(this, OnPhoneNumberAndTypeReceived);
-            Messenger.Default.Register<UserAddress>(this, OnNewAddressRecieved);
+            Messenger.Default.Register<UserAddress>(this, OnNewAddressRecieved, "AddressSent");
         }
     }
 }
