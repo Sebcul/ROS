@@ -7,6 +7,7 @@ namespace ROS.Services.Services.Interfaces
     public interface IUserService
     {
         User FindUserByEmail(string email);
+        User FindUserById(int id);
         IEnumerable<User> GetAllUsers();
         IUserInfo GetUserInfoDisplayObjectByEmail(string email);
         void UpdateUser(User user);

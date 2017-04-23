@@ -21,7 +21,7 @@ namespace ROSViewsCDBG.ViewModels
         private ICommand _userSocialEventsCommand;
         private ICommand _userClubsCommand;
         private ICommand _userInfoCommand;
-        private IUserService _serviceLocator;
+        private readonly IUserService _serviceLocator;
         private string _userFullName;
         private object _selectedUserControl;
         private string _email;
@@ -117,16 +117,14 @@ namespace ROSViewsCDBG.ViewModels
 
         private void OpenUserRegattas(object obj)
         {
- 
             SelectedUserControl = new ListUsersRegattasView();
             Messenger.Default.Send<int>(_userId);
-
         }
 
         private void OpenUserInfo(object obj)
         {
-            SelectedUserControl = new UserInfoView();
-            Messenger.Default.Send<string>(_email);
+            SelectedUserControl = new CreateRegattaView();
+            Messenger.Default.Send<int>(_userId);
         }
 
         private void OpenUserEvents(object obj)
