@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ClubsToClubNamesConverter.cs" />
+    <Compile Include="Converters\UsersToUserNamesConverter.cs" />
+    <Compile Include="Converters\EventsToEventNamesConverter.cs" />
     <Compile Include="Converters\UserAddressConverter.cs" />
     <Compile Include="Helper classes\Messenger.cs" />
     <Compile Include="Helper classes\PasswordHelper.cs" />

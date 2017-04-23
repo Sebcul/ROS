@@ -24,11 +24,14 @@ namespace ROSViewsCDBG.ViewModels
         private string _startTime;
         private string _endTime;
         private string _description;
+        private Club _hostClub;
         private ObservableCollection<User> _admins;
         private ObservableCollection<User> _hostClubMembers;
         private ObservableCollection<Event> _events;
         private ObservableCollection<Club> _clubs;
-        private Club _hostClub;
+        private User _selectedMember;
+        private Event _selectedEvent;
+        private User _selectedAdmin;
         private ICommand _addAdminCommand;
         private ICommand _addEventCommand;
         private ICommand _deleteEventCommand;
@@ -112,22 +115,42 @@ namespace ROSViewsCDBG.ViewModels
             get => _clubs;
             set { _clubs = value; OnPropertyChanged();}
         }
+
         public Club HostClub
         {
             get => _hostClub;
             set { _hostClub = value; OnPropertyChanged(); }
         }
+
         public ObservableCollection<User> HostClubMembers
         {
-            get { return /*HostClub.Members.SelectMany(m => m.Users).ToObservableCollection() ??*/ _hostClubMembers; } //Throws NullReferenceException
+            get => _hostClubMembers;
             set { _hostClubMembers = value; OnPropertyChanged(); }
+        }
+
+        public User SelectedMember
+        {
+            get => _selectedMember;
+            set { _selectedMember = value; OnPropertyChanged();}
+        }
+
+        public Event SelectedEvent
+        {
+            get => _selectedEvent;
+            set { _selectedEvent = value; OnPropertyChanged();}
+        }
+
+        public User SelectedAdmin
+        {
+            get => _selectedAdmin;
+            set { _selectedAdmin = value; OnPropertyChanged(); }
         }
 
         public ICommand AddAdminCommand => _addAdminCommand ?? new RelayCommand(AddAdminToList);
 
         private void AddAdminToList(object obj)
         {
-            throw new NotImplementedException();
+            Admins.Add(SelectedMember);
         }
 
         public ICommand DeleteAdminCommand => _deleteEventCommand ?? new RelayCommand(DeleteAdminFromList);
@@ -160,7 +183,7 @@ namespace ROSViewsCDBG.ViewModels
 
         public ICommand CancelCommand => _cancelCommand ?? new RelayCommand(CancelRegistration);
 
-        
+
         private void CancelRegistration(object obj)
         {
             throw new NotImplementedException();
@@ -168,13 +191,15 @@ namespace ROSViewsCDBG.ViewModels
 
         private void RegisterMessages()
         {
-            Messenger.Default.Register<int>(this, OnEmailReceived);
+            Messenger.Default.Register<int>(this, OnIdReceived);
         }
 
-        private void OnEmailReceived(int id)
+        private void OnIdReceived(int id)
         {
             var user = _userService.FindUserById(id);
             Clubs = user.Members.SelectMany(u => u.Clubs).ToObservableCollection();
+            HostClub = Clubs[0];
+            HostClubMembers = HostClub.Members.SelectMany(u => u.Users).ToObservableCollection();
         }
     }
 }
