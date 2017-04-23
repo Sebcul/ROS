@@ -238,6 +238,12 @@ namespace ROSViewsCDBG.ViewModels
                 phoneNumberList.Add(new UserPhoneNumber() { Active = true, PhoneNumber = number });
             }
 
+            TryToRegisterUserToDatabase(userToRegister);
+
+        }
+
+        private void TryToRegisterUserToDatabase(User userToRegister)
+        {
             try
             {
                 _userService.UpdateUser(userToRegister);
@@ -249,8 +255,6 @@ namespace ROSViewsCDBG.ViewModels
                 //Detta implementeras tyvärr inte pga. tidsbrist.
                 MessageBox.Show("Already exists.");
             }
-            
-
         }
 
         private ContactInformationType CreateContactInformationType()
