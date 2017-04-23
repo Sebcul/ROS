@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -218,9 +219,52 @@ namespace ROSViewsCDBG.ViewModels
             {
                 MessageBox.Show("Lösenorden stämmer inte överrens.");
             }
+
             var savedUser = _userService.FindUserByEmail(userToRegister.Email);
 
-            var userContactInformationToRegister = new UserContactInformation()
+            UserContactInformation userContactInformationToRegister = CreateUserContactInformation();
+
+            savedUser.UserContactInformations.Add(userContactInformationToRegister);
+
+            var userContactInformationType = savedUser.UserContactInformations.FirstOrDefault().ContactInformationTypes = new List<ContactInformationType>();
+
+            ContactInformationType userContactInformationTypeToRegister = CreateContactInformationType();
+
+            userContactInformationType.Add(userContactInformationTypeToRegister);
+
+            var phoneNumberList = userContactInformationToRegister.UserPhoneNumbers = new List<UserPhoneNumber>();
+            foreach (var number in PhoneNumbers)
+            {
+                phoneNumberList.Add(new UserPhoneNumber() { Active = true, PhoneNumber = number });
+            }
+
+            try
+            {
+                _userService.UpdateUser(userToRegister);
+            }
+            catch (DbUpdateException)
+            {
+                //Tanken är här att man kollar om usern finns eller några andra delar som är unika i databasen.
+                //Finns det så ska det som ligger i databasen användas, annars används det som användaren matat in.
+                //Detta implementeras tyvärr inte pga. tidsbrist.
+                MessageBox.Show("Already exists.");
+            }
+            
+
+        }
+
+        private ContactInformationType CreateContactInformationType()
+        {
+            return new ContactInformationType()
+            {
+                Active = true,
+                Type = Address.AddressType
+            };
+        }
+
+        private UserContactInformation CreateUserContactInformation()
+        {
+            return new UserContactInformation()
             {
                 Active = true,
                 BoxNo = Address.BoxNo,
@@ -230,26 +274,6 @@ namespace ROSViewsCDBG.ViewModels
                 Zip_Code = Address.Zip_Code,
                 Description = Address.Description
             };
-            savedUser.UserContactInformations.Add(userContactInformationToRegister);
-
-            var userContactInformationType = savedUser.UserContactInformations.FirstOrDefault().ContactInformationTypes = new List<ContactInformationType>();
-
-            var userContactInformationTypeToRegister = new ContactInformationType()
-            {
-                Active = true,
-                Type = Address.AddressType
-            };
-
-            userContactInformationType.Add(userContactInformationTypeToRegister);
-
-            var phoneNumberList = userContactInformationToRegister.UserPhoneNumbers = new List<UserPhoneNumber>();
-            foreach (var number in PhoneNumbers)
-            {
-                phoneNumberList.Add(new UserPhoneNumber() { Active = true, PhoneNumber = number });
-            }
-            
-            _userService.UpdateUser(userToRegister);
-            
         }
 
         private void OnPhoneNumberAndTypeReceived(Dictionary<string, string> phoneNumberAndType)
