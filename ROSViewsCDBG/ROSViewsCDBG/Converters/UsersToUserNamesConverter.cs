@@ -32,10 +32,17 @@ namespace ROSViewsCDBG.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (_users == null || _users.Count == 0)
+            {
+                return null;
+            }
             var name = (string) value;
             var firstName = name.Split(' ').First();
             var lastName = name.Split(' ').Last();
-            return _users.First(u => u.FirstName == firstName && u.LastName == lastName);
+            if (_users.Contains(_users.First(u => u.FirstName == firstName && u.LastName == lastName)))
+                return _users.First(u => u.FirstName == firstName && u.LastName == lastName);
+            
+            return _users.First();
         }
     }
 }

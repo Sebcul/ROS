@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ROS.Services.Helpers;
 using ROS.Services.Services.Interfaces;
@@ -16,7 +17,7 @@ namespace ROSViewsCDBG.ViewModels
     public class CreateRegattaViewModel : ViewModelBase
     {
         private readonly IRegattaService _regattaService;
-        private readonly IUserService _userService; 
+        private readonly IUserService _userService;
         private string _name;
         private string _location;
         private string _startDate;
@@ -60,31 +61,31 @@ namespace ROSViewsCDBG.ViewModels
         public string Name
         {
             get => _name;
-            set { _name = value; OnPropertyChanged();}
+            set { _name = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<User> Admins
         {
             get => _admins;
-            set { _admins = value; OnPropertyChanged();} 
+            set { _admins = value; OnPropertyChanged(); }
         }
 
         public string Location
         {
             get => _location;
-            set { _location = value; OnPropertyChanged();}
+            set { _location = value; OnPropertyChanged(); }
         }
 
-        public string StarDate
+        public string StartDate
         {
             get => _startDate;
-            set { _startDate = value; OnPropertyChanged();}
+            set { _startDate = value; OnPropertyChanged(); }
         }
 
         public string EndDate
         {
             get => _endDate;
-            set { _endDate = value; OnPropertyChanged();}
+            set { _endDate = value; OnPropertyChanged(); }
         }
 
         public string StartTime
@@ -101,19 +102,19 @@ namespace ROSViewsCDBG.ViewModels
         public string Description
         {
             get => _description;
-            set { _description = value; OnPropertyChanged();}
+            set { _description = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<Event> Events
         {
             get => _events;
-            set { _events = value; OnPropertyChanged();}
+            set { _events = value; OnPropertyChanged(); }
         }
-    
+
         public ObservableCollection<Club> Clubs
         {
             get => _clubs;
-            set { _clubs = value; OnPropertyChanged();}
+            set { _clubs = value; OnPropertyChanged(); }
         }
 
         public Club HostClub
@@ -131,13 +132,13 @@ namespace ROSViewsCDBG.ViewModels
         public User SelectedMember
         {
             get => _selectedMember;
-            set { _selectedMember = value; OnPropertyChanged();}
+            set { _selectedMember = value; OnPropertyChanged(); }
         }
 
         public Event SelectedEvent
         {
             get => _selectedEvent;
-            set { _selectedEvent = value; OnPropertyChanged();}
+            set { _selectedEvent = value; OnPropertyChanged(); }
         }
 
         public User SelectedAdmin
@@ -150,35 +151,77 @@ namespace ROSViewsCDBG.ViewModels
 
         private void AddAdminToList(object obj)
         {
-            Admins.Add(SelectedMember);
+            if (SelectedMember != null)
+            {
+                Admins.Add(SelectedMember);
+                OnPropertyChanged("Admins");
+            }
         }
 
         public ICommand DeleteAdminCommand => _deleteEventCommand ?? new RelayCommand(DeleteAdminFromList);
 
         private void DeleteAdminFromList(object obj)
         {
-            throw new NotImplementedException();
+            if (SelectedAdmin != null)
+            {
+                Admins.Remove(SelectedAdmin);
+                OnPropertyChanged("Admins");
+            }
         }
 
         public ICommand AddEventCommand => _addEventCommand ?? new RelayCommand(AddEventToList);
 
         private void AddEventToList(object obj)
         {
-            throw new NotImplementedException();
+
         }
 
         public ICommand DeleteEventCommand => _deleteEventCommand ?? new RelayCommand(DeleteEventFromList);
 
         private void DeleteEventFromList(object obj)
         {
-            throw new NotImplementedException();
+
         }
 
         public ICommand RegisterRegattaCommand => _registerRegattaCommand ?? new RelayCommand(RegisterRegatta);
 
         private void RegisterRegatta(object obj)
         {
-            throw new NotImplementedException();
+            var regatta = new Regatta()
+            {
+                Active = true,
+                Name = Name,
+                Club = HostClub,
+                Description = Description,
+                StartTime = GetStartDateTime(),
+                EndTime = GetEndDateTime(),
+                Entries = new List<Entry>(),
+                Events = Events,
+                Location = Location,
+                RegattasFees = new Collection<RegattasFee>(),
+                ResponsibleRegattaMembers = new List<ResponsibleRegattaMember>()
+            };
+            _regattaService.AddRegatta(regatta);
+
+            Messenger.Default.Send("message", "SetSelectedUserControlToNull");
+        }
+
+        private DateTime GetStartDateTime()
+        {
+            var splitStartDate = StartDate.Split('-');
+            var splitStartTime = StartTime.Split(':');
+
+            return new DateTime(int.Parse(splitStartDate[0]), int.Parse(splitStartDate[1]),
+                int.Parse(splitStartDate[2]), int.Parse(splitStartTime[0]), int.Parse(splitStartTime[1]), 0);
+        }
+
+        private DateTime GetEndDateTime()
+        {
+            var splitEndDate = EndDate.Split('-');
+            var splitEndTime = EndTime.Split(':');
+
+            return new DateTime(int.Parse(splitEndDate[0]), int.Parse(splitEndDate[1]),
+                int.Parse(splitEndDate[2]), int.Parse(splitEndTime[0]), int.Parse(splitEndTime[1]), 0);
         }
 
         public ICommand CancelCommand => _cancelCommand ?? new RelayCommand(CancelRegistration);
@@ -186,7 +229,7 @@ namespace ROSViewsCDBG.ViewModels
 
         private void CancelRegistration(object obj)
         {
-            throw new NotImplementedException();
+            Messenger.Default.Send("message", "SetSelectedUserControlToNull");
         }
 
         private void RegisterMessages()

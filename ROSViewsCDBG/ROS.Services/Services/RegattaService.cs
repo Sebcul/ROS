@@ -93,6 +93,11 @@ namespace ROS.Services.Services
                     regatta => regatta.Active && regatta.StartTime < DateTime.Now && regatta.EndTime > DateTime.Now);
         }
 
+        public void AddRegatta(Regatta regatta)
+        {
+            _repository.InsertEntity(regatta);
+        }
+
         
     }
 }

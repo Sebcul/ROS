@@ -127,6 +127,11 @@ namespace ROSViewsCDBG.ViewModels
             Messenger.Default.Send<int>(_userId);
         }
 
+        private void SetSelectedUserControlToNull(string message)
+        {
+            SelectedUserControl = null;
+        }
+
         private void OpenUserEvents(object obj)
         {
             SelectedUserControl = new SocialEventInfoView();
@@ -140,6 +145,7 @@ namespace ROSViewsCDBG.ViewModels
         private void RegisterMessages()
         {
             Messenger.Default.Register<string>(this, OnEmailReceived);
+            Messenger.Default.Register<string>(this, SetSelectedUserControlToNull, "SetSelectedUserControlToNull");
         }
 
         private void OnEmailReceived(string email)
